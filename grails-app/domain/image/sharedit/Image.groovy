@@ -1,9 +1,11 @@
 package image.sharedit
 
 class Image {
+    String name
+    String description
     Integer width
     Integer height
-    String path
+    String url
 
     static belongsTo = [owner: User]
 
