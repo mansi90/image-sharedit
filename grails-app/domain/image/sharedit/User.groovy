@@ -14,4 +14,9 @@ class User {
         email blank: false, unique: true, email: true, nullable: false
         password blank: false, nullable: false
     }
+
+    @Override
+    String toString (){
+        return email
+    }
 }
