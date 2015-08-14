@@ -32,8 +32,33 @@
     </g:hasErrors>
     <g:form action="save">
         <fieldset class="form">
-            <f:all bean="user"/>
+            <div class="fieldcontain required">
+                <label for="firstName">First Name
+                    <span class="required-indicator">*</span>
+                </label><input type="text" name="firstName" value="" required="" id="firstName">
+            </div>
+
+            <div class="fieldcontain required">
+                <label for="lastName">Last Name
+                    <span class="required-indicator">*</span>
+                </label><input type="text" name="lastName" value="" required="" id="lastName">
+            </div>
+
+            <div class="fieldcontain required">
+                <label for="email">Email
+                    <span class="required-indicator">*</span>
+                </label><input type="email" name="email" value="" required="" id="email">
+            </div>
+
+            <div class="fieldcontain required">
+                <label for="password">Password
+                    <span class="required-indicator">*</span>
+                </label><input type="password" name="password" value="" required="" id="password">
+            </div>
         </fieldset>
+
+        <div class="clearfix" style="min-height: 30px;"></div>
+
         <fieldset class="buttons">
             <g:submitButton name="create" class="save"
                             value="${message(code: 'default.button.create.label', default: 'Create')}"/>
