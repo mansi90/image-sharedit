@@ -24,7 +24,7 @@
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
-        <div class="container-fluid">
+        <div class="container-fluid" style="min-height: 50px">
             <a class="brand" href="${grailsApplication.config.grails.serverURL}">Image SharEdit</a>
 
             <div class="nav-collapse collapse" style="font-size: 13px">

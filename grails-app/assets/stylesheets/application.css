@@ -12,3 +12,10 @@
 *= require mobile
 *= require_self
 */
+a.brand {
+    color: white;
+    font-weight: bold;
+    top: 14px;
+    position: relative;
+    font-size: 16px;
+}
