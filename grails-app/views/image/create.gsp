@@ -32,8 +32,49 @@
     </g:hasErrors>
     <g:form action="save">
         <fieldset class="form">
-            <f:all bean="image"/>
+            <div class="fieldcontain required">
+                <label for="name">Name
+                    <span class="required-indicator">*</span>
+                </label><input type="text" name="name" value="" required="" id="name">
+            </div>
+
+            <div class="fieldcontain required">
+                <label for="description">Description
+                    <span class="required-indicator">*</span>
+                </label><input type="text" name="description" value="" required="" id="description">
+            </div>
+
+            <div class="fieldcontain required">
+                <label for="owner">Owner
+                    <span class="required-indicator">*</span>
+                </label>
+                <select name="owner.id" required="" id="owner">
+                <option value="1">mansi.arora@tothenew.com</option>
+                <option value="2">neha.gupta@tothenew.com</option>
+            </select>
+            </div>
+
+            <div class="fieldcontain required">
+                <label for="url">Url
+                    <span class="required-indicator">*</span>
+                </label><input type="text" name="url" value="" required="" id="url">
+            </div>
+
+            <div class="fieldcontain required">
+                <label for="width">Width
+                    <span class="required-indicator">*</span>
+                </label><input type="number" name="width" value="" required="" id="width">
+            </div>
+
+            <div class="fieldcontain required">
+                <label for="height">Height
+                    <span class="required-indicator">*</span>
+                </label><input type="number" name="height" value="" required="" id="height">
+            </div>
         </fieldset>
+
+        <div class="clearfix" style="min-height: 30px;"></div>
+
         <fieldset class="buttons">
             <g:submitButton name="create" class="save"
                             value="${message(code: 'default.button.create.label', default: 'Create')}"/>
