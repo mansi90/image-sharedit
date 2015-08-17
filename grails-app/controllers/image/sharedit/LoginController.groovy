@@ -2,5 +2,7 @@ package image.sharedit
 
 class LoginController {
 
-    def index() { }
+    def index() {
+        render "Heyy"
+    }
 }
