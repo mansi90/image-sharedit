@@ -2,7 +2,9 @@
 /* General Demo Style */
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 
-html { height: 100%; }
+html {
+    height: 100%;
+}
 
 body {
     font-family: 'Lato', Calibri, Arial, sans-serif;
@@ -43,7 +45,7 @@ a {
     padding: 20px 10px 10px 10px;
     position: relative;
     display: block;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
@@ -54,7 +56,7 @@ a {
     position: relative;
     font-weight: 300;
     color: #666;
-    text-shadow: 0 1px 1px rgba(255,255,255,0.6);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
 }
 
 .container > header h2 {
@@ -65,7 +67,7 @@ a {
     color: #666;
     font-family: Cambria, Georgia, serif;
     font-style: italic;
-    text-shadow: 0 1px 1px rgba(255,255,255,0.6);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
 }
 
 /* Header Style */
@@ -78,7 +80,7 @@ a {
     z-index: 9999;
     position: relative;
     font-family: Cambria, Georgia, serif;
-    box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
+    box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
@@ -101,7 +103,7 @@ a {
 }
 
 .codrops-top a:hover {
-    background: rgba(255,255,255,0.6);
+    background: rgba(255, 255, 255, 0.6);
 }
 
 .codrops-top span.right {
@@ -115,7 +117,7 @@ a {
 
 /* Demo Buttons Style */
 .codrops-demos {
-    text-align:center;
+    text-align: center;
     display: block;
     line-height: 30px;
     padding: 5px 0px;
@@ -133,11 +135,11 @@ a {
     border: 1px solid #fff;
     background: #ffffff; /* Old browsers */
     background: -moz-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(47%,#f6f6f6), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* IE10+ */
-    background: linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* W3C */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(47%, #f6f6f6), color-stop(100%, #ededed)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* IE10+ */
+    background: linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* W3C */
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
@@ -155,11 +157,11 @@ a {
     background: #555;
     border-color: #555;
     color: #ddd;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
-    box-shadow: 0 1px 0 rgba(255,255,255,0.2), inset 0 1px 1px rgba(0,0,0,0.5);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 1px 1px rgba(0, 0, 0, 0.5);
 }
 
-.support-note span{
+.support-note span {
     color: #ac375d;
     font-size: 16px;
     display: none;
@@ -167,6 +169,7 @@ a {
     text-align: center;
     padding: 5px 0;
 }
+
 /* GLOBALS */
 
 *,
@@ -195,11 +198,7 @@ a {
     position: relative; /* For the submit button positioning */
 
     /* Styles */
-    box-shadow: 
-        0 0 1px rgba(0, 0, 0, 0.3), 
-        0 3px 7px rgba(0, 0, 0, 0.3), 
-        inset 0 1px rgba(255,255,255,1),
-        inset 0 -3px 2px rgba(0,0,0,0.25);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 3px 7px rgba(0, 0, 0, 0.3), inset 0 1px rgba(255, 255, 255, 1), inset 0 -3px 2px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     background: white; /* Fallback */
     background: -moz-linear-gradient(#eeefef, #ffffff 10%);
@@ -243,16 +242,14 @@ a {
     font-family: 'Lato', Calibri, Arial, sans-serif;
     font-size: 13px;
     font-weight: 400;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
     /* Size and position */
     width: 100%;
     padding: 10px 18px 10px 45px;
 
     /* Styles */
     border: none; /* Remove the default border */
-    box-shadow: 
-        inset 0 0 5px rgba(0,0,0,0.1),
-        inset 0 3px 2px rgba(0,0,0,0.1);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1), inset 0 3px 2px rgba(0, 0, 0, 0.1);
     border-radius: 3px;
     background: #f9f9f9;
     color: #777;
@@ -296,10 +293,7 @@ a {
     /* Styles */
     background: #ffffff;
     border-radius: 50%;
-    box-shadow: 
-        0 0 2px rgba(0,0,0,0.1),
-        0 3px 2px rgba(0,0,0,0.1),
-        inset 0 -3px 2px rgba(0,0,0,0.2);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 0 3px 2px rgba(0, 0, 0, 0.1), inset 0 -3px 2px rgba(0, 0, 0, 0.2);
 }
 
 .form-1 .submit:after {
@@ -313,7 +307,7 @@ a {
 
     /* Styles */
     background: #ffffff;
-    
+
     /* Other masks trick */
     box-shadow: 0 62px white, -32px 31px white;
 }
@@ -339,11 +333,7 @@ a {
     background: -webkit-gradient(linear, 0 0, 0 100%, from(#52cfeb), to(#42A2BC));
     background: -webkit-linear-gradient(#52cfeb, #42A2BC);
     background: linear-gradient(#52cfeb, #42A2BC);
-    box-shadow: 
-        inset 0 1px 0 rgba(255,255,255,0.3),
-        0 1px 2px rgba(0,0,0,0.35),
-        inset 0 3px 2px rgba(255,255,255,0.2),
-        inset 0 -3px 2px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.35), inset 0 3px 2px rgba(255, 255, 255, 0.2), inset 0 -3px 2px rgba(0, 0, 0, 0.1);
 
     cursor: pointer;
 }
@@ -360,11 +350,8 @@ a {
 
 .form-1 button:active {
     background: #42A2BC;
-    box-shadow: 
-        inset 0 0 5px rgba(0,0,0,0.3),
-        inset 0 3px 4px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3), inset 0 3px 4px rgba(0, 0, 0, 0.3);
 }
-
 
 /* Demo 2 */
 
@@ -379,10 +366,7 @@ a {
     background: #fffaf6;
     border-radius: 4px;
     color: #7e7975;
-    box-shadow:
-        0 2px 2px rgba(0,0,0,0.2),        
-        0 1px 5px rgba(0,0,0,0.2),        
-        0 0 0 12px rgba(255,255,255,0.4); 
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 0 1px 5px rgba(0, 0, 0, 0.2), 0 0 0 12px rgba(255, 255, 255, 0.4);
 }
 
 .form-2 h1 {
@@ -391,8 +375,8 @@ a {
     color: #bdb5aa;
     padding-bottom: 8px;
     border-bottom: 1px solid #EBE6E2;
-    text-shadow: 0 2px 0 rgba(255,255,255,0.8);
-    box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    text-shadow: 0 2px 0 rgba(255, 255, 255, 0.8);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .form-2 h1 .log-in,
@@ -415,7 +399,7 @@ a {
     width: 50%;
     float: left;
     padding-top: 15px;
-    border-top: 1px solid rgba(255,255,255,1);
+    border-top: 1px solid rgba(255, 255, 255, 1);
 }
 
 .form-2 .float:first-of-type {
@@ -432,7 +416,7 @@ a {
     cursor: pointer;
     text-transform: uppercase;
     font-weight: 400;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
     font-size: 11px;
 }
 
@@ -484,7 +468,7 @@ a {
     position: relative;
 
     /* Styles */
-    box-shadow: inset 0 1px rgba(255,255,255,0.3);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.3);
     border-radius: 3px;
     cursor: pointer;
 
@@ -507,7 +491,7 @@ a {
     background: linear-gradient(#fbd568, #ffb347);
     border: 1px solid #f4ab4c;
     color: #996319;
-    text-shadow: 0 1px rgba(255,255,255,0.3);
+    text-shadow: 0 1px rgba(255, 255, 255, 0.3);
 }
 
 .form-2 .log-twitter {
@@ -521,19 +505,17 @@ a {
     background: linear-gradient(#34a5cf, #2a8ac4);
     border: 1px solid #2b8bc7;
     color: #ffffff;
-    text-shadow: 0 -1px rgba(0,0,0,0.3);
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
     text-decoration: none;
 }
 
 .form-2 input[type=submit]:hover,
 .form-2 .log-twitter:hover {
-    box-shadow: 
-        inset 0 1px rgba(255,255,255,0.3), 
-        inset 0 20px 40px rgba(255,255,255,0.15);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 20px 40px rgba(255, 255, 255, 0.15);
 }
 
 .form-2 input[type=submit]:active,
-.form-2 .log-twitter:active{
+.form-2 .log-twitter:active {
     top: 1px;
 }
 
@@ -547,7 +529,7 @@ a {
 }
 
 .form-2 p:last-of-type {
-    clear: both;    
+    clear: both;
 }
 
 .form-2 .opt {
@@ -581,12 +563,10 @@ a {
     overflow: hidden;
 
     /* Styles */
-    background: #111; 
+    background: #111;
     border-radius: 0.4em;
     border: 1px solid #191919;
-    box-shadow: 
-        inset 0 0 2px 1px rgba(255,255,255,0.08), 
-        0 16px 10px -8px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 0 2px 1px rgba(255, 255, 255, 0.08), 0 16px 10px -8px rgba(0, 0, 0, 0.6);
 }
 
 .form-3 label {
@@ -622,10 +602,9 @@ a {
     background: -o-linear-gradient(#1f2124, #27292c);
     background: -webkit-gradient(linear, 0 0, 0 100%, from(#1f2124), to(#27292c));
     background: -webkit-linear-gradient(#1f2124, #27292c);
-    background: linear-gradient(#1f2124, #27292c);    
+    background: linear-gradient(#1f2124, #27292c);
     border: 1px solid #000;
-    box-shadow:
-        0 1px 0 rgba(255,255,255,0.1);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
     border-radius: 3px;
 
     /* Font styles */
@@ -641,7 +620,7 @@ a {
     background: #27292c;
 }
 
-.form-3 input[type=text]:focus, 
+.form-3 input[type=text]:focus,
 .form-3 input[type=password]:focus {
     box-shadow: inset 0 0 2px #000;
     background: #494d54;
@@ -675,34 +654,32 @@ a {
     /* Width and position */
     width: 100%;
     padding: 8px 5px;
-  
+
     /* Styles */
     border: 1px solid #0273dd; /* Fallback */
-    border: 1px solid rgba(0,0,0,0.4);
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.3),
-        inset 0 10px 10px rgba(255,255,255,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 10px 10px rgba(255, 255, 255, 0.1);
     border-radius: 3px;
     background: #38a6f0;
-    cursor:pointer;
-  
+    cursor: pointer;
+
     /* Font styles */
     font-family: 'Ubuntu', 'Lato', sans-serif;
     color: white;
     font-weight: 700;
     font-size: 15px;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
 }
 
-.form-3 input[type=submit]:hover { 
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+.form-3 input[type=submit]:hover {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
-.form-3 input[type=submit]:active { 
+.form-3 input[type=submit]:active {
     background: #287db5;
-    box-shadow: inset 0 0 3px rgba(0,0,0,0.6);
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.6);
     border-color: #000; /* Fallback */
-    border-color: rgba(0,0,0,0.9);
+    border-color: rgba(0, 0, 0, 0.9);
 }
 
 .no-boxshadow .form-3 input[type=submit]:hover {
@@ -735,20 +712,20 @@ a {
     position: absolute;
     left: 34%;
     top: -7px;
-    
+
     /* Styles */
     border-radius: 50%;
     box-shadow: 0 0 6px 4px #fff;
 }
 
-.form-3 p:nth-child(1):before{
+.form-3 p:nth-child(1):before {
     /* Size and position */
-    content:"";
-    width:250px;
-    height:100px;
-    position:absolute;
-    top:0;
-    left:45px;
+    content: "";
+    width: 250px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 45px;
 
     /* Styles */
     -webkit-transform: rotate(75deg);
@@ -756,12 +733,12 @@ a {
     -ms-transform: rotate(75deg);
     -o-transform: rotate(75deg);
     transform: rotate(75deg);
-    background: -moz-linear-gradient(50deg, rgba(255,255,255,0.15), rgba(0,0,0,0));
-    background: -ms-linear-gradient(50deg, rgba(255,255,255,0.15), rgba(0,0,0,0));
-    background: -o-linear-gradient(50deg, rgba(255,255,255,0.15), rgba(0,0,0,0));
-    background: -webkit-linear-gradient(50deg, rgba(255,255,255,0.15), rgba(0,0,0,0));
-    background: linear-gradient(50deg, rgba(255,255,255,0.15), rgba(0,0,0,0));
-    pointer-events:none;
+    background: -moz-linear-gradient(50deg, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0));
+    background: -ms-linear-gradient(50deg, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0));
+    background: -o-linear-gradient(50deg, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0));
+    background: -webkit-linear-gradient(50deg, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0));
+    background: linear-gradient(50deg, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0));
+    pointer-events: none;
 }
 
 .no-pointerevents .form-3 p:nth-child(1):before {
@@ -773,14 +750,14 @@ a {
 .form-4 {
     /* Size and position */
     width: 300px;
-    margin: 60px auto 30px;
+    margin: 45px auto 30px;
     padding: 10px;
     position: relative;
 
     /* Font styles */
     font-family: 'Raleway', 'Lato', Arial, sans-serif;
     color: white;
-    text-shadow: 0 2px 1px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
 }
 
 .form-4 h1 {
@@ -797,12 +774,10 @@ a {
 
     /* Styles */
     border: 1px solid #4e3043; /* Fallback */
-    border: 1px solid rgba(78,48,67, 0.8);
-    background: rgba(0,0,0,0.15);
+    border: 1px solid rgba(78, 48, 67, 0.8);
+    background: rgba(0, 0, 0, 0.15);
     border-radius: 2px;
-    box-shadow: 
-        0 1px 0 rgba(255,255,255,0.2), 
-        inset 0 1px 1px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 1px 1px rgba(0, 0, 0, 0.1);
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -ms-transition: all 0.3s ease-out;
@@ -818,18 +793,18 @@ a {
 /* Placeholder style (from http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css) */
 
 .form-4 input::-webkit-input-placeholder {
-    color: rgba(37,21,26,0.5);
-    text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+    color: rgba(37, 21, 26, 0.5);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .form-4 input:-moz-placeholder {
-    color: rgba(37,21,26,0.5);
-    text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+    color: rgba(37, 21, 26, 0.5);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .form-4 input:-ms-input-placeholder {
-    color: rgba(37,21,26,0.5);
-    text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+    color: rgba(37, 21, 26, 0.5);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .form-4 input[type=text]:hover,
@@ -840,10 +815,7 @@ a {
 .form-4 input[type=text]:focus,
 .form-4 input[type=password]:focus,
 .form-4 input[type=submit]:focus {
-    box-shadow: 
-        0 1px 0 rgba(255,255,255,0.2), 
-        inset 0 1px 1px rgba(0,0,0,0.1),
-        0 0 0 3px rgba(255,255,255,0.15);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(255, 255, 255, 0.15);
     outline: none;
 }
 
@@ -857,18 +829,18 @@ a {
     /* Size and position */
     width: 100%;
     padding: 8px 5px;
-    
+
     /* Styles */
     background: #634056;
-    background: -moz-linear-gradient(rgba(99,64,86,0.5), rgba(76,49,65,0.7));
-    background: -ms-linear-gradient(rgba(99,64,86,0.5), rgba(76,49,65,0.7));
-    background: -o-linear-gradient(rgba(99,64,86,0.5), rgba(76,49,65,0.7));
-    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(99,64,86,0.5)), to(rgba(76,49,65,0.7)));
-    background: -webkit-linear-gradient(rgba(99,64,86,0.5), rgba(76,49,65,0.7));
-    background: linear-gradient(rgba(99,64,86,0.5), rgba(76,49,65,0.7));    
+    background: -moz-linear-gradient(rgba(99, 64, 86, 0.5), rgba(76, 49, 65, 0.7));
+    background: -ms-linear-gradient(rgba(99, 64, 86, 0.5), rgba(76, 49, 65, 0.7));
+    background: -o-linear-gradient(rgba(99, 64, 86, 0.5), rgba(76, 49, 65, 0.7));
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(99, 64, 86, 0.5)), to(rgba(76, 49, 65, 0.7)));
+    background: -webkit-linear-gradient(rgba(99, 64, 86, 0.5), rgba(76, 49, 65, 0.7));
+    background: linear-gradient(rgba(99, 64, 86, 0.5), rgba(76, 49, 65, 0.7));
     border-radius: 5px;
     border: 1px solid #4e3043;
-    box-shadow: inset 0 1px rgba(255,255,255,0.4), 0 2px 1px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.4), 0 2px 1px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
@@ -878,16 +850,14 @@ a {
 
     /* Font styles */
     color: white;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
     font-size: 16px;
     font-weight: bold;
     font-family: 'Raleway', 'Lato', Arial, sans-serif;
 }
 
 .form-4 input[type=submit]:hover {
-    box-shadow: 
-        inset 0 1px rgba(255,255,255,0.2), 
-        inset 0 20px 30px rgba(99,64,86,0.5);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), inset 0 20px 30px rgba(99, 64, 86, 0.5);
 }
 
 /* Fallback */
@@ -919,7 +889,7 @@ a {
 
     /* Styles */
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1), 0 3px 2px rgba(0,0,0,0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), 0 3px 2px rgba(0, 0, 0, 0.1);
 }
 
 .form-5 p {
@@ -940,27 +910,26 @@ a {
     /* Styles */
     border: none; /* Remove the default border */
     background: white; /* Fallback */
-    background: rgba(255,255,255,0.2);
-    box-shadow: 
-        inset 0 0 10px rgba(255,255,255,0.5);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
 
     /* Font styles */
     font-family: 'Montserrat', sans-serif;
     text-indent: 10px;
     color: #ee4c8d;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-    font-size: 20px;       
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    font-size: 20px;
 }
 
 .form-5 input[type=text] {
     border-bottom: 1px solid #fff; /* Fallback */
-    border-bottom: 1px solid rgba(255,255,255,0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
     border-radius: 5px 0 0 0;
 }
 
 .form-5 input[type=password] {
     border-top: 1px solid #CCC; /* Fallback */
-    border-top: 1px solid rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 0 0 0 5px;
 }
 
@@ -969,7 +938,7 @@ a {
 .form-5 input[type=text]:focus,
 .form-5 input[type=password]:focus {
     background: #f7def7; /* Fallback */
-    background: rgba(255,255,255,0.4);
+    background: rgba(255, 255, 255, 0.4);
     outline: none;
 }
 
@@ -977,19 +946,19 @@ a {
 
 .form-5 input::-webkit-input-placeholder {
     color: #fff;
-    text-shadow: 0 -1px 1px rgba(0,0,0,0.4);
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.4);
     font-family: 'Handlee', cursive;
 }
 
 .form-5 input:-moz-placeholder {
     color: #fff;
-    text-shadow: 0 -1px 1px rgba(0,0,0,0.4);
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.4);
     font-family: 'Handlee', cursive;
 }
 
 .form-5 input:-ms-input-placeholder {
     color: #fff;
-    text-shadow: 0 -1px 1px rgba(0,0,0,0.4);
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.4);
     font-family: 'Handlee', cursive;
 }
 
@@ -1004,19 +973,17 @@ a {
     /* Styles */
     background: #ee4c8d;
     background: url(../images/noise.png), -moz-radial-gradient(center, ellipse cover, #ee4c8d 0%, #b53467 100%);
-    background: url(../images/noise.png), -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#ee4c8d), color-stop(100%,#b53467));
-    background: url(../images/noise.png), -webkit-radial-gradient(center, ellipse cover, #ee4c8d 0%,#b53467 100%);
-    background: url(../images/noise.png), -o-radial-gradient(center, ellipse cover, #ee4c8d 0%,#b53467 100%);
-    background: url(../images/noise.png), -ms-radial-gradient(center, ellipse cover, #ee4c8d 0%,#b53467 100%);
-    background: url(../images/noise.png), radial-gradient(ellipse at center, #ee4c8d 0%,#b53467 100%);
+    background: url(../images/noise.png), -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #ee4c8d), color-stop(100%, #b53467));
+    background: url(../images/noise.png), -webkit-radial-gradient(center, ellipse cover, #ee4c8d 0%, #b53467 100%);
+    background: url(../images/noise.png), -o-radial-gradient(center, ellipse cover, #ee4c8d 0%, #b53467 100%);
+    background: url(../images/noise.png), -ms-radial-gradient(center, ellipse cover, #ee4c8d 0%, #b53467 100%);
+    background: url(../images/noise.png), radial-gradient(ellipse at center, #ee4c8d 0%, #b53467 100%);
 
     border-radius: 0 5px 5px 0;
-    box-shadow:
-        inset 0 0 4px rgba(255, 255, 255, 0.7), 
-        inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.7), inset 0 0 0 1px rgba(0, 0, 0, 0.2);
     border: none;
     border-left: 1px solid silver;
-    cursor: pointer;  
+    cursor: pointer;
     line-height: 102px; /* Same as height */
 }
 
@@ -1029,10 +996,10 @@ a {
     font-size: 64px;
     line-height: 109px;
     color: #8d1645;
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
     opacity: 0;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     -ms-transition: all 0.2s ease-out;
@@ -1043,11 +1010,11 @@ a {
 .form-5 button span {
     display: block;
 
-    /* Font styles */ 
+    /* Font styles */
     color: #8d1645;
-    font-family: 'Montserrat', Arial, sans-serif; 
+    font-family: 'Montserrat', Arial, sans-serif;
     font-size: 20px;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
 
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
@@ -1070,7 +1037,7 @@ a {
 
 .form-5 button:hover span,
 .form-5 button:focus span {
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
     opacity: 0;
     -webkit-transform: rotate(-90deg) translateY(-20px);
@@ -1082,7 +1049,7 @@ a {
 
 .form-5 button:hover i,
 .form-5 button:focus i {
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     filter: alpha(opacity=50);
     opacity: 0.5;
     left: 0;
@@ -1101,19 +1068,37 @@ a {
     -moz-transition: none;
     -ms-transition: none;
     -o-transition: none;
-    transition: none; 
+    transition: none;
 }
 
 .form-5 button:active span {
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
     opacity: 0;
 }
 
 .form-5 button:active i {
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     filter: alpha(opacity=50);
     opacity: 0.5;
     left: 0;
     color: #fff;
+}
+
+.login-error-main-section {
+    margin-top: 130px;
+    text-align: center;
+}
+
+.login-error-main-section .login-error-message {
+    background-color: #cd5c5c;
+    color: #ffffff;
+    display: inline-block;
+    padding: 10px 10px 10px 24px;
+}
+
+.login-error-main-section .login-error-message button {
+    margin-left: 10px;
+    margin-right: 4px;
+    float: right;
 }

@@ -35,24 +35,33 @@
         </a>
 
     </div>
-    <section class="main" style="margin-top: 150px">
-        <form class="form-4">
-            %{--<h1>Login</h1>--}%
+    <g:if test="${flash.message}">
+        <section class="main login-error-main-section">
+            <div class="alert alert-error login-error-message">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                ${flash.message}
+            </div>
+        </section>
+    </g:if>
+
+    <section class="main" style="margin-top: ${flash.message ? '' :'150px'}">
+        <g:form class="form-4" controller="login" action="onSubmit">
+        %{--<h1>Login</h1>--}%
 
             <p>
                 <label for="login">Username or email</label>
-                <input type="text" required="" placeholder="Username or email" name="login">
+                <input type="text" required="" placeholder="Email Address" name="email" required="">
             </p>
 
             <p>
                 <label for="password">Password</label>
-                <input type="password" required="" placeholder="Password" name="password">
+                <input type="password" required="" placeholder="Password" name="password" required="">
             </p>
 
             <p>
-                <input type="submit" value="Continue" name="submit">
+                <g:submitButton name="submit" value="Continue"/>
             </p>
-        </form>&#8203;
+        </g:form>&#8203;
     </section>
 </div>
 </body>
