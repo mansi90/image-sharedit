@@ -1,6 +1,3 @@
-package image.sharedit
-
-
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 
