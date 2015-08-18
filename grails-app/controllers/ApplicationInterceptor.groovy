@@ -10,17 +10,14 @@ class ApplicationInterceptor {
         println("Log.Info ----------- controller : ${params.controller} ------ action : ${params.action}")
         if (session.userIdentificationKey) {
             User user = User.findByIdentificationKey(session.userIdentificationKey)
-            if (user) {
+            if (user)
                 request.currentUser = user
-            } else {
+            else {
                 flash.message = "User does not exist, please login..."
                 redirect(controller: 'login', action: 'index')
-                return true
             }
-        } else{
+        } else
             redirect(controller: 'login', action: 'index')
-            return true
-        }
 
         return true
     }
