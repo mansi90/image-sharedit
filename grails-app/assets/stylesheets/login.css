@@ -1102,3 +1102,13 @@ a {
     margin-right: 4px;
     float: right;
 }
+
+#loginSection form label.error {
+    display: none;
+    cursor: pointer;
+    position: relative;
+    top: -12px;
+    color: red;
+    font-size: 12px;
+    float: right;
+}

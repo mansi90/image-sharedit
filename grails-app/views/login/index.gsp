@@ -9,6 +9,7 @@
     <asset:stylesheet src="login.css"/>
     <asset:javascript src="modernizr.custom.63321.js"/>
     <asset:javascript src="jquery-2.1.3.js"/>
+    <asset:javascript src="jquery.validate.js"/>
     <asset:javascript src="login.js"/>
     <!--[if lte IE 7]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
     <style type="text/css">
@@ -52,16 +53,16 @@
 
             <p>
                 <label for="login">Username or email</label>
-                <input type="text" name="email" placeholder="Email Address" required="">
+                <input type="text" name="email" placeholder="Email Address">
             </p>
 
             <p>
                 <label for="password">Password</label>
-                <input type="password" name="password" placeholder="Password" required="">
+                <input type="password" name="password" placeholder="Password">
             </p>
 
             <p>
-                <g:submitButton name="submit" value="Continue"/>
+                <g:submitButton name="submit" class="login-submit" value="Continue"/>
             </p>
         </g:form>
     </section>
