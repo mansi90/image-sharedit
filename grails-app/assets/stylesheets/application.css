@@ -12,17 +12,54 @@
 *= require mobile
 *= require_self
 */
+
+#top-navigation .container-fluid {
+    max-height: 35px;
+    float: left;
+    display: block;
+    width: 100%;
+    padding-top: 7px !important;
+}
+
 a.brand {
     color: white;
     font-weight: bold;
     top: 8px;
-    position: relative;
     font-size: 14px;
+    width: 12%;
+    display: inline-block;
+    float: left;
+}
+
+.navigation-details {
+    font-size: 13px;
+    color: #ffffff;
+    width: 88%;
+    display: inline-block;
+    float: left;
+}
+
+.navigation-details ul{
+    list-style-type: none;
+}
+
+.navigation-details ul li{
+    float: left;
+    padding-right: 35px;
+}
+
+.navigation-details ul li.logout-link{
+    margin-right: 10px;
+}
+
+.navigation-details ul li a{
+    color: #ffffff;
 }
 
 .navbar {
     max-height: 35px !important;
     min-height: 35px !important;
+    width: 100%;
 }
 
 table td, table th {

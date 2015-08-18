@@ -22,23 +22,18 @@
 </head>
 
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div id="top-navigation" class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
-        <div class="container-fluid" style="max-height: 35px">
+        <div  class="container-fluid">
             <a class="brand" href="${createLink(uri: '/')}">Image SharEdit</a>
 
-            <div class="nav-collapse collapse" style="font-size: 13px">
-                <ul class="nav">
+            <div class="navigation-details">
+                <ul>
                     <li class="controller"><g:link controller="report">Report</g:link></li>
                     <li class="controller"><g:link controller="user">Users</g:link></li>
+                    <li class="controller pull-right logout-link"><g:link controller="user">Logout</g:link></li>
                 </ul>
-                <g:link controller="logout" class="visible-desktop btn btn-inverse pull-right">Logout</g:link>
-                <g:link controller="logout"
-                        class="hidden-desktop btn btn-block btn-inverse pull-right">Logout</g:link>
-                <div class="pull-right navbar-text"><i
-                        class="icon-user icon-white"></i>&nbsp;Welcome&nbsp;&nbsp;&nbsp;</div>
             </div>
-
         </div>
     </div>
 </div>
