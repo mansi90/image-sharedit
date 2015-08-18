@@ -24,7 +24,7 @@
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
-        <div class="container-fluid" style="min-height: 50px">
+        <div class="container-fluid" style="max-height: 35px">
             <a class="brand" href="${createLink(uri: '/')}">Image SharEdit</a>
 
             <div class="nav-collapse collapse" style="font-size: 13px">

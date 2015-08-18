@@ -15,9 +15,14 @@
 a.brand {
     color: white;
     font-weight: bold;
-    top: 14px;
+    top: 8px;
     position: relative;
-    font-size: 16px;
+    font-size: 14px;
+}
+
+.navbar {
+    max-height: 35px !important;
+    min-height: 35px !important;
 }
 
 table td, table th {
