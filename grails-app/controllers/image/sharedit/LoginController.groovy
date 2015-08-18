@@ -1,8 +1,14 @@
 package image.sharedit
 
 class LoginController {
+    UserService userService
 
-    def index() {}
+    def index() {
+        if(userService.getLoggedInUser(session)){
+            redirect(uri: '/')
+            return true
+        }
+    }
 
     def onSubmit() {
         User user = User.findByEmailAndPassword(params.email, params.password)
