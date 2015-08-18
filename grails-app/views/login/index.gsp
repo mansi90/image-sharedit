@@ -8,6 +8,8 @@
     <meta content="css3, login, form, custom, input, submit, button, html5, placeholder" name="keywords">
     <asset:stylesheet src="login.css"/>
     <asset:javascript src="modernizr.custom.63321.js"/>
+    <asset:javascript src="jquery-2.1.3.js"/>
+    <asset:javascript src="login.js"/>
     <!--[if lte IE 7]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
     <style type="text/css">
     @import url(http://fonts.googleapis.com/css?family=Raleway:400,700);
@@ -44,24 +46,24 @@
         </section>
     </g:if>
 
-    <section class="main" style="margin-top: ${flash.message ? '' :'150px'}">
+    <section id="loginSection" class="main" style="margin-top: ${flash.message ? '' : '150px'}">
         <g:form class="form-4" controller="login" action="onSubmit">
         %{--<h1>Login</h1>--}%
 
             <p>
                 <label for="login">Username or email</label>
-                <input type="text" required="" placeholder="Email Address" name="email" required="">
+                <input type="text" name="email" placeholder="Email Address" required="">
             </p>
 
             <p>
                 <label for="password">Password</label>
-                <input type="password" required="" placeholder="Password" name="password" required="">
+                <input type="password" name="password" placeholder="Password" required="">
             </p>
 
             <p>
                 <g:submitButton name="submit" value="Continue"/>
             </p>
-        </g:form>&#8203;
+        </g:form>
     </section>
 </div>
 </body>
