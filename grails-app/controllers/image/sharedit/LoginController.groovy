@@ -20,4 +20,10 @@ class LoginController {
             redirect(action: 'index')
         }
     }
+
+    def onLogout(){
+        session.invalidate()
+        redirect(action: 'index')
+        return true
+    }
 }

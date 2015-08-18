@@ -29,9 +29,9 @@
 
             <div class="navigation-details">
                 <ul>
-                    <li class="controller"><g:link controller="report">Report</g:link></li>
                     <li class="controller"><g:link controller="user">Users</g:link></li>
-                    <li class="controller pull-right logout-link"><g:link controller="user">Logout</g:link></li>
+                    <li class="controller"><g:link controller="image">Images</g:link></li>
+                    <li class="controller pull-right logout-link"><a href="${createLink(uri: '/logout')}">Logout</a></li>
                 </ul>
             </div>
         </div>
