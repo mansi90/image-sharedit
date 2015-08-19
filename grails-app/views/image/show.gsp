@@ -24,7 +24,31 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <f:display bean="image"/>
+    <ol class="property-list image">
+
+        <li class="fieldcontain">
+            <span id="name-label" class="property-label">Name</span>
+            <div class="property-value" aria-labelledby="name-label">${image.name}</div>
+        </li>
+
+        <li class="fieldcontain">
+            <span id="description-label" class="property-label">Description</span>
+            <div class="property-value" aria-labelledby="description-label">${image.description}</div>
+        </li>
+
+        <li class="fieldcontain">
+            <span id="owner-label" class="property-label">Owner</span>
+            <div class="property-value" aria-labelledby="owner-label"><a href="${createLink(controller :'user', action :'show', id: image.owner.id)}">${image.owner}</a></div>
+        </li>
+
+        <li class="fieldcontain">
+            <span id="url-label" class="property-label">Image</span>
+            <div class="property-value" aria-labelledby="url-label">
+                <img src="${image?.getShowImageUrl()}">
+            </div>
+        </li>
+    </ol>
+    
     <g:form resource="${this.image}" method="DELETE">
         <fieldset class="buttons">
             <g:link class="edit" action="edit" resource="${this.image}"><g:message code="default.button.edit.label"
