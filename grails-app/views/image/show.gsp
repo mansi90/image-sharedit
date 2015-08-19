@@ -1,3 +1,4 @@
+<%@ page import="image.sharedit.Constants" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,7 +45,7 @@
         <li class="fieldcontain">
             <span id="url-label" class="property-label">Image</span>
             <div class="property-value" aria-labelledby="url-label">
-                <img src="${image?.getShowImageUrl()}">
+                <img src="${image?.getShowImageUrl(Constants.showImageSize)}">
             </div>
         </li>
     </ol>

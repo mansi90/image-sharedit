@@ -13,9 +13,9 @@ class Image {
     }
 
 
-    transient def getShowImageUrl() {
-        if (this.width >= Constants.showImageSize) {
-            return getUrlForImageFitResize(Constants.showImageSize, (Math.round((Constants.showImageSize * this.height) / this.width)).intValue())
+    transient def getShowImageUrl(int requestedWidth) {
+        if (this.width >= requestedWidth) {
+            return getUrlForImageFitResize(requestedWidth, (Math.round((requestedWidth * this.height) / this.width)).intValue())
         } else {
             return getUrlForImageFitResize(this.width, this.height)
         }

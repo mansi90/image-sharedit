@@ -1,3 +1,4 @@
+<%@ page import="image.sharedit.Constants" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,27 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <f:table collection="${imageList}"/>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Image</th>
+            <g:sortableColumn property="name" title="Name"/>
+            <th>Description</th>
+            <g:sortableColumn property="owner" title="Owner"/>
+        </tr>
+        </thead>
+        <tbody>
+        <g:each in="${imageList}" status="i" var="imageInstance">
+            <tr class="${i % 2 == 0 ? "even" : "odd"}">
+                <td><img src="${imageInstance?.getShowImageUrl(Constants.thumbnailSize)}"></td>
+                <td><g:link action="show" id="${imageInstance.id}">${imageInstance.name}</g:link></td>
+                <td>${imageInstance.description}</td>
+                <td><g:link controller="user" action="show" id="${imageInstance.owner.id}">${imageInstance.owner}</g:link></td>
+            </tr>
+        </g:each>
+        </tbody>
+    </table>
 
     <div class="pagination">
         <g:paginate total="${imageCount ?: 0}"/>
