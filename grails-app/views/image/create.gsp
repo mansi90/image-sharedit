@@ -30,7 +30,7 @@
             </g:eachError>
         </ul>
     </g:hasErrors>
-    <g:form name="imageForm" action="save">
+    <g:uploadForm name="imageForm" action="save" method="post">
         <fieldset class="form">
             <div class="fieldcontain required">
                 <label for="name">Name
@@ -58,7 +58,7 @@
             <g:submitButton name="create" class="save"
                             value="${message(code: 'default.button.create.label', default: 'Create')}"/>
         </fieldset>
-    </g:form>
+    </g:uploadForm>
 </div>
 </body>
 </html>

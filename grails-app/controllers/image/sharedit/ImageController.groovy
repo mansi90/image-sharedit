@@ -5,6 +5,8 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class ImageController {
+    UserService userService
+    ImageService imageService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -28,8 +30,10 @@ class ImageController {
             notFound()
             return
         }
+        image.owner = userService.getLoggedInUser(session)
+        image = imageService.uploadImageToCloudinary(image, params.file)
 
-        if (image.hasErrors()) {
+        if (image.validate() && image.hasErrors()) {
             transactionStatus.setRollbackOnly()
             respond image.errors, view: 'create'
             return
