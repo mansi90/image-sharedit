@@ -88,6 +88,7 @@ class ImageController {
             return
         }
 
+        imageService.deleteFromCloudinary(image.url)
         image.delete flush: true
 
         request.withFormat {

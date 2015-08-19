@@ -1,6 +1,7 @@
 package image.sharedit
 
 import grails.transaction.Transactional
+import com.cloudinary.Cloudinary
 
 @Transactional
 class ImageService {
@@ -16,7 +17,7 @@ class ImageService {
         return convertedFile;
     }
 
-    Image uploadImageToCloudinary(Image image, def file){
+    Image uploadImageToCloudinary(Image image, def file) {
         if (file) {
             File myFile = multipartToFile(file)
             Map returnedData = cloudinary.uploader().upload(myFile, cloudinary.config)
@@ -26,5 +27,12 @@ class ImageService {
         }
 
         return image
+    }
+
+    void deleteFromCloudinary(String url) {
+        String publicId = Utils.getPublicId(url)
+        if (publicId) {
+            cloudinary.uploader().destroy(publicId, Cloudinary.asMap("invalidate", true));
+        }
     }
 }
