@@ -39,20 +39,20 @@ a.brand {
     float: left;
 }
 
-.navigation-details ul{
+.navigation-details ul {
     list-style-type: none;
 }
 
-.navigation-details ul li{
+.navigation-details ul li {
     float: left;
     padding-right: 35px;
 }
 
-.navigation-details ul li.logout-link{
+.navigation-details ul li.logout-link {
     margin-right: 10px;
 }
 
-.navigation-details ul li a{
+.navigation-details ul li a {
     color: #ffffff;
 }
 
@@ -64,4 +64,14 @@ a.brand {
 
 table td, table th {
     padding: 5px !important;
+}
+
+form#imageForm input {
+    width: 300px;
+}
+
+form#imageForm input[type=file] {
+    display: inline;
+    border: none;
+    padding: 0;
 }

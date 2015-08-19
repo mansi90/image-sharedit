@@ -30,47 +30,26 @@
             </g:eachError>
         </ul>
     </g:hasErrors>
-    <g:form action="save">
+    <g:form name="imageForm" action="save">
         <fieldset class="form">
             <div class="fieldcontain required">
                 <label for="name">Name
                     <span class="required-indicator">*</span>
-                </label><input type="text" name="name" value="" required="" id="name">
+                </label><input type="text" id="name" name="name" value="">
             </div>
 
             <div class="fieldcontain required">
                 <label for="description">Description
                     <span class="required-indicator">*</span>
-                </label><input type="text" name="description" value="" required="" id="description">
+                </label><input type="text" id="description" name="description" value="">
             </div>
 
             <div class="fieldcontain required">
-                <label for="owner">Owner
+                <label for="description">Image
                     <span class="required-indicator">*</span>
-                </label>
-                <select name="owner.id" required="" id="owner">
-                <option value="1">mansi.arora@tothenew.com</option>
-                <option value="2">neha.gupta@tothenew.com</option>
-            </select>
+                </label><input type="file" id="file" name="file">
             </div>
 
-            <div class="fieldcontain required">
-                <label for="url">Url
-                    <span class="required-indicator">*</span>
-                </label><input type="text" name="url" value="" required="" id="url">
-            </div>
-
-            <div class="fieldcontain required">
-                <label for="width">Width
-                    <span class="required-indicator">*</span>
-                </label><input type="number" name="width" value="" required="" id="width">
-            </div>
-
-            <div class="fieldcontain required">
-                <label for="height">Height
-                    <span class="required-indicator">*</span>
-                </label><input type="number" name="height" value="" required="" id="height">
-            </div>
         </fieldset>
 
         <div class="clearfix" style="min-height: 30px;"></div>
