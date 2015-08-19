@@ -32,11 +32,28 @@
             </g:eachError>
         </ul>
     </g:hasErrors>
-    <g:form resource="${this.image}" method="PUT">
-        <g:hiddenField name="version" value="${this.image?.version}"/>
+
+    <g:form name="imageForm" action="update" method="put">
+        <g:hiddenField name="id" value="${image.id}"/>
+        <g:hiddenField name="version" value="${image.version}"/>
+
         <fieldset class="form">
-            <f:all bean="image"/>
+            <div class="fieldcontain required">
+                <label for="name">Name
+                    <span class="required-indicator">*</span>
+                </label><input type="text" id="name" name="name" value="${image.name}">
+            </div>
+
+            <div class="fieldcontain required">
+                <label for="description">Description
+                    <span class="required-indicator">*</span>
+                </label><input type="text" id="description" name="description" value="${image.description}">
+            </div>
+
         </fieldset>
+
+        <div class="clearfix" style="min-height: 30px;"></div>
+
         <fieldset class="buttons">
             <input class="save" type="submit"
                    value="${message(code: 'default.button.update.label', default: 'Update')}"/>
