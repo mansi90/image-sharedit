@@ -8,6 +8,7 @@ class UrlMappings {
         }
 
         "/"(controller: 'image', action: 'index')
+        "/gallery"(view: '/gallery')
         "/logout"(controller: 'login', action: 'onLogout')
         "500"(view: '/error')
         "404"(view: '/notFound')
