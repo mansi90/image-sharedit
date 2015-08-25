@@ -12,6 +12,9 @@ class Image {
     static constraints = {
     }
 
+    String truncatedImageName(int max) {
+        return ((name.length() > max) ? name.substring(0, max) + "..." : name)
+    }
 
     transient def getShowImageUrl(int requestedWidth) {
         if (this.width >= requestedWidth) {

@@ -23,7 +23,7 @@
                     </div>
                 </div>
 
-                <p class="title-section">${imageInstance.name}</p>
+                <p class="title-section">${imageInstance.truncatedImageName(20)}</p>
             </div>
         </g:each>
     </g:each>
