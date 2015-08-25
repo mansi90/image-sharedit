@@ -16,10 +16,14 @@
 <div id="gallery-main-section">
     <g:each in="${1..10}">
         <g:each in="${Image.list()}" var="imageInstance">
-            <div class="image-section">
-                <div class="image-inner-area">
-                    <img src="${imageInstance.getShowImageUrl(140)}">
+            <div class="image-tile">
+                <div class="image-section">
+                    <div class="image-inner-area">
+                        <img src="${imageInstance.getShowImageUrl(140)}">
+                    </div>
                 </div>
+
+                <p class="title-section">${imageInstance.name}</p>
             </div>
         </g:each>
     </g:each>

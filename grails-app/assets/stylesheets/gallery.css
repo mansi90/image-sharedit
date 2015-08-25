@@ -5,22 +5,33 @@
     position: relative;
 }
 
-.image-section {
-    padding: 5px;
-    float: left;
-    width: 160px;
-    height: 160px;
-    margin: 10px;
+.image-tile {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.6) !important;
     background: #F4F4F4 !important;
     border: 1px solid #86888B;
     border-radius: 4px;
+    width: 160px;
+    height: 190px;
+    float: left;
+    margin: 10px;
+    padding: 10px;
+}
+
+.image-section {
+    width: 140px;
+    height: 140px;
 }
 
 .image-section .image-inner-area {
     display: table-cell !important;
     vertical-align: middle !important;
     text-align: center !important;
-    width: 150px !important;
-    height: 150px !important;
+    width: 140px !important;
+    height: 140px !important;
+}
+
+.title-section {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
 }
