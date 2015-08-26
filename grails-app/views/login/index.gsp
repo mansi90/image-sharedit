@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Image SharEdit | Login</title>
     <meta content="css3, login, form, custom, input, submit, button, html5, placeholder" name="keywords">
-    <asset:stylesheet src="login.css"/>
+    <asset:stylesheet src="theme.css"/>
     <asset:javascript src="modernizr.custom.63321.js"/>
     <asset:javascript src="jquery-2.1.3.js"/>
     <asset:javascript src="jquery.validate.js"/>
