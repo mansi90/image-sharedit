@@ -16,7 +16,7 @@
     </a>
 </div>
 
-<g:form name="profileForm" class="form-1" controller="user" action="update">
+<g:form name="profileForm" class="form-1" controller="user" action="update" method="put">
     <g:hiddenField name="id" value="${currentUser.id}"/>
     <g:hiddenField name="version" value="${currentUser.version}"/>
     <h1>My Profile</h1>
