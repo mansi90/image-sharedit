@@ -3,6 +3,7 @@
 <head>
     <title>My Profile</title>
     <asset:stylesheet src="theme.css"/>
+    <asset:stylesheet src="user/profile.css"/>
 </head>
 
 <body>
@@ -11,5 +12,38 @@
         <strong>« Image SharEdit</strong>
     </a>
 </div>
+
+<g:form name="profileForm" class="form-1" controller="user" action="update">
+    <h1>My Profile</h1>
+
+    <p>
+        <label for="firstName">First Name</label>
+        <g:textField name="firstName" value="${currentUser.firstName}" placeholder="First Name"/>
+    </p>
+
+    <p>
+        <label for="lastName">Last Name</label>
+        <g:textField name="lastName" value="${currentUser.lastName}" placeholder="Last Name"/>
+    </p>
+
+    <p>
+        <label for="email">Email</label>
+        <g:textField name="email" type="email" value="${currentUser.email}" placeholder="Email"/>
+    </p>
+
+    <p>
+        <label for="password">Password</label>
+        <g:passwordField name="password" placeholder="Password"/>
+    </p>
+
+    <p>
+        <label for="confirmPassword">Confirm Password</label>
+        <g:passwordField name="confirmPassword" placeholder="Confirm Password"/>
+    </p>
+
+    <p>
+        <g:submitButton name="submit" class="login-submit" value="Continue"/>
+    </p>
+</g:form>
 </body>
 </html>
