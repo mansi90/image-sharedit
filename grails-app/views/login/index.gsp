@@ -7,27 +7,12 @@
     <title>Image SharEdit | Login</title>
     <meta content="css3, login, form, custom, input, submit, button, html5, placeholder" name="keywords">
     <asset:stylesheet src="theme.css"/>
+    <asset:stylesheet src="login.css"/>
     <asset:javascript src="modernizr.custom.63321.js"/>
     <asset:javascript src="jquery-2.1.3.js"/>
     <asset:javascript src="jquery.validate.js"/>
     <asset:javascript src="login.js"/>
     <!--[if lte IE 7]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
-    <style type="text/css">
-    @import url(http://fonts.googleapis.com/css?family=Raleway:400,700);
-
-    body {
-        background: #7f9b4e url(/assets/bg3.jpg) no-repeat center top;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        background-size: cover;
-    }
-
-    .container > header h1,
-    .container > header h2 {
-        color: #fff;
-        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
-    }
-    </style>
 </head>
 
 <body>
@@ -36,7 +21,9 @@
         <a href="${createLink(uri: '/')}">
             <strong>« Image SharEdit</strong>
         </a>
-
+        <a href="${createLink(uri: '/register')}" class="register-link">
+            <strong>Register</strong>
+        </a>
     </div>
     <g:if test="${flash.message}">
         <section class="main login-error-main-section">

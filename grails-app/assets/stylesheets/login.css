@@ -1,0 +1,47 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,700);
+
+body {
+    background: #7f9b4e url(/assets/bg3.jpg) no-repeat center top;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.container > header h1,
+.container > header h2 {
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+}
+
+.register-link {
+    float: right;
+    margin-right: 20px;
+}
+
+.login-error-main-section {
+    margin-top: 130px;
+    text-align: center;
+}
+
+.login-error-main-section .login-error-message {
+    background-color: #cd5c5c;
+    color: #ffffff;
+    display: inline-block;
+    padding: 10px 10px 10px 24px;
+}
+
+.login-error-main-section .login-error-message button {
+    margin-left: 10px;
+    margin-right: 4px;
+    float: right;
+}
+
+#loginSection form label.error {
+    display: none;
+    cursor: pointer;
+    position: relative;
+    top: -12px;
+    color: red;
+    font-size: 12px;
+    float: right;
+}
