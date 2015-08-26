@@ -2,8 +2,12 @@
 <html>
 <head>
     <title>Image Gallery</title>
+    <asset:stylesheet src="magnific-popup.css"/>
     <asset:stylesheet src="login.css"/>
     <asset:stylesheet src="gallery.css"/>
+    <asset:javascript src="jquery-2.1.3.js"/>
+    <asset:javascript src="jquery.magnific-popup.js"/>
+    <asset:javascript src="gallery.js"/>
 </head>
 
 <body>
@@ -18,7 +22,10 @@
         <div class="image-tile">
             <div class="image-section">
                 <div class="image-inner-area">
-                    <img src="${imageInstance.getShowImageUrl(140)}">
+                    <a class="image-popup-vertical-fit" href="${imageInstance.url}"
+                       title="${imageInstance.description}">
+                        <img src="${imageInstance.getShowImageUrl(140)}">
+                    </a>
                 </div>
             </div>
 

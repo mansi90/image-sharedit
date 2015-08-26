@@ -35,3 +35,18 @@
     text-align: center;
     font-size: 14px;
 }
+
+.mfp-no-margins img.mfp-img {
+    padding: 0 !important;
+}
+
+/* position of shadow behind the image */
+.mfp-no-margins .mfp-figure:after {
+    top: 0 !important;
+    bottom: 0 !important;
+}
+
+/* padding for main container */
+.mfp-no-margins .mfp-container {
+    padding: 0 !important;
+}
