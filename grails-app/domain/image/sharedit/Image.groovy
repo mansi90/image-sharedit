@@ -18,10 +18,6 @@ class Image {
         return list
     }
 
-    String truncatedImageName(int max) {
-        return ((name.length() > max) ? name.substring(0, max) + "..." : name)
-    }
-
     transient def getShowImageUrl(int requestedSize) {
         Integer customizedWidth = this.width, customizedHeight = this.height
         if ((this.width > this.height) && (this.width >= requestedSize)) {

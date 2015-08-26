@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <p class="title-section">${imageInstance.truncatedImageName(18)}</p>
+            <p class="title-section"><custom:truncatedString property="${imageInstance.name}" max="18"/></p>
         </div>
     </g:each>
 </div>
