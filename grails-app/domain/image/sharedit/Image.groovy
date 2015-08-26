@@ -12,6 +12,12 @@ class Image {
     static constraints = {
     }
 
+    static List<Image> randomOrderedList() {
+        List<Image> list = Image.list()
+        Collections.shuffle(list, new Random())
+        return list
+    }
+
     String truncatedImageName(int max) {
         return ((name.length() > max) ? name.substring(0, max) + "..." : name)
     }

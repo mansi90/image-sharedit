@@ -14,7 +14,7 @@
 </div>
 
 <div id="gallery-main-section">
-    <g:each in="${Image.list()}" var="imageInstance">
+    <g:each in="${Image.randomOrderedList()}" var="imageInstance">
         <div class="image-tile">
             <div class="image-section">
                 <div class="image-inner-area">
@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <p class="title-section">${imageInstance.truncatedImageName(20)}</p>
+            <p class="title-section">${imageInstance.truncatedImageName(18)}</p>
         </div>
     </g:each>
 </div>
