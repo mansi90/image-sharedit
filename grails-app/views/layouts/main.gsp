@@ -33,6 +33,7 @@
                     <li class="controller"><g:link controller="image">Images</g:link></li>
                     <li class="controller pull-right logout-link"><a href="${createLink(uri: '/logout')}">Logout</a></li>
                     <li class="controller pull-right gallery-link"><a href="${createLink(uri: '/gallery')}">Gallery</a></li>
+                    <li class="controller pull-right profile-link"><a href="${createLink(uri: '/profile')}">Profile</a></li>
                 </ul>
             </div>
         </div>

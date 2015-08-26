@@ -48,7 +48,7 @@ a.brand {
     padding-right: 35px;
 }
 
-.navigation-details ul li.logout-link, .navigation-details ul li.gallery-link {
+.navigation-details ul li.logout-link, .navigation-details ul li.gallery-link , .navigation-details ul li.profile-link {
     margin-right: 10px;
 }
 

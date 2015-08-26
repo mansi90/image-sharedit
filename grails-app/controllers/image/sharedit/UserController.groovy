@@ -13,6 +13,10 @@ class UserController {
         respond User.list(params), model:[userCount: User.count()]
     }
 
+    def profile(){
+
+    }
+
     def show(User user) {
         respond user
     }
