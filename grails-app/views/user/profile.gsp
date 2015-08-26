@@ -4,6 +4,9 @@
     <title>My Profile</title>
     <asset:stylesheet src="theme.css"/>
     <asset:stylesheet src="user/profile.css"/>
+    <asset:javascript src="jquery-2.1.3.js"/>
+    <asset:javascript src="jquery.validate.js"/>
+    <asset:javascript src="user/profile.js"/>
 </head>
 
 <body>
@@ -14,6 +17,8 @@
 </div>
 
 <g:form name="profileForm" class="form-1" controller="user" action="update">
+    <g:hiddenField name="id" value="${currentUser.id}"/>
+    <g:hiddenField name="version" value="${currentUser.version}"/>
     <h1>My Profile</h1>
 
     <p>
@@ -42,7 +47,7 @@
     </p>
 
     <p>
-        <g:submitButton name="submit" class="login-submit" value="Continue"/>
+        <g:submitButton name="submit" class="profile-submit" value="Update"/>
     </p>
 </g:form>
 </body>
