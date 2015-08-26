@@ -26,4 +26,6 @@ class LoginController {
         redirect(action: 'index')
         return true
     }
+
+    def register(){}
 }
