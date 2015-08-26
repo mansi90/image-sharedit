@@ -5,11 +5,7 @@
     <meta name="layout" content="main"/>
     <g:set var="entityName" value="${message(code: 'image.label', default: 'Image')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
-    <style type="text/css">
-    #list-image table tr td {
-        vertical-align: middle;
-    }
-    </style>
+    <asset:stylesheet src="image/list.css"/>
 </head>
 
 <body>
@@ -42,11 +38,12 @@
         <tbody>
         <g:each in="${imageList}" status="i" var="imageInstance">
             <tr class="${i % 2 == 0 ? "even" : "odd"}" style="height: ${Constants.thumbnailSize}px;">
-                <td><img src="${imageInstance?.getShowImageUrl(Constants.thumbnailSize)}"></td>
-                <td><g:link action="show" id="${imageInstance.id}">${imageInstance.name}</g:link></td>
-                <td>${imageInstance.description}</td>
-                <td><g:link controller="user" action="show"
-                            id="${imageInstance.owner.id}">${imageInstance.owner}</g:link></td>
+                <td class="image-column"><img src="${imageInstance?.getShowImageUrl(Constants.thumbnailSize)}"></td>
+                <td class="name-column"><g:link action="show"
+                                                id="${imageInstance.id}">${imageInstance.name}</g:link></td>
+                <td class="desc-column">${imageInstance.description}</td>
+                <td class="owner-column"><g:link controller="user" action="show"
+                                                 id="${imageInstance.owner.id}">${imageInstance.owner}</g:link></td>
             </tr>
         </g:each>
         </tbody>

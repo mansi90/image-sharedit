@@ -4,7 +4,7 @@
     <title>Image Gallery</title>
     <asset:stylesheet src="magnific-popup.css"/>
     <asset:stylesheet src="login.css"/>
-    <asset:stylesheet src="gallery.css"/>
+    <asset:stylesheet src="image/gallery.css"/>
     <asset:javascript src="jquery-2.1.3.js"/>
     <asset:javascript src="jquery.magnific-popup.js"/>
     <asset:javascript src="gallery.js"/>

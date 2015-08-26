@@ -1,0 +1,19 @@
+#list-image table tr td {
+    vertical-align: middle;
+}
+
+#list-image table tr td.image-column {
+    width: 10%;
+}
+
+#list-image table tr td.name-column {
+    width: 30%;
+}
+
+#list-image table tr td.desc-column {
+    width: 38%;
+}
+
+#list-image table tr td.owner-column-column {
+    width: 27%;
+}
