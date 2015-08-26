@@ -50,3 +50,17 @@
 .mfp-no-margins .mfp-container {
     padding: 0 !important;
 }
+
+.mfp-content {
+    min-width: 300px;
+    vertical-align: middle;
+}
+
+.mfp-figure:after {
+    box-shadow: 0 0 0 #ccc !important;
+    background: none !important;
+}
+
+.mfp-title {
+    text-align: center !important;
+}
