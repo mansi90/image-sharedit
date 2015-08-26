@@ -14,18 +14,16 @@
 </div>
 
 <div id="gallery-main-section">
-    <g:each in="${1..10}">
-        <g:each in="${Image.list()}" var="imageInstance">
-            <div class="image-tile">
-                <div class="image-section">
-                    <div class="image-inner-area">
-                        <img src="${imageInstance.getShowImageUrl(140)}">
-                    </div>
+    <g:each in="${Image.list()}" var="imageInstance">
+        <div class="image-tile">
+            <div class="image-section">
+                <div class="image-inner-area">
+                    <img src="${imageInstance.getShowImageUrl(140)}">
                 </div>
-
-                <p class="title-section">${imageInstance.truncatedImageName(20)}</p>
             </div>
-        </g:each>
+
+            <p class="title-section">${imageInstance.truncatedImageName(20)}</p>
+        </div>
     </g:each>
 </div>
 </body>
