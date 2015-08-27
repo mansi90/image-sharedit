@@ -22,9 +22,7 @@ class User {
     }
 
     private void putIdentificationKey() {
-        UUID uuid = UUID.randomUUID()
-        char[] uuidChars = uuid.toString().toCharArray()
-        identificationKey = (uuidChars[0]..uuidChars[19]).join('')
+        identificationKey = UUID.randomUUID().toString()
     }
 
     @Override

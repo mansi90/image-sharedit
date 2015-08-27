@@ -13,6 +13,7 @@ class ApplicationInterceptor {
             if (user)
                 request.currentUser = user
             else {
+                session.userIdentificationKey = null
                 flash.message = "User does not exist, please login..."
                 redirect(controller: 'login', action: 'index')
             }
