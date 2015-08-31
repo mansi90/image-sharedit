@@ -6,3 +6,5 @@ cloudinary {
     secureDeliveryUrl = 'https://res.cloudinary.com/image-sharedit'
     apiBaseUrl = 'https://api.cloudinary.com/v1_1/image-sharedit'
 }
+grails.plugin.springsecurity.password.algorithm = 'bcrypt'
+grails.plugin.springsecurity.logout.postOnly = false
