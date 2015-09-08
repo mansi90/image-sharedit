@@ -15,6 +15,10 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'image.sharedit
 grails.plugin.springsecurity.authority.className = 'image.sharedit.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/':                ['permitAll'],
+        '/user/**':         ['ROLE_ADMIN'],
+        '/userRole/**':     ['ROLE_ADMIN'],
+        '/role/**':         ['ROLE_ADMIN'],
+        '/image/**':        ['ROLE_ADMIN','ROLE_USER'],
         '/error':           ['permitAll'],
         '/index':           ['permitAll'],
         '/index.gsp':       ['permitAll'],
