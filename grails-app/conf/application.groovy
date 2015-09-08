@@ -13,6 +13,7 @@ grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'image.sharedit.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'image.sharedit.UserRole'
 grails.plugin.springsecurity.authority.className = 'image.sharedit.Role'
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/image/list'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/':                ['permitAll'],
         '/user/**':         ['ROLE_ADMIN'],
