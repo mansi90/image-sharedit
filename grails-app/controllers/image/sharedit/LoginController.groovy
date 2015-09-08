@@ -15,12 +15,11 @@ import org.springframework.security.web.WebAttributes
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 class LoginController {
-    def loginService
     /**
      * Dependency injection for the authenticationTrustResolver.
      */
     def authenticationTrustResolver
-    def cookieService
+
     /**
      * Dependency injection for the springSecurityService.
      */
@@ -66,7 +65,7 @@ class LoginController {
      */
     def denied = {
         if (springSecurityService.isLoggedIn() &&
-                authenticationTrustResolver.isRememberMe(SecurityContextHolder.context?.authentication)) {
+                authenticationTrustResolver.isRememberMe(SCH.context?.authentication)) {
             // have cookie but the page is guarded with IS_AUTHENTICATED_FULLY
             redirect action: 'full', params: params
         }
@@ -78,7 +77,7 @@ class LoginController {
     def full = {
         def config = SpringSecurityUtils.securityConfig
         render view: 'auth', params: params,
-                model: [hasCookie: authenticationTrustResolver.isRememberMe(SecurityContextHolder.context?.authentication),
+                model: [hasCookie: authenticationTrustResolver.isRememberMe(SCH.context?.authentication),
                         postUrl: "${request.contextPath}${config.apf.filterProcessesUrl}"]
     }
 
