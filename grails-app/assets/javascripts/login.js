@@ -19,9 +19,8 @@ loginFunctionality = (function () {
     var validateLoginForm = function () {
         $(loginForm).validate({
             rules: {
-                email: {
-                    required: true,
-                    email: true
+                username: {
+                    required: true
                 },
                 password: {
                     required: true
