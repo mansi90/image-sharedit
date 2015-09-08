@@ -24,16 +24,25 @@
 <body>
 <div id="top-navigation" class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
-        <div  class="container-fluid">
+        <div class="container-fluid">
             <a class="brand" href="${createLink(uri: '/')}">Image SharEdit</a>
 
             <div class="navigation-details">
                 <ul>
-                    <li class="controller"><g:link controller="user">Users</g:link></li>
-                    <li class="controller"><g:link controller="image">Images</g:link></li>
-                    <li class="controller pull-right logout-link"><a href="${createLink(uri: '/logout')}">Logout</a></li>
-                    <li class="controller pull-right gallery-link"><a href="${createLink(uri: '/gallery')}">Gallery</a></li>
-                    <li class="controller pull-right profile-link"><a href="${createLink(uri: '/profile')}">Profile</a></li>
+                    <sec:ifLoggedIn>
+                        <sec:ifAnyGranted roles="ROLE_ADMIN">
+                            <li class="controller"><g:link controller="user">Users</g:link></li>
+                        </sec:ifAnyGranted>
+
+                        <li class="controller"><g:link controller="image">Images</g:link></li>
+                        <li class="controller pull-right logout-link">
+                            <g:link controller="logout"><i class="halflings-icon off"></i> Logout</g:link>
+                        </li>
+                        <li class="controller pull-right gallery-link"><a
+                                href="${createLink(uri: '/gallery')}">Gallery</a></li>
+                        <li class="controller pull-right profile-link"><a
+                                href="${createLink(uri: '/profile')}">Profile</a></li>
+                    </sec:ifLoggedIn>
                 </ul>
             </div>
         </div>
