@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="navbar-inner">
+        <div class="navbar-inner-crud">
             <a class="brand" href="#"><g:message code="default.show.label" args="[entityName]" /></a>
             <ul class="nav pull-right">
                 <li><g:link action="create"><i class="icon-plus-sign"></i>&nbsp;<g:message code="default.new.label" args="[entityName]" /></g:link></li>
@@ -17,7 +17,7 @@
             </ul>
         </div>
     </div>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-crud">
 		<%  excludedProps = Event.allEvents.toList() << 'id' << 'version'
 			allowedNames = domainClass.persistentProperties*.name << 'dateCreated' << 'lastUpdated'
 			props = domainClass.properties.findAll { allowedNames.contains(it.name) && !excludedProps.contains(it.name) }

@@ -10,14 +10,14 @@
 
 <body>
     <div class="navbar">
-        <div class="navbar-inner">
+        <div class="navbar-inner-crud">
             <a class="brand" href="#"><g:message code="default.list.label" args="[entityName]"/></a>
             <ul class="nav pull-right">
                 <li><g:link action="create"><i class="icon-plus-sign"></i>&nbsp;<g:message code="default.new.label" args="[entityName]"/></g:link></li>
             </ul>
         </div>
     </div>
-    <table class="table table-bordered table-striped table-hover">
+    <table class="table table-bordered table-striped table-hover table-crud">
         <thead>
             <tr>
                 <% excludedProps = Event.allEvents.toList() << 'id' << 'version'
