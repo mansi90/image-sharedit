@@ -6,6 +6,8 @@ class User implements Serializable {
 
 	transient springSecurityService
 
+    String firstName
+    String lastName
 	String username
 	String password
 	boolean enabled = true

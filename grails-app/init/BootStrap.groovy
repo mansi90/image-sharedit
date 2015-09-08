@@ -1,11 +1,16 @@
+import image.sharedit.BootstrapService
+import image.sharedit.Role
 import image.sharedit.User
 
 class BootStrap {
+    BootstrapService bootstrapService
 
     def init = { servletContext ->
+        if (!Role.count) {
+            bootstrapService.createRoles()
+        }
         if (!User.count) {
-            new User(firstName: 'Mansi', lastName: 'Arora', email: 'mansi.arora@tothenew.com', password: 'password').save(flush: true, failOnError: true)
-            new User(firstName: 'Neha', lastName: 'Gupta', email: 'neha.gupta@tothenew.com', password: 'password').save(flush: true, failOnError: true)
+            bootstrapService.createUsers()
         }
     }
     def destroy = {
