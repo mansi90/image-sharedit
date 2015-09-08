@@ -39,8 +39,8 @@
     </g:if>
 
     <section id="loginSection" class="main" style="margin-top: ${flash.message ? '' : '150px'}">
-        <g:form class="form-4" controller="login"  action='${postUrl}' method='POST'>
-        %{--<h1>Login</h1>--}%
+        <form class="form-4" action='${postUrl}' method='POST' id='loginForm' autocomplete='off'>
+            %{--<h1>Login</h1>--}%
 
             <p>
                 <label for="username">Username</label>
@@ -52,11 +52,16 @@
                 <input type="password"  name="j_password" id="password"  placeholder="Password" required="">
             </p>
 
+            <p style="display: none">
+                <label class="remember" for="remember">
+                    <input type='checkbox' name='${rememberMeParameter}' id='remember'
+                           <g:if test='${hasCookie}'>checked='checked'</g:if>/>Remember me</label>
+            </p>
             <p>
                 <g:submitButton name="submit" value="Continue"/>
 
             </p>
-        </g:form>
+        </form>
     </section>
 </div>
 </body>
