@@ -1,107 +1,88 @@
-<%=packageName ? "package ${packageName}" : ''%>
+<%=packageName ? "package ${packageName}\n\n" : ''%>import org.springframework.dao.DataIntegrityViolationException
 
-import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
-
-@Transactional(readOnly = true)
 class ${className}Controller {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", delete: "POST"]
 
-    def index(Integer max) {
+    def index() {
+        redirect(action: "list", params: params)
+    }
+
+    def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond ${className}.list(params), model:[${propertyName}Count: ${className}.count()]
+        [${propertyName}List: ${className}.list(params), ${propertyName}Total: ${className}.count()]
     }
 
-    def show(${className} ${propertyName}) {
-        respond ${propertyName}
+    def create(Long id) {
+        def ${propertyName} = id ? ${className}.get(id) : new ${className}(params)
+        if (!${propertyName}) {
+            flash.error = message(code: 'default.not.found.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), id])
+            redirect(action: "list")
+        }else{
+            [${propertyName}: ${propertyName}]
+        }
     }
 
-    def create() {
-        respond new ${className}(params)
-    }
-
-    @Transactional
-    def save(${className} ${propertyName}) {
-        if (${propertyName} == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
+    def save(Long id, Long version) {
+        def ${propertyName} = id ? ${className}.get(id) : new ${className}(params)
+        if (!${propertyName}) {
+            flash.error = message(code: 'default.not.found.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), id])
+            redirect(action: "list")
             return
         }
 
-        if (${propertyName}.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            respond ${propertyName}.errors, view:'create'
+        if (version != null) {
+            if (${propertyName}.version > version) {<% def lowerCaseName = grails.util.GrailsNameUtils.getPropertyName(className) %>
+                ${propertyName}.errors.rejectValue("version", "default.optimistic.locking.failure",
+                        [message(code: '${domainClass.propertyName}.label', default: '${className}')] as Object[],
+                        "Another user has updated this ${className} while you were editing")
+            render(view: "create", model: [${propertyName}: ${propertyName}])
             return
-        }
-
-        ${propertyName}.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: '${propertyName}.label', default: '${className}'), ${propertyName}.id])
-                redirect ${propertyName}
             }
-            '*' { respond ${propertyName}, [status: CREATED] }
         }
-    }
 
-    def edit(${className} ${propertyName}) {
-        respond ${propertyName}
-    }
+        ${propertyName}.properties = params
 
-    @Transactional
-    def update(${className} ${propertyName}) {
-        if (${propertyName} == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
+        if (!${propertyName}.save(flush: true)) {
+            render(view: "create", model: [${propertyName}: ${propertyName}])
             return
         }
 
-        if (${propertyName}.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            respond ${propertyName}.errors, view:'edit'
+        if(id){
+            flash.success = message(code: 'default.updated.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), ${propertyName}.id])
+        }else{
+            flash.success = message(code: 'default.created.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), ${propertyName}.id])
+        }
+        redirect(action: "show", id: ${propertyName}.id)
+    }
+
+    def show(Long id) {
+        def ${propertyName} = ${className}.get(id)
+        if (!${propertyName}) {
+            flash.error = message(code: 'default.not.found.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), id])
+            redirect(action: "list")
             return
         }
 
-        ${propertyName}.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: '${propertyName}.label', default: '${className}'), ${propertyName}.id])
-                redirect ${propertyName}
-            }
-            '*'{ respond ${propertyName}, [status: OK] }
-        }
+        [${propertyName}: ${propertyName}]
     }
 
-    @Transactional
-    def delete(${className} ${propertyName}) {
-
-        if (${propertyName} == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
+    def delete(Long id) {
+        def ${propertyName} = ${className}.get(id)
+        if (!${propertyName}) {
+            flash.error = message(code: 'default.not.found.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), id])
+            redirect(action: "list")
             return
         }
 
-        ${propertyName}.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: '${propertyName}.label', default: '${className}'), ${propertyName}.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
+        try {
+            ${propertyName}.delete(flush: true)
+            flash.success = message(code: 'default.deleted.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), id])
+            redirect(action: "list")
         }
-    }
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: '${propertyName}.label', default: '${className}'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
+        catch (DataIntegrityViolationException e) {
+            flash.error = message(code: 'default.not.deleted.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), id])
+            redirect(action: "show", id: id)
         }
     }
 }
