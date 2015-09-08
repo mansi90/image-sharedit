@@ -2,18 +2,18 @@
 <% import grails.persistence.Event %>
 
 <%  excludedProps = Event.allEvents.toList() << 'version' << 'dateCreated' << 'lastUpdated'
-	persistentPropNames = domainClass.persistentProperties*.name
+	persistentPropNames = className.persistentProperties*.name
     boolean hasHibernate = pluginManager?.hasGrailsPlugin('hibernate') || pluginManager?.hasGrailsPlugin('hibernate4')
     if (hasHibernate) {
         def GrailsDomainBinder =
             getClass().classLoader.loadClass('org.codehaus.groovy.grails.orm.hibernate.cfg.GrailsDomainBinder')
-        if(GrailsDomainBinder.newInstance().getMapping(domainClass)?.identity?.generator
+        if(GrailsDomainBinder.newInstance().getMapping(className)?.identity?.generator
             == 'assigned') {
-             persistentPropNames << domainClass.identifier.name
+             persistentPropNames << className.identifier.name
         }
     }
-	props = domainClass.properties.findAll { persistentPropNames.contains(it.name) && !excludedProps.contains(it.name) }
-	Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
+	props = className.properties.findAll { persistentPropNames.contains(it.name) && !excludedProps.contains(it.name) }
+	Collections.sort(props, comparator.constructors[0].newInstance([className] as Object[]))
 	for (p in props) {
 		if (p.embedded) {
 			def embeddedPropNames = p.component.persistentProperties*.name
@@ -21,7 +21,7 @@
 			Collections.sort(embeddedProps, comparator.constructors[0].newInstance([p.component] as Object[]))
 	%>
         <fieldset class="embedded">
-            <legend><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></legend>
+            <legend><g:message code="${className.propertyName}.${p.name}.label" default="${p.naturalName}" /></legend>
             <%
 				for (ep in p.component.properties) {
 					renderFieldForProperty(ep, p.component, "${p.name}.")
@@ -30,7 +30,7 @@
         </fieldset>
     <%
         } else {
-            renderFieldForProperty(p, domainClass)
+            renderFieldForProperty(p, className)
         }
 	 }
 
@@ -46,7 +46,7 @@ private renderFieldForProperty(p, owningClass, prefix = "") {
 	if (display) { %>
             <div class="control-group">
                 <label class="control-label hidden-phone" for="${prefix}${p.name}">
-                    <g:message code="${domainClass.propertyName}.${prefix}${p.name}.label" default="${p.naturalName}" />
+                    <g:message code="${className.propertyName}.${prefix}${p.name}.label" default="${p.naturalName}" />
                     <% if (required) { %><span class="required-indicator">*</span><% } %>
                 </label>
                 <div class="controls">

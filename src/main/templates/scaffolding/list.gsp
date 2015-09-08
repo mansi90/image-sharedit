@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta name="layout" content="main">
-    <g:set var="entityName" value="\${message(code: '${domainClass.propertyName}.label', default: '${className}')}"/>
+    <g:set var="entityName" value="\${message(code: '${propertyName}.label', default: '${className}')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
 </head>
 
@@ -21,15 +21,15 @@
         <thead>
             <tr>
                 <% excludedProps = Event.allEvents.toList() << 'id' << 'version'
-                allowedNames = domainClass.persistentProperties*.name << 'dateCreated' << 'lastUpdated'
-                props = domainClass.properties.findAll { allowedNames.contains(it.name) && !excludedProps.contains(it.name) && it.type != null && !Collection.isAssignableFrom(it.type) }
-                Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
+                allowedNames = className.persistentProperties*.name << 'dateCreated' << 'lastUpdated'
+                props = className.properties.findAll { allowedNames.contains(it.name) && !excludedProps.contains(it.name) && it.type != null && !Collection.isAssignableFrom(it.type) }
+                Collections.sort(props, comparator.constructors[0].newInstance([className] as Object[]))
                 props.eachWithIndex { p, i ->
                     if (i < 6) {
                         if (p.isAssociation()) { %>
-                <th class="${i>0?'hidden-phone':''}"><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}"/></th>
+                <th class="${i>0?'hidden-phone':''}"><g:message code="${propertyName}.${p.name}.label" default="${p.naturalName}"/></th>
                 <% } else { %>
-                <g:sortableColumn class="${i>0?'hidden-phone':''}" property="${p.name}" title="\${message(code: '${domainClass.propertyName}.${p.name}.label', default: '${p.naturalName}')}"/>
+                <g:sortableColumn class="${i>0?'hidden-phone':''}" property="${p.name}" title="\${message(code: '${propertyName}.${p.name}.label', default: '${p.naturalName}')}"/>
                 <% }
                 }
                 } %>

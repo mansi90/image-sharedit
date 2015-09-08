@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta name="layout" content="main">
-	<g:set var="entityName" value="\${message(code: '${domainClass.propertyName}.label', default: '${className}')}" />
+	<g:set var="entityName" value="\${message(code: '${propertyName}.label', default: '${className}')}" />
 	<title><g:message code="default.show.label" args="[entityName]" /></title>
 </head>
 <body>
@@ -19,13 +19,13 @@
     </div>
     <table class="table table-bordered table-crud">
 		<%  excludedProps = Event.allEvents.toList() << 'id' << 'version'
-			allowedNames = domainClass.persistentProperties*.name << 'dateCreated' << 'lastUpdated'
-			props = domainClass.properties.findAll { allowedNames.contains(it.name) && !excludedProps.contains(it.name) }
-			Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
+			allowedNames = className.persistentProperties*.name << 'dateCreated' << 'lastUpdated'
+			props = className.properties.findAll { allowedNames.contains(it.name) && !excludedProps.contains(it.name) }
+			Collections.sort(props, comparator.constructors[0].newInstance([className] as Object[]))
 			props.each { p -> %>
             <tr>
             <g:if test="\${${propertyName}?.${p.name}||${p.type == boolean || p.type == Boolean}}">
-				    <td><strong><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></strong></td>
+				    <td><strong><g:message code="${propertyName}.${p.name}.label" default="${p.naturalName}" /></strong></td>
 				    <%  if (p.isEnum()) { %>
 			    		<td><g:fieldValue bean="\${${propertyName}}" field="${p.name}"/></td>
 			    	<%  } else if (p.oneToMany || p.manyToMany) { %>
