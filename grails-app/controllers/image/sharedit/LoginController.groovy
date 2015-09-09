@@ -15,6 +15,8 @@ import org.springframework.security.web.WebAttributes
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 class LoginController {
+    UserService userService
+
     /**
      * Dependency injection for the authenticationTrustResolver.
      */
@@ -128,13 +130,13 @@ class LoginController {
     def register() {}
 
     def onRegister() {
-        def user = new User(params)
-        if (user.validate() && user.hasErrors()) {
-            render(view: "register", model: [user: user])
+        def userInstance = new User(params)
+        if (userInstance.validate() && userInstance.hasErrors()) {
+            render(view: "register", model: [user: userInstance])
             return
         }
 
-        user.save flush: true
+        userService.saveUserAndItsRole(userInstance, 'ROLE_USER')
 
         flash.message = 'Your account has been successfully created'
         redirect action: 'index'
