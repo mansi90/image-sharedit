@@ -1,3 +1,5 @@
+package image.sharedit
+
 import grails.plugin.springsecurity.SpringSecurityUtils
 
 class LogoutController {
