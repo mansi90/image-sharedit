@@ -29,6 +29,7 @@
             <g:sortableColumn property="username" title="Username"/>
             <g:sortableColumn property="firstName" title="First Name"/>
             <g:sortableColumn property="lastName" title="Last Name"/>
+            <th>Roles</th>
         </tr>
         </thead>
         <tbody>
@@ -43,6 +44,13 @@
                 <td>${fieldValue(bean: userInstance, field: "firstName")}</td>
 
                 <td>${fieldValue(bean: userInstance, field: "lastName")}</td>
+                <td>
+                    <ul style="list-style-type: none">
+                        <g:each in="${userInstance.authorities}" var="${role}">
+                            <li><g:link controller="role" action="show" id="${role.id}">${role}</g:link></li>
+                        </g:each>
+                    </ul>
+                </td>
             </tr>
         </g:each>
         </tbody>
