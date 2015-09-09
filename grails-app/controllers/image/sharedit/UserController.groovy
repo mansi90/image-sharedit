@@ -4,6 +4,7 @@ package image.sharedit
 import org.springframework.dao.DataIntegrityViolationException
 
 class UserController {
+    UserService userService
     def springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -27,10 +28,12 @@ class UserController {
 
     def save() {
         def user = new User(params)
-        if (!user.save(flush: true)) {
+        if (user.validate() && user.hasErrors()) {
             render(view: "create", model: [user: user])
             return
         }
+
+        userService.saveUserAndItsRole(user, params.roles)
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), user.id])
         redirect(action: "show", id: user.id)
@@ -78,10 +81,12 @@ class UserController {
 
         user.properties = params
 
-        if (!user.save(flush: true)) {
+        if (user.validate() && user.hasErrors()) {
             render(view: "edit", model: [user: user])
             return
         }
+
+        userService.saveUserAndItsRole(user, params.roles)
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), user.id])
         redirect(action: "show", id: user.id)

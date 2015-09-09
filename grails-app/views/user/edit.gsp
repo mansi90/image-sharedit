@@ -24,19 +24,19 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <g:hasErrors bean="${this.user}">
+    <g:hasErrors bean="${user}">
         <ul class="errors" role="alert">
-            <g:eachError bean="${this.user}" var="error">
+            <g:eachError bean="${user}" var="error">
                 <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
                         error="${error}"/></li>
             </g:eachError>
         </ul>
     </g:hasErrors>
-    <g:form resource="${this.user}" method="PUT">
-        <g:hiddenField name="id" value="${this.user?.id}"/>
-        <g:hiddenField name="version" value="${this.user?.version}"/>
+    <g:form action="update" method="POST">
+        <g:hiddenField name="id" value="${user?.id}"/>
+        <g:hiddenField name="version" value="${user?.version}"/>
         <fieldset class="form">
-            <g:render template="form" model="[userInstance : this.user]"/>
+            <g:render template="form" model="[userInstance : user]"/>
             <div class="clearfix" style="min-height: 30px;"></div>
             <fieldset class="buttons">
                 <input class="save" type="submit"
