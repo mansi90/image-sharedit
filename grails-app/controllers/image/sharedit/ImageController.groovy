@@ -4,8 +4,8 @@ package image.sharedit
 import org.springframework.dao.DataIntegrityViolationException
 
 class ImageController {
-    UserService userService
     ImageService imageService
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -24,7 +24,7 @@ class ImageController {
 
     def save() {
         def image = new Image(params)
-        image.owner = userService.getLoggedInUser(session)
+        image.owner = springSecurityService.currentUser as User
         image = imageService.uploadImageToCloudinary(image, params.file)
 
         if (image.validate() && image.hasErrors()) {
@@ -70,9 +70,9 @@ class ImageController {
 
         if (version != null) {
             if (image.version > version) {
-                    image.errors.rejectValue("version", "default.optimistic.locking.failure",
-                            [message(code: 'image.label', default: 'Image')] as Object[],
-                            "Another user has updated this Image while you were editing")
+                image.errors.rejectValue("version", "default.optimistic.locking.failure",
+                        [message(code: 'image.label', default: 'Image')] as Object[],
+                        "Another user has updated this Image while you were editing")
                 render(view: "edit", model: [image: image])
                 return
             }

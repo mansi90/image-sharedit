@@ -4,6 +4,7 @@ package image.sharedit
 import org.springframework.dao.DataIntegrityViolationException
 
 class UserController {
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -14,6 +15,10 @@ class UserController {
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [userList: User.list(params), userTotal: User.count()]
+    }
+
+    def profile() {
+        [currentUser: springSecurityService.currentUser as User]
     }
 
     def create() {
@@ -63,9 +68,9 @@ class UserController {
 
         if (version != null) {
             if (user.version > version) {
-                    user.errors.rejectValue("version", "default.optimistic.locking.failure",
-                            [message(code: 'user.label', default: 'User')] as Object[],
-                            "Another user has updated this User while you were editing")
+                user.errors.rejectValue("version", "default.optimistic.locking.failure",
+                        [message(code: 'user.label', default: 'User')] as Object[],
+                        "Another user has updated this User while you were editing")
                 render(view: "edit", model: [user: user])
                 return
             }
