@@ -1,107 +1,103 @@
 package image.sharedit
 
-import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+import org.springframework.dao.DataIntegrityViolationException
+
 class RoleController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Role.list(params), model:[roleCount: Role.count()]
+    def index() {
+        redirect(action: "list", params: params)
     }
 
-    def show(Role role) {
-        respond role
+    def list(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        [roleList: Role.list(params), roleTotal: Role.count()]
     }
 
     def create() {
-        respond new Role(params)
+        [role: new Role(params)]
     }
 
-    @Transactional
-    def save(Role role) {
-        if (role == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
+    def save() {
+        def role = new Role(params)
+        if (!role.save(flush: true)) {
+            render(view: "create", model: [role: role])
             return
         }
 
-        if (role.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            respond role.errors, view:'create'
+        flash.message = message(code: 'default.created.message', args: [message(code: 'role.label', default: 'Role'), role.id])
+        redirect(action: "show", id: role.id)
+    }
+
+    def show(Long id) {
+        def role = Role.get(id)
+        if (!role) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'role.label', default: 'Role'), id])
+            redirect(action: "list")
             return
         }
 
-        role.save flush:true
+        [role: role]
+    }
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'role.label', default: 'Role'), role.id])
-                redirect role
+    def edit(Long id) {
+        def role = Role.get(id)
+        if (!role) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'role.label', default: 'Role'), id])
+            redirect(action: "list")
+            return
+        }
+
+        [role: role]
+    }
+
+    def update(Long id, Long version) {
+        def role = Role.get(id)
+        if (!role) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'role.label', default: 'Role'), id])
+            redirect(action: "list")
+            return
+        }
+
+        if (version != null) {
+            if (role.version > version) {
+                    role.errors.rejectValue("version", "default.optimistic.locking.failure",
+                            [message(code: 'role.label', default: 'Role')] as Object[],
+                            "Another user has updated this Role while you were editing")
+                render(view: "edit", model: [role: role])
+                return
             }
-            '*' { respond role, [status: CREATED] }
         }
-    }
 
-    def edit(Role role) {
-        respond role
-    }
+        role.properties = params
 
-    @Transactional
-    def update(Role role) {
-        if (role == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
+        if (!role.save(flush: true)) {
+            render(view: "edit", model: [role: role])
             return
         }
 
-        if (role.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            respond role.errors, view:'edit'
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'role.label', default: 'Role'), role.id])
+        redirect(action: "show", id: role.id)
+    }
+
+    def delete(Long id) {
+        def role = Role.get(id)
+        if (!role) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'role.label', default: 'Role'), id])
+            redirect(action: "list")
             return
         }
 
-        role.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'role.label', default: 'Role'), role.id])
-                redirect role
-            }
-            '*'{ respond role, [status: OK] }
+        try {
+            role.delete(flush: true)
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'role.label', default: 'Role'), id])
+            redirect(action: "list")
         }
-    }
-
-    @Transactional
-    def delete(Role role) {
-
-        if (role == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
-            return
-        }
-
-        role.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'role.label', default: 'Role'), role.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'role.label', default: 'Role'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
+        catch (DataIntegrityViolationException e) {
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'role.label', default: 'Role'), id])
+            redirect(action: "show", id: id)
         }
     }
 }
