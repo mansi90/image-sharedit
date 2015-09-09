@@ -4,6 +4,8 @@ package image.sharedit
 import org.springframework.dao.DataIntegrityViolationException
 
 class ImageController {
+    UserService userService
+    ImageService imageService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -22,10 +24,15 @@ class ImageController {
 
     def save() {
         def image = new Image(params)
-        if (!image.save(flush: true)) {
+        image.owner = userService.getLoggedInUser(session)
+        image = imageService.uploadImageToCloudinary(image, params.file)
+
+        if (image.validate() && image.hasErrors()) {
             render(view: "create", model: [image: image])
             return
         }
+
+        image.save(flush: true)
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'image.label', default: 'Image'), image.id])
         redirect(action: "show", id: image.id)
