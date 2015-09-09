@@ -1,107 +1,103 @@
 package image.sharedit
 
-import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+import org.springframework.dao.DataIntegrityViolationException
+
 class UserController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond User.list(params), model:[userCount: User.count()]
+    def index() {
+        redirect(action: "list", params: params)
     }
 
-    def show(User user) {
-        respond user
+    def list(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        [userList: User.list(params), userTotal: User.count()]
     }
 
     def create() {
-        respond new User(params)
+        [user: new User(params)]
     }
 
-    @Transactional
-    def save(User user) {
-        if (user == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
+    def save() {
+        def user = new User(params)
+        if (!user.save(flush: true)) {
+            render(view: "create", model: [user: user])
             return
         }
 
-        if (user.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            respond user.errors, view:'create'
+        flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), user.id])
+        redirect(action: "show", id: user.id)
+    }
+
+    def show(Long id) {
+        def user = User.get(id)
+        if (!user) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
+            redirect(action: "list")
             return
         }
 
-        user.save flush:true
+        [user: user]
+    }
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), user.id])
-                redirect user
+    def edit(Long id) {
+        def user = User.get(id)
+        if (!user) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
+            redirect(action: "list")
+            return
+        }
+
+        [user: user]
+    }
+
+    def update(Long id, Long version) {
+        def user = User.get(id)
+        if (!user) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
+            redirect(action: "list")
+            return
+        }
+
+        if (version != null) {
+            if (user.version > version) {
+                    user.errors.rejectValue("version", "default.optimistic.locking.failure",
+                            [message(code: 'user.label', default: 'User')] as Object[],
+                            "Another user has updated this User while you were editing")
+                render(view: "edit", model: [user: user])
+                return
             }
-            '*' { respond user, [status: CREATED] }
         }
-    }
 
-    def edit(User user) {
-        respond user
-    }
+        user.properties = params
 
-    @Transactional
-    def update(User user) {
-        if (user == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
+        if (!user.save(flush: true)) {
+            render(view: "edit", model: [user: user])
             return
         }
 
-        if (user.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            respond user.errors, view:'edit'
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), user.id])
+        redirect(action: "show", id: user.id)
+    }
+
+    def delete(Long id) {
+        def user = User.get(id)
+        if (!user) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
+            redirect(action: "list")
             return
         }
 
-        user.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), user.id])
-                redirect user
-            }
-            '*'{ respond user, [status: OK] }
+        try {
+            user.delete(flush: true)
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'user.label', default: 'User'), id])
+            redirect(action: "list")
         }
-    }
-
-    @Transactional
-    def delete(User user) {
-
-        if (user == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
-            return
-        }
-
-        user.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'user.label', default: 'User'), user.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
+        catch (DataIntegrityViolationException e) {
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'user.label', default: 'User'), id])
+            redirect(action: "show", id: id)
         }
     }
 }
