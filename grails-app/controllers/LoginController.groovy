@@ -1,5 +1,3 @@
-package image.sharedit
-
 import grails.converters.JSON
 
 import javax.servlet.http.HttpServletResponse
