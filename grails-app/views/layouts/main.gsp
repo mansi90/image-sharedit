@@ -32,6 +32,7 @@
                     <sec:ifLoggedIn>
                         <sec:ifAnyGranted roles="ROLE_ADMIN">
                             <li class="controller"><g:link controller="user">Users</g:link></li>
+                            <li class="controller"><g:link controller="role">Roles</g:link></li>
                         </sec:ifAnyGranted>
 
                         <li class="controller"><g:link controller="image">Images</g:link></li>
