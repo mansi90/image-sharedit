@@ -25,7 +25,7 @@
         <a href="${createLink(uri: '/')}">
             <strong>« Image SharEdit</strong>
         </a>
-        <a href="${createLink(uri: '/register')}" class="register-link">
+        <a href="${createLink(controller: 'login', action: 'register')}" class="register-link">
             <strong>Register</strong>
         </a>
     </div>
@@ -44,12 +44,12 @@
 
             <p>
                 <label for="username">Username</label>
-                <input type="text" name="j_username" id="username"  placeholder="Username" required="">
+                <input type="text" name="j_username" id="username" placeholder="Username" required="">
             </p>
 
             <p>
                 <label for="password">Password</label>
-                <input type="password"  name="j_password" id="password"  placeholder="Password" required="">
+                <input type="password" name="j_password" id="password" placeholder="Password" required="">
             </p>
 
             <p style="display: none">
@@ -57,6 +57,7 @@
                     <input type='checkbox' name='${rememberMeParameter}' id='remember'
                            <g:if test='${hasCookie}'>checked='checked'</g:if>/>Remember me</label>
             </p>
+
             <p>
                 <g:submitButton name="submit" value="Continue"/>
 

@@ -124,4 +124,19 @@ class LoginController {
     def ajaxDenied = {
         render([error: 'access denied'] as JSON)
     }
+
+    def register() {}
+
+    def onRegister() {
+        def user = new User(params)
+        if (user.validate() && user.hasErrors()) {
+            render(view: "register", model: [user: user])
+            return
+        }
+
+        user.save flush: true
+
+        flash.message = 'Your account has been successfully created'
+        redirect action: 'index'
+    }
 }
