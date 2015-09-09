@@ -23,7 +23,30 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <f:table collection="${userList}"/>
+    <table>
+        <thead>
+        <tr>
+            <g:sortableColumn property="username" title="Username"/>
+            <g:sortableColumn property="firstName" title="First Name"/>
+            <g:sortableColumn property="lastName" title="Last Name"/>
+        </tr>
+        </thead>
+        <tbody>
+        <g:each in="${userList}" status="i" var="userInstance">
+            <tr class="${i % 2 == 0 ? "even" : "odd"}">
+                <td>
+                    <g:link action="show" id="${userInstance.id}">
+                        ${fieldValue(bean: userInstance, field: "username")}
+                    </g:link>
+                </td>
+
+                <td>${fieldValue(bean: userInstance, field: "firstName")}</td>
+
+                <td>${fieldValue(bean: userInstance, field: "lastName")}</td>
+            </tr>
+        </g:each>
+        </tbody>
+    </table>
 
     <div class="pagination">
         <g:paginate total="${userCount ?: 0}"/>

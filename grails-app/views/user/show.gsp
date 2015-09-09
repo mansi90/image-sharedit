@@ -24,7 +24,45 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <f:display bean="user"/>
+
+    <ol class="property-list image">
+
+        <li class="fieldcontain">
+            <span id="firstname-label" class="property-label">firstName</span>
+            <div class="property-value" aria-labelledby="firstname-label">${user.firstName}</div>
+        </li>
+
+        <li class="fieldcontain">
+            <span id="lastName-label" class="property-label">Last Name</span>
+            <div class="property-value" aria-labelledby="lastName-label">${user.lastName}</div>
+        </li>
+
+        <li class="fieldcontain">
+            <span id="username-label" class="property-label">Username</span>
+            <div class="property-value" aria-labelledby="username-label">${user.username}</div>
+        </li>
+
+        <li class="fieldcontain">
+            <span id="accountExpired-label" class="property-label">Account Expired</span>
+            <div class="property-value" aria-labelledby="accountExpired-label">${user.accountExpired}</div>
+        </li>
+
+        <li class="fieldcontain">
+            <span id="accountLocked-label" class="property-label">Account Locked</span>
+            <div class="property-value" aria-labelledby="accountLocked-label">${user.accountLocked}</div>
+        </li>
+
+        <li class="fieldcontain">
+            <span id="enabled-label" class="property-label">Enabled</span>
+            <div class="property-value" aria-labelledby="enabled-label">${user.enabled}</div>
+        </li>
+
+        <li class="fieldcontain">
+            <span id="passwordExpired-label" class="property-label">Password Expired</span>
+            <div class="property-value" aria-labelledby="passwordExpired-label">${user.passwordExpired}</div>
+        </li>
+    </ol>
+
     <g:form resource="${this.user}" method="DELETE">
         <fieldset class="buttons">
             <g:link class="edit" action="edit" resource="${this.user}"><g:message code="default.button.edit.label"

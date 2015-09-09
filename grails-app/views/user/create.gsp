@@ -32,11 +32,12 @@
     </g:hasErrors>
     <g:form action="save">
         <fieldset class="form">
-            <f:all bean="user"/>
-        </fieldset>
-        <fieldset class="buttons">
-            <g:submitButton name="create" class="save"
-                            value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+            <g:render template="form"/>
+            <div class="clearfix" style="min-height: 30px;"></div>
+            <fieldset class="buttons">
+                <g:submitButton name="create" class="save"
+                                value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+            </fieldset>
         </fieldset>
     </g:form>
 </div>
