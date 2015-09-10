@@ -63,4 +63,33 @@
 
 .mfp-title {
     text-align: center !important;
+    padding-right: 0 !important;
+    padding-left: 45px !important;
+}
+
+.mfp-counter {
+    left: 0;
+    margin-right: 10px;
+}
+
+.editImageLink.editBtn {
+    float: right;
+    width: 90px;
+    height: 25px;
+    line-height: 25px;
+    color: white;
+    text-decoration: none;
+    font-family: 'oxygenregular';
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    -webkit-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 1px;
+    background: rgb(22, 140, 182);
+    border: 1px solid rgb(6, 115, 155);
 }

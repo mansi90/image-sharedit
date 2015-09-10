@@ -23,7 +23,7 @@
             <div class="image-section">
                 <div class="image-inner-area">
                     <a class="image-popup-vertical-fit" href="${imageInstance.url}"
-                       title="${imageInstance.description}">
+                       title="${custom.galleryImageTitle(imageInstance: imageInstance)}">
                         <img src="${imageInstance.getShowImageUrl(140)}">
                     </a>
                 </div>

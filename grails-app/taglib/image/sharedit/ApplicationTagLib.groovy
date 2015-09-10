@@ -8,4 +8,10 @@ class ApplicationTagLib {
         Integer length = str.length(), max = Integer.parseInt(attr.max.toString())
         out << (((length) > max) ? (str.substring(0, max) + "<span style='color: #006400;font-weight: bold;font-style: italic;'>...</span>") : str)
     }
+
+    def galleryImageTitle = { attr, body ->
+        Image imageInstance = attr.imageInstance as Image
+        String html = imageInstance.name + "<span class='editImageLink editBtn'>Edit</span>"
+        out << html
+    }
 }
