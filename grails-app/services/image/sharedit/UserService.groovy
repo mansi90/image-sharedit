@@ -40,4 +40,20 @@ class UserService {
             userRole.delete(flush: true)
         }
     }
+
+    String deleteUser(User userInstance) {
+        String name = userInstance?.firstName, message
+        try {
+            UserRole.findAllByUser(userInstance).each { UserRole userRole ->
+                userRole.delete(flush: true)
+            }
+            userInstance.delete(flush: true)
+            message = messageSource.getMessage('default.deleted.message', ['User', name].toArray(), Locale.default)
+        }
+        catch (DataIntegrityViolationException e) {
+            message = messageSource.getMessage('default.not.deleted.message', ['User', name].toArray(), Locale.default)
+        }
+
+        return message
+    }
 }

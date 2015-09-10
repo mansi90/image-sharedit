@@ -94,20 +94,14 @@ class UserController {
 
     def delete(Long id) {
         def user = User.get(id)
+
         if (!user) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
             redirect(action: "list")
             return
         }
 
-        try {
-            user.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'user.label', default: 'User'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'user.label', default: 'User'), id])
-            redirect(action: "show", id: id)
-        }
+        flash.message = userService.deleteUser(user)
+        redirect(action: 'list')
     }
 }
