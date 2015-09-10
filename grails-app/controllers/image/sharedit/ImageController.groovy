@@ -1,112 +1,110 @@
 package image.sharedit
 
-import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+import org.springframework.dao.DataIntegrityViolationException
+
 class ImageController {
-    UserService userService
     ImageService imageService
+    def springSecurityService
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Image.list(params), model: [imageCount: Image.count()]
+    def index() {
+        redirect(action: "list", params: params)
     }
 
-    def show(Image image) {
-        respond image
+    def list(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        [imageList: Image.list(params), imageTotal: Image.count()]
     }
 
     def create() {
-        respond new Image(params)
+        [image: new Image(params)]
     }
 
-    @Transactional
-    def save(Image image) {
-        if (image == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
-            return
-        }
-        image.owner = userService.getLoggedInUser(session)
+    def save() {
+        def image = new Image(params)
+        image.owner = springSecurityService.currentUser as User
         image = imageService.uploadImageToCloudinary(image, params.file)
 
         if (image.validate() && image.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            respond image.errors, view: 'create'
+            render(view: "create", model: [image: image])
             return
         }
 
-        image.save flush: true
+        image.save(flush: true)
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'image.label', default: 'Image'), image.id])
-                redirect image
-            }
-            '*' { respond image, [status: CREATED] }
-        }
+        flash.message = message(code: 'default.created.message', args: [message(code: 'image.label', default: 'Image'), image.id])
+        redirect(action: "show", id: image.id)
     }
 
-    def edit(Image image) {
-        respond image
-    }
-
-    @Transactional
-    def update(Image image) {
-        if (image == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
+    def show(Long id) {
+        def image = Image.get(id)
+        if (!image) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'image.label', default: 'Image'), id])
+            redirect(action: "list")
             return
         }
 
-        if (image.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            respond image.errors, view: 'edit'
+        [image: image]
+    }
+
+    def edit(Long id) {
+        def image = Image.get(id)
+        if (!image) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'image.label', default: 'Image'), id])
+            redirect(action: "list")
             return
         }
 
-        image.save flush: true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'image.label', default: 'Image'), image.id])
-                redirect image
-            }
-            '*' { respond image, [status: OK] }
-        }
+        [image: image]
     }
 
-    @Transactional
-    def delete(Image image) {
-
-        if (image == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
+    def update(Long id, Long version) {
+        def image = Image.get(id)
+        if (!image) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'image.label', default: 'Image'), id])
+            redirect(action: "list")
             return
         }
 
-        imageService.deleteFromCloudinary(image.url)
-        image.delete flush: true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'image.label', default: 'Image'), image.id])
-                redirect action: "index", method: "GET"
+        if (version != null) {
+            if (image.version > version) {
+                image.errors.rejectValue("version", "default.optimistic.locking.failure",
+                        [message(code: 'image.label', default: 'Image')] as Object[],
+                        "Another user has updated this Image while you were editing")
+                render(view: "edit", model: [image: image])
+                return
             }
-            '*' { render status: NO_CONTENT }
         }
+
+        image.properties = params
+
+        if (!image.save(flush: true)) {
+            render(view: "edit", model: [image: image])
+            return
+        }
+
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'image.label', default: 'Image'), image.id])
+        redirect(action: "show", id: image.id)
     }
 
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'image.label', default: 'Image'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*' { render status: NOT_FOUND }
+    def delete(Long id) {
+        def image = Image.get(id)
+        if (!image) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'image.label', default: 'Image'), id])
+            redirect(action: "list")
+            return
+        }
+
+        try {
+            image.delete(flush: true)
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'image.label', default: 'Image'), id])
+            redirect(action: "list")
+        }
+        catch (DataIntegrityViolationException e) {
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'image.label', default: 'Image'), id])
+            redirect(action: "show", id: id)
         }
     }
 }

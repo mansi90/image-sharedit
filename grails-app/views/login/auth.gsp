@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
 <head>
     <meta charset="UTF-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
@@ -21,7 +25,7 @@
         <a href="${createLink(uri: '/')}">
             <strong>« Image SharEdit</strong>
         </a>
-        <a href="${createLink(uri: '/register')}" class="register-link">
+        <a href="${createLink(controller: 'login', action: 'register')}" class="register-link">
             <strong>Register</strong>
         </a>
     </div>
@@ -35,23 +39,30 @@
     </g:if>
 
     <section id="loginSection" class="main" style="margin-top: ${flash.message ? '' : '150px'}">
-        <g:form class="form-4" controller="login" action="onSubmit">
-        %{--<h1>Login</h1>--}%
+        <form class="form-4" action='${postUrl}' method='POST' id='loginForm' autocomplete='off'>
+            %{--<h1>Login</h1>--}%
 
             <p>
-                <label for="login">Username or email</label>
-                <input type="text" name="email" placeholder="Email Address">
+                <label for="username">Username</label>
+                <input type="text" name="j_username" id="username" placeholder="Username" required="">
             </p>
 
             <p>
                 <label for="password">Password</label>
-                <input type="password" name="password" placeholder="Password">
+                <input type="password" name="j_password" id="password" placeholder="Password" required="">
+            </p>
+
+            <p style="display: none">
+                <label class="remember" for="remember">
+                    <input type='checkbox' name='${rememberMeParameter}' id='remember'
+                           <g:if test='${hasCookie}'>checked='checked'</g:if>/>Remember me</label>
             </p>
 
             <p>
-                <g:submitButton name="submit" class="login-submit" value="Continue"/>
+                <g:submitButton name="submit" value="Continue"/>
+
             </p>
-        </g:form>
+        </form>
     </section>
 </div>
 </body>

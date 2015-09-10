@@ -26,27 +26,41 @@
     <table>
         <thead>
         <tr>
+            <g:sortableColumn property="username" title="Username"/>
             <g:sortableColumn property="firstName" title="First Name"/>
             <g:sortableColumn property="lastName" title="Last Name"/>
-            <g:sortableColumn property="email" title="Email"/>
+            <th>Roles</th>
         </tr>
         </thead>
         <tbody>
         <g:each in="${userList}" status="i" var="userInstance">
             <tr class="${i % 2 == 0 ? "even" : "odd"}">
-                <td><g:link action="show"
-                            id="${userInstance.id}">${fieldValue(bean: userInstance, field: "firstName")}</g:link></td>
+                <td>
+                    <g:link action="show" id="${userInstance.id}">
+                        ${fieldValue(bean: userInstance, field: "username")}
+                    </g:link>
+                </td>
+
+                <td>${fieldValue(bean: userInstance, field: "firstName")}</td>
 
                 <td>${fieldValue(bean: userInstance, field: "lastName")}</td>
-                <td>${fieldValue(bean: userInstance, field: "email")}</td>
+                <td>
+                    <ul style="list-style-type: none">
+                        <g:each in="${userInstance.authorities}" var="${role}">
+                            <li><g:link controller="role" action="show" id="${role.id}">${role}</g:link></li>
+                        </g:each>
+                    </ul>
+                </td>
             </tr>
         </g:each>
         </tbody>
     </table>
 
-    <div class="pagination">
-        <g:paginate total="${userCount ?: 0}"/>
-    </div>
+    <g:if test="${userTotal > 10}">
+        <div class="pagination pull-right">
+            <g:paginate total="${userTotal ?: 0}"/>
+        </div>
+    </g:if>
 </div>
 </body>
 </html>

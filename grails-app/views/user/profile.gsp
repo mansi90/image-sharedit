@@ -32,8 +32,8 @@
     </p>
 
     <p>
-        <label for="email">Email</label>
-        <g:textField name="email" type="email" value="${currentUser.email}" placeholder="Email"/>
+        <label for="email">Username</label>
+        <g:textField name="username" value="${currentUser.username}" placeholder="Username"/>
     </p>
 
     <p>

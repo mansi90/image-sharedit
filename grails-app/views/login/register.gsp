@@ -20,17 +20,17 @@
 
     <p>
         <label for="firstName">First Name</label>
-        <g:textField name="firstName" placeholder="First Name"/>
+        <g:textField name="firstName" placeholder="First Name" value="${user?.firstName}"/>
     </p>
 
     <p>
         <label for="lastName">Last Name</label>
-        <g:textField name="lastName" placeholder="Last Name"/>
+        <g:textField name="lastName" placeholder="Last Name" value="${user?.lastName}"/>
     </p>
 
     <p>
-        <label for="email">Email</label>
-        <g:textField name="email" type="email" placeholder="Email"/>
+        <label for="username">Username</label>
+        <g:textField name="username" placeholder="Username" value="${user?.username}"/>
     </p>
 
     <p>

@@ -24,48 +24,24 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <g:hasErrors bean="${this.user}">
+    <g:hasErrors bean="${user}">
         <ul class="errors" role="alert">
-            <g:eachError bean="${this.user}" var="error">
+            <g:eachError bean="${user}" var="error">
                 <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
                         error="${error}"/></li>
             </g:eachError>
         </ul>
     </g:hasErrors>
-    <g:form resource="${this.user}" method="PUT">
-        <g:hiddenField name="version" value="${this.user?.version}"/>
+    <g:form action="update" method="POST">
+        <g:hiddenField name="id" value="${user?.id}"/>
+        <g:hiddenField name="version" value="${user?.version}"/>
         <fieldset class="form">
-            <div class="fieldcontain required">
-                <label for="firstName">First Name
-                    <span class="required-indicator">*</span>
-                </label><input type="text" name="firstName" value="Mansi" required="" id="firstName">
-            </div>
-
-            <div class="fieldcontain required">
-                <label for="lastName">Last Name
-                    <span class="required-indicator">*</span>
-                </label><input type="text" name="lastName" value="Arora" required="" id="lastName">
-            </div>
-
-            <div class="fieldcontain required">
-                <label for="email">Email
-                    <span class="required-indicator">*</span>
-                </label><input type="email" name="email" value="mansi.arora@tothenew.com" required="" id="email">
-            </div>
-
-            <div class="fieldcontain required">
-                <label for="password">Password
-                    <span class="required-indicator">*</span>
-                </label><input type="password" name="password" value="password" required="" id="password">
-            </div>
-
-        </fieldset>
-
-        <div class="clearfix" style="min-height: 30px;"></div>
-
-        <fieldset class="buttons">
-            <input class="save" type="submit"
-                   value="${message(code: 'default.button.update.label', default: 'Update')}"/>
+            <g:render template="form" model="[userInstance : user]"/>
+            <div class="clearfix" style="min-height: 30px;"></div>
+            <fieldset class="buttons">
+                <input class="save" type="submit"
+                       value="${message(code: 'default.button.update.label', default: 'Update')}"/>
+            </fieldset>
         </fieldset>
     </g:form>
 </div>

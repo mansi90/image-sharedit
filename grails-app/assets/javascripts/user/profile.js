@@ -20,9 +20,9 @@ profileFunctionality = (function () {
                 lastName: {
                     required: true
                 },
-                email: {
+                username: {
                     required: true,
-                    email: true
+                    minlength: 8
                 },
                 password: {
                     required: true,

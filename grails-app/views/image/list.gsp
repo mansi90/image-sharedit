@@ -49,9 +49,11 @@
         </tbody>
     </table>
 
-    <div class="pagination">
-        <g:paginate total="${imageCount ?: 0}"/>
-    </div>
+    <g:if test="${imageTotal > 10}">
+        <div class="pagination pull-right">
+            <g:paginate total="${imageTotal ?: 0}"/>
+        </div>
+    </g:if>
 </div>
 </body>
 </html>
