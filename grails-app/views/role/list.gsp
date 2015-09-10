@@ -25,9 +25,11 @@
     </g:if>
     <f:table collection="${roleList}"/>
 
-    <div class="pagination">
-        <g:paginate total="${roleCount ?: 0}"/>
-    </div>
+    <g:if test="${roleTotal > 10}">
+        <div class="pagination pull-right">
+            <g:paginate total="${roleTotal ?: 0}"/>
+        </div>
+    </g:if>
 </div>
 </body>
 </html>
