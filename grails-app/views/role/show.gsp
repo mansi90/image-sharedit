@@ -25,7 +25,8 @@
         <div class="message" role="status">${flash.message}</div>
     </g:if>
     <f:display bean="role"/>
-    <g:form resource="${this.role}" method="DELETE">
+    <g:form action="delete" method="POST">
+        <g:hiddenField name="id" value="${role?.id}"/>
         <fieldset class="buttons">
             <g:link class="edit" action="edit" resource="${this.role}"><g:message code="default.button.edit.label"
                                                                                   default="Edit"/></g:link>

@@ -84,7 +84,8 @@
         </li>
     </ol>
 
-    <g:form resource="${this.user}" method="DELETE">
+    <g:form action="delete" method="POST">
+        <g:hiddenField name="id" value="${user?.id}"/>
         <fieldset class="buttons">
             <g:link class="edit" action="edit" resource="${this.user}"><g:message code="default.button.edit.label"
                                                                                   default="Edit"/></g:link>

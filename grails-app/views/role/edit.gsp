@@ -32,8 +32,9 @@
             </g:eachError>
         </ul>
     </g:hasErrors>
-    <g:form resource="${this.role}" method="PUT">
-        <g:hiddenField name="version" value="${this.role?.version}"/>
+    <g:form action="update" method="POST">
+        <g:hiddenField name="id" value="${role?.id}"/>
+        <g:hiddenField name="version" value="${role?.version}"/>
         <fieldset class="form">
             <f:all bean="role"/>
         </fieldset>

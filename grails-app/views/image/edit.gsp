@@ -33,7 +33,7 @@
         </ul>
     </g:hasErrors>
 
-    <g:form name="imageForm" action="update" method="put">
+    <g:form name="imageForm" action="update" method="POST">
         <g:hiddenField name="id" value="${image.id}"/>
         <g:hiddenField name="version" value="${image.version}"/>
 
