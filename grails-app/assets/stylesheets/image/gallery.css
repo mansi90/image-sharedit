@@ -90,6 +90,10 @@
     border: 1px solid rgb(6, 115, 155);
 }
 
+#edit-image-modal .modal-dialog {
+    width: 850px !important;
+}
+
 #edit-image-modal .modal-dialog .modal-content {
     border-radius: 6px !important;
 }
@@ -109,6 +113,7 @@
     float: left;
     color: #3275aa;
 }
+
 #edit-image-modal .modal-dialog .modal-heading i.cancel-icon {
     margin: -2% -2% 0 0;
     display: inline;

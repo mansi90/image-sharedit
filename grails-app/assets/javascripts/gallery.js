@@ -17,17 +17,16 @@ galleryFunctionality = (function () {
             callbacks: {
                 open: function () {
                     $('.editImageLink').click(function(){
-                        console.log('clicked');
+                        var url = $(this).data('imageurl');
+                        $(editImageModal).find('.modal-body').append("<div id='editor-window'></div>");
+                        $(editImageModal).find("#editor-window").imageEditor({
+                            'source': url,
+                            "onClose": function () {
+                                $(editImageModal).find("#editor-window").remove();
+                            }
+                        });
                         $(editImageModal).modal('show');
-                        console.log('after');
                     });
-
-                    /*$("#editor-window").imageEditor({
-                     'source': $span.data('imageurl'),
-                     //               "maxWidth": 500,
-                     "onClose": function () {
-                     }
-                     });*/
                 }
             }
         });
