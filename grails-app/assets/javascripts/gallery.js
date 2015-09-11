@@ -1,7 +1,7 @@
 var galleryFunctionality;
 galleryFunctionality = (function () {
     var $document = $(document),
-        editImageModal= '#image-editor-main-section #edit-image-modal';
+        editImageModal = '#image-editor-main-section #edit-image-modal';
 
     $document.ready(function () {
         $('.image-popup-vertical-fit').magnificPopup({
@@ -16,11 +16,13 @@ galleryFunctionality = (function () {
             },
             callbacks: {
                 open: function () {
-                    $('.editImageLink').click(function(){
+                    $('.editImageLink').click(function () {
                         var url = $(this).data('imageurl');
                         $(editImageModal).find('.modal-body').append("<div id='editor-window'></div>");
                         $(editImageModal).find("#editor-window").imageEditor({
                             'source': url,
+                            maxWidth: 800,
+                            maxHeight: 800,
                             "onClose": function () {
                                 $(editImageModal).find("#editor-window").remove();
                             }
