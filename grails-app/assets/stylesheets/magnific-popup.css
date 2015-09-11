@@ -185,11 +185,13 @@ button::-moz-focus-inner {
 .mfp-counter {
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     color: #CCC;
     font-size: 12px;
     line-height: 18px;
     white-space: nowrap;
+    margin-right: 10px;
+    display: inline-block;
 }
 
 .mfp-arrow {
