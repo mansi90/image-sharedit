@@ -67,12 +67,8 @@
     padding-left: 45px !important;
 }
 
-.mfp-counter {
-    left: 0;
-    margin-right: 10px;
-}
-
 .editImageLink.editBtn {
+    cursor: pointer;
     float: right;
     width: 90px;
     height: 25px;
@@ -92,4 +88,33 @@
     border-radius: 1px;
     background: rgb(22, 140, 182);
     border: 1px solid rgb(6, 115, 155);
+}
+
+#edit-image-modal .modal-dialog .modal-content {
+    border-radius: 6px !important;
+}
+
+#edit-image-modal .modal-dialog .modal-body {
+    min-height: 200px;
+}
+
+#edit-image-modal .modal-dialog .modal-heading {
+    padding-bottom: 9%;
+}
+
+#edit-image-modal .modal-dialog .modal-heading h3 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: bold;
+    float: left;
+    color: #3275aa;
+}
+#edit-image-modal .modal-dialog .modal-heading i.cancel-icon {
+    margin: -2% -2% 0 0;
+    display: inline;
+    background: url('../../images/icons/black-cross-14X14.png') no-repeat !important;
+    padding-right: 15px;
+    height: 20px;
+    opacity: 1;
+    float: right;
 }
