@@ -10,6 +10,11 @@
     <asset:javascript src="bootstrap.js"/>
     <asset:javascript src="jquery.magnific-popup.js"/>
     <asset:javascript src="gallery.js"/>
+
+    <asset:stylesheet src="editor/bootstrap-image-editor.css"/>
+    <asset:javascript src="editor/jquery-ui.js"/>
+    <asset:javascript src="editor/caman.full.js"/>
+    <asset:javascript src="editor/bootstrap-image-editor.min.js"/>
 </head>
 
 <body>
