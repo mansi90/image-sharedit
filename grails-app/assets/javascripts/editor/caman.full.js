@@ -208,7 +208,7 @@
 
         Caman.crossOrigin = "anonymous";
 
-        Caman.remoteProxy = "";
+        Caman.remoteProxy =  "proxy.php";
 
         Caman.proxyParam = "camanProxyUrl";
 
