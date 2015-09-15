@@ -17,22 +17,35 @@ galleryFunctionality = (function () {
             callbacks: {
                 open: function () {
                     $('.editImageLink').click(function () {
-                        var url = $(this).data('imageurl');
-                        $(editImageModal).find('.modal-body').append("<div id='editor-window'></div>");
-                        $(editImageModal).find("#editor-window").imageEditor({
-                            'source': url,
-                            maxWidth: 800,
-                            maxHeight: 800,
-                            "onClose": function () {
-                                $(editImageModal).find("#editor-window").remove();
-                            }
-                        });
-                        $(editImageModal).modal('show');
+                        openImageEditorModal($(this).data('imageurl'), $(this).data('width'), $(this).data('height'));
                     });
                 }
             }
         });
     });
+
+    function openImageEditorModal(imageUrl, width, height) {
+        var img = document.createElement('img'), canvas = document.createElement('canvas'), dataURL;
+        canvas.width = width;
+        canvas.height = height;
+        $(editImageModal).find('.modal-body').append("<div id='editor-window'></div>");
+        $(editImageModal).modal('show');
+        img.onload = function (e) {
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+            dataURL = canvas.toDataURL(); // Read succeeds, canvas won't be dirty.
+            $(editImageModal).find("#editor-window").imageEditor({
+                'source': dataURL,
+                width: (width > 800 ? 800 : width),
+                height: (height > 800 ? 800 : height),
+                "onClose": function () {
+                    $(editImageModal).find("#editor-window").remove();
+                }
+            });
+        };
+        img.crossOrigin = ''; // no credentials flag. Same as img.crossOrigin='anonymous'
+        img.src = imageUrl;
+    }
 
     return{
 

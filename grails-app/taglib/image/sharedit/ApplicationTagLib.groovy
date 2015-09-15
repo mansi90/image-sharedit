@@ -11,7 +11,8 @@ class ApplicationTagLib {
 
     def galleryImageTitle = { attr, body ->
         Image imageInstance = attr.imageInstance as Image
-        String html = imageInstance.name + "<span class='editImageLink editBtn' data-imageurl='${imageInstance.getShowImageUrl(800)}'>Edit</span>"
+        String html = imageInstance.name + "<span class='editImageLink editBtn' data-imageurl='${imageInstance.getShowImageUrl(800)}' " +
+                "data-width='${imageInstance.width}' data-height='${imageInstance.height}'>Edit</span>"
         out << html
     }
 }
