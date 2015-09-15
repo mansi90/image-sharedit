@@ -38,7 +38,7 @@
         <tbody>
         <g:each in="${imageList}" status="i" var="imageInstance">
             <tr class="${i % 2 == 0 ? "even" : "odd"}" style="height: ${Constants.thumbnailSize}px;">
-                <td class="image-column"><img src="${imageInstance?.getShowImageUrl(Constants.thumbnailSize)}"></td>
+                <td class="image-column"><img src="${imageInstance?.getShowImageUrl(Constants.thumbnailSize).url}"></td>
                 <td class="name-column"><g:link action="show"
                                                 id="${imageInstance.id}">${imageInstance.name}</g:link></td>
                 <td class="desc-column">${imageInstance.description}</td>

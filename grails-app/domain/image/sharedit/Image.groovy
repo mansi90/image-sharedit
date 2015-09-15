@@ -18,7 +18,7 @@ class Image {
         return list
     }
 
-    transient def getShowImageUrl(int requestedSize) {
+    transient Map getShowImageUrl(int requestedSize) {
         Integer customizedWidth = this.width, customizedHeight = this.height
         if ((this.width > this.height) && (this.width >= requestedSize)) {
             customizedWidth = requestedSize
@@ -30,7 +30,8 @@ class Image {
         return getUrlForImageFitResize(customizedWidth, customizedHeight)
     }
 
-    def getUrlForImageFitResize(Integer width, Integer height) {
-        return (url?.replace("/upload/", "/upload/c_fit,w_${width},h_${height},f_auto/".toString()))
+    Map getUrlForImageFitResize(Integer width, Integer height) {
+        return [url: (url?.replace("/upload/", "/upload/c_fit,w_${width},h_${height},f_auto/".toString())),
+                width: width, height: height]
     }
 }
