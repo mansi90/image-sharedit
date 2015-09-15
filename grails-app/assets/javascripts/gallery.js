@@ -22,6 +22,10 @@ galleryFunctionality = (function () {
                 }
             }
         });
+
+        $(document).on('hidden.bs.modal', editImageModal, function(){
+            $(editImageModal).find("#editor-window").remove();
+        });
     });
 
     function openImageEditorModal(imageUrl, width, height) {
@@ -30,6 +34,7 @@ galleryFunctionality = (function () {
         canvas.height = height;
         $(editImageModal).find('.modal-body').append("<div id='editor-window'></div>");
         $(editImageModal).modal('show');
+        showSpinner($("#editor-window"));
         img.onload = function (e) {
             var ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, width, height);
@@ -39,13 +44,24 @@ galleryFunctionality = (function () {
                 width: (width > 800 ? 800 : width),
                 height: (height > 800 ? 800 : height),
                 "onClose": function () {
-                    $(editImageModal).find("#editor-window").remove();
+                    $(editImageModal).find(".cancel-icon").click();
                 }
             });
+            removeSpinner($("#editor-window"));
         };
         img.crossOrigin = ''; // no credentials flag. Same as img.crossOrigin='anonymous'
         img.src = imageUrl;
     }
+
+    function showSpinner  ($parentDiv) {
+        var spinner = new Spinner().spin();
+        $parentDiv.append('<div class="spinner-overlay"></div>').append(spinner.el);
+    }
+
+    function removeSpinner ($parentDiv) {
+        $parentDiv.find('div.spinner').remove();
+        $parentDiv.find('div.spinner-overlay').remove();
+    };
 
     return{
 

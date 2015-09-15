@@ -9,6 +9,7 @@
     <asset:javascript src="jquery-2.1.3.js"/>
     <asset:javascript src="bootstrap.js"/>
     <asset:javascript src="jquery.magnific-popup.js"/>
+    <asset:javascript src="spin.min.js"/>
     <asset:javascript src="gallery.js"/>
 
     <asset:stylesheet src="editor/bootstrap-image-editor.css"/>

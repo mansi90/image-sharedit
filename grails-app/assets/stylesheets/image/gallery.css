@@ -115,7 +115,6 @@
 }
 
 #edit-image-modal .modal-dialog .modal-heading i.cancel-icon {
-    margin: -2% -2% 0 0;
     display: inline;
     background: url('../../images/icons/black-cross-14X14.png') no-repeat !important;
     padding-right: 15px;
