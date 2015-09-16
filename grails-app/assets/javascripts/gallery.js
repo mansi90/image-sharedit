@@ -17,51 +17,44 @@ galleryFunctionality = (function () {
             callbacks: {
                 open: function () {
                     $('.editImageLink').click(function () {
-                        openImageEditorModal($(this).data('imageurl'), $(this).data('width'), $(this).data('height'));
+                        $(editImageModal).modal('show');
+                        var callbacks= {};
+                        callbacks.success = function(data){
+                            $("#render-image-editor").html(data);
+                        };
+                        callbacks.error = function(){
+                            removeSpinner($("#render-image-editor"));
+                        };
+                        showSpinner($("#render-image-editor"));
+                        ajax($(this).data('ajaxurl'), {}, callbacks);
                     });
                 }
             }
         });
 
-        $(document).on('hidden.bs.modal', editImageModal, function(){
-            $(editImageModal).find("#editor-window").remove();
+        $(document).on('hidden.bs.modal', editImageModal, function () {
+            $(editImageModal).find("#render-image-editor").empty();
         });
     });
 
-    function openImageEditorModal(imageUrl, width, height) {
-        var img = document.createElement('img'), canvas = document.createElement('canvas'), dataURL;
-        canvas.width = width;
-        canvas.height = height;
-        $(editImageModal).find('.modal-body').append("<div id='editor-window'></div>");
-        $(editImageModal).modal('show');
-        showSpinner($("#editor-window"));
-        img.onload = function (e) {
-            var ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, width, height);
-            dataURL = canvas.toDataURL(); // Read succeeds, canvas won't be dirty.
-            $(editImageModal).find("#editor-window").imageEditor({
-                'source': dataURL,
-                width: (width > 800 ? 800 : width),
-                height: (height > 800 ? 800 : height),
-                "onClose": function () {
-                    $(editImageModal).find(".cancel-icon").click();
-                }
-            });
-            removeSpinner($("#editor-window"));
-        };
-        img.crossOrigin = ''; // no credentials flag. Same as img.crossOrigin='anonymous'
-        img.src = imageUrl;
-    }
-
-    function showSpinner  ($parentDiv) {
+    function showSpinner($parentDiv) {
         var spinner = new Spinner().spin();
         $parentDiv.append('<div class="spinner-overlay"></div>').append(spinner.el);
     }
 
-    function removeSpinner ($parentDiv) {
+    function removeSpinner($parentDiv) {
         $parentDiv.find('div.spinner').remove();
         $parentDiv.find('div.spinner-overlay').remove();
-    };
+    }
+
+    function ajax (url, data, callbacks) {
+        $.ajax({
+            url: url,
+            data: data,
+            success: callbacks.success,
+            error: callbacks.error
+        });
+    }
 
     return{
 

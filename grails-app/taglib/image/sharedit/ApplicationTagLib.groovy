@@ -11,9 +11,8 @@ class ApplicationTagLib {
 
     def galleryImageTitle = { attr, body ->
         Image imageInstance = attr.imageInstance as Image
-        Map imageDetails = imageInstance.getShowImageUrl(800)
-        String html = imageInstance.name + "<span class='editImageLink editBtn' data-imageurl='${imageDetails.url}' " +
-                "data-width='${imageDetails.width}' data-height='${imageDetails.height}'>Edit</span>"
+        String html = imageInstance.name + "<span class='editImageLink editBtn'" +
+                " data-ajaxurl='${createLink(controller: 'image', action: 'renderCanvas', params: [id: imageInstance.id])}'>Edit</span>"
         out << html
     }
 }
