@@ -175,7 +175,7 @@ body {
 
 #Filters .Filter {
     float: left;
-    width: 300px
+    width: 265px
 }
 
 #Filters .Filter > div {
@@ -187,7 +187,8 @@ body {
 }
 
 #Filters .Filter .FilterName p {
-    margin: 0
+    margin: 0;
+    text-transform: capitalize;
 }
 
 #Filters .Filter .FilterSetting {

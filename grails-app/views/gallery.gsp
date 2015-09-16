@@ -52,10 +52,9 @@
     <div class="modal-content">
         <div class="modal-body">
             <div class="modal-heading">
+                <h3>Edit Image</h3>
                 <i aria-hidden="true" data-dismiss="modal" class="cancel-icon" type="button"></i>
             </div>
-
-            <h3>Edit Image</h3>
 
             <g:render template="/image/imageEditor"/>
 

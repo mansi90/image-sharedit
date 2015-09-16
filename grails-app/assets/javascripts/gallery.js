@@ -49,8 +49,8 @@ galleryFunctionality = (function () {
             $(document).trigger('_canvas_ready');
         };
         img.crossOrigin = ''; // no credentials flag. Same as img.crossOrigin='anonymous'
-        img.width = (width > 800 ? 800 : width);
-        img.height = (height > 800 ? 800 : height);
+        img.width = width;
+        img.height = height;
         img.src = imageUrl;
     }
 
