@@ -1,20 +1,3 @@
-function selectText() {
-    var a;
-    if (document.selection) {
-        a = document.body.createTextRange();
-        a.moveToElementText(this);
-        a.select()
-    } else {
-        if (window.getSelection) {
-            a = document.createRange();
-            a.selectNode(this);
-            window.getSelection().addRange(a)
-        }
-    }
-}
-$(document).ready(function () {
-    $("body").on("click", ".CopyCommand", selectText)
-});
 (function () {
     var m = document.createElement("input");
     try {
@@ -503,18 +486,18 @@ $(document).ready(function () {
         return N.pluck(N.map(R,function (U, S, T) {
             return{value: U, index: S, criteria: P.call(O, U, S, T)}
         }).sort(function (V, U) {
-            var T = V.criteria;
-            var S = U.criteria;
-            if (T !== S) {
-                if (T > S || T === void 0) {
-                    return 1
+                var T = V.criteria;
+                var S = U.criteria;
+                if (T !== S) {
+                    if (T > S || T === void 0) {
+                        return 1
+                    }
+                    if (T < S || S === void 0) {
+                        return -1
+                    }
                 }
-                if (T < S || S === void 0) {
-                    return -1
-                }
-            }
-            return V.index < U.index ? -1 : 1
-        }), "value")
+                return V.index < U.index ? -1 : 1
+            }), "value")
     };
     var t = function (T, S, P, R) {
         var O = {};
@@ -4283,66 +4266,33 @@ $(document).ready(function () {
         if (!($("#example").length > 0)) {
             return
         }
-        c = Caman("#example");
-        i = Caman("#preset-example");
-        $(".FilterSetting input").each(function () {
-            var j;
-            j = $(this).data("filter");
-            return b[j] = $(this).val()
-        });
-        $("#Filters").on("change", ".FilterSetting input", function () {
-            var j, k;
-            j = $(this).data("filter");
-            k = $(this).val();
-            b[j] = k;
-            $(this).find("~ .FilterValue").html(k);
-            return a()
-        });
-        return $("#PresetFilters").on("click", "a", function () {
-            return h($(this).data("preset"))
-        })
-    })
-}).call(this);
-(function () {
-    var a;
-    a = function (d) {
-        var b, c, e;
-        e = d.attr("id");
-        d.attr("id", "");
-        c = $("<div>").css({position: "absolute", visibility: "hidden", top: $(document).scrollTop() + "px"}).attr("id", e).appendTo(document.body);
-        document.location.hash = "#" + e;
-        c.remove();
-        d.attr("id", e);
-        b = $("#GuideSections li > a").filter("[href=#" + (d.attr("id")) + "]");
-        b.parents("ul").find(".Active").removeClass("Active");
-        return b.parents("li").addClass("Active")
-    };
-    $(document).ready(function () {
-        var b;
-        $("#GuideSections").on("click", "a", function () {
-            var c, d;
-            c = $($(this).attr("href"));
-            d = Math.max(0, c.position().top - 129);
-            document.location.hash = $(this).attr("href");
-            setTimeout(function () {
-                return $("body").scrollTop(d)
-            }, 50);
-            return false
-        });
-        b = _.map($("#GuideSections li > a"), function (c) {
-            return $($(c).attr("href"))
-        });
-        b = b.reverse();
-        return $(document).on("scroll", _.throttle(function () {
-            var e, f, d, c;
-            f = $(document).scrollTop();
-            for (d = 0, c = b.length; d < c; d++) {
-                e = b[d];
-                if (f >= e.position().top - 130) {
-                    a(e);
-                    return
-                }
-            }
-        }, 200))
+        var img = document.createElement('img'), canvas = document.getElementById('example');
+        img.onload = function (e) {
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            $(canvas).attr('data-caman-hidpi', canvas.toDataURL());
+            c = Caman("#example");
+            i = Caman("#example");
+            $(".FilterSetting input").each(function () {
+                var j;
+                j = $(this).data("filter");
+                return b[j] = $(this).val()
+            });
+            $("#Filters").on("change", ".FilterSetting input", function () {
+                var j, k;
+                j = $(this).data("filter");
+                k = $(this).val();
+                b[j] = k;
+                $(this).find("~ .FilterValue").html(k);
+                return a()
+            });
+            return $("#PresetFilters").on("click", "a", function () {
+                return h($(this).data("preset"))
+            })
+        };
+        img.crossOrigin = ''; // no credentials flag. Same as img.crossOrigin='anonymous'
+        img.width = (canvas.width > 800 ? 800 : canvas.width);
+        img.height = (canvas.height > 800 ? 800 : canvas.height);
+        img.src = $('input[name=imageBase64Url]').val();
     })
 }).call(this);
