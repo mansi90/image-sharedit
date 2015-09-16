@@ -24,7 +24,14 @@ galleryFunctionality = (function () {
         });
 
         $(document).on('hidden.bs.modal', editImageModal, function () {
-            $(editImageModal).find("#editor-window").remove();
+            $(editImageModal).find("#editor-window").html('<canvas id="example"></canvas>');
+            $(editImageModal).find("#Filters").find('input[type=range]').each(function () {
+                $(this).val(0);
+                $(this).change();
+            });
+            $(editImageModal).find("#PresetFilters").find('a[data-preset]').each(function () {
+                $(this).removeClass("Active")
+            });
         });
     });
 
@@ -32,13 +39,12 @@ galleryFunctionality = (function () {
         var img = document.createElement('img'), canvas = document.getElementById('example'), dataURL;
         canvas.width = width;
         canvas.height = height;
-        $(editImageModal).find('.modal-body').append("<div id='editor-window'></div>");
         $(editImageModal).modal('show');
         showSpinner($("#editor-window"));
         img.onload = function (e) {
             var ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, width, height);
-            $(canvas).attr('data-caman-hidpi',  canvas.toDataURL());
+            $(canvas).attr('data-caman-hidpi', canvas.toDataURL());
             removeSpinner($("#editor-window"));
             $(document).trigger('_canvas_ready');
         };
@@ -53,10 +59,10 @@ galleryFunctionality = (function () {
         $parentDiv.append('<div class="spinner-overlay"></div>').append(spinner.el);
     }
 
-    function removeSpinner ($parentDiv) {
+    function removeSpinner($parentDiv) {
         $parentDiv.find('div.spinner').remove();
         $parentDiv.find('div.spinner-overlay').remove();
-    };
+    }
 
     return{
 
