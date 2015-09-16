@@ -8,7 +8,7 @@
         <div class="FilterSetting">
             <input type="range" min="-100" max="100" step="1" value="0"
                    data-filter="brightness">
-            <span class="FilterValue">39</span>
+            <span class="FilterValue">0</span>
         </div>
     </div>
 
@@ -139,10 +139,7 @@
 
 </div>
 
-<div id='editor-window'>
-    <input type="hidden" name="imageBase64Url" value="${imageBytes}">
-    <canvas id="example" width="${imageDetails.width}" height="${imageDetails.height}" data-caman-id="1"></canvas>
-</div>
+<div><canvas id="example"></canvas></div>
 
 <div id="PresetFilters">
 
@@ -183,5 +180,3 @@
     <a data-preset="concentrate">Concentrate</a>
 
 </div>
-
-<asset:javascript src="caman-example.js"/>

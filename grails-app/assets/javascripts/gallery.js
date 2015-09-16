@@ -17,44 +17,46 @@ galleryFunctionality = (function () {
             callbacks: {
                 open: function () {
                     $('.editImageLink').click(function () {
-                        $(editImageModal).modal('show');
-                        var callbacks= {};
-                        callbacks.success = function(data){
-                            $("#render-image-editor").html(data);
-                        };
-                        callbacks.error = function(){
-                            removeSpinner($("#render-image-editor"));
-                        };
-                        showSpinner($("#render-image-editor"));
-                        ajax($(this).data('ajaxurl'), {}, callbacks);
+                        openImageEditorModal($(this).data('imageurl'), $(this).data('width'), $(this).data('height'));
                     });
                 }
             }
         });
 
         $(document).on('hidden.bs.modal', editImageModal, function () {
-            $(editImageModal).find("#render-image-editor").empty();
+            $(editImageModal).find("#editor-window").remove();
         });
     });
+
+    function openImageEditorModal(imageUrl, width, height) {
+        var img = document.createElement('img'), canvas = document.getElementById('example'), dataURL;
+        canvas.width = width;
+        canvas.height = height;
+        $(editImageModal).find('.modal-body').append("<div id='editor-window'></div>");
+        $(editImageModal).modal('show');
+        showSpinner($("#editor-window"));
+        img.onload = function (e) {
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+            $(canvas).attr('data-caman-hidpi',  canvas.toDataURL());
+            removeSpinner($("#editor-window"));
+            $(document).trigger('_canvas_ready');
+        };
+        img.crossOrigin = ''; // no credentials flag. Same as img.crossOrigin='anonymous'
+        img.width = (width > 800 ? 800 : width);
+        img.height = (height > 800 ? 800 : height);
+        img.src = imageUrl;
+    }
 
     function showSpinner($parentDiv) {
         var spinner = new Spinner().spin();
         $parentDiv.append('<div class="spinner-overlay"></div>').append(spinner.el);
     }
 
-    function removeSpinner($parentDiv) {
+    function removeSpinner ($parentDiv) {
         $parentDiv.find('div.spinner').remove();
         $parentDiv.find('div.spinner-overlay').remove();
-    }
-
-    function ajax (url, data, callbacks) {
-        $.ajax({
-            url: url,
-            data: data,
-            success: callbacks.success,
-            error: callbacks.error
-        });
-    }
+    };
 
     return{
 

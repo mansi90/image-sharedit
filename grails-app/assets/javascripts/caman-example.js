@@ -4262,37 +4262,27 @@
             return d = false
         })
     };
-    $(document).ready(function () {
+    $(document).bind('_canvas_ready', function() {
         if (!($("#example").length > 0)) {
             return
         }
-        var img = document.createElement('img'), canvas = document.getElementById('example');
-        img.onload = function (e) {
-            var ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-            $(canvas).attr('data-caman-hidpi', canvas.toDataURL());
-            c = Caman("#example");
-            i = Caman("#example");
-            $(".FilterSetting input").each(function () {
-                var j;
-                j = $(this).data("filter");
-                return b[j] = $(this).val()
-            });
-            $("#Filters").on("change", ".FilterSetting input", function () {
-                var j, k;
-                j = $(this).data("filter");
-                k = $(this).val();
-                b[j] = k;
-                $(this).find("~ .FilterValue").html(k);
-                return a()
-            });
-            return $("#PresetFilters").on("click", "a", function () {
-                return h($(this).data("preset"))
-            })
-        };
-        img.crossOrigin = ''; // no credentials flag. Same as img.crossOrigin='anonymous'
-        img.width = (canvas.width > 800 ? 800 : canvas.width);
-        img.height = (canvas.height > 800 ? 800 : canvas.height);
-        img.src = $('input[name=imageBase64Url]').val();
+        c = Caman("#example");
+        i = Caman("#example");
+        $(".FilterSetting input").each(function () {
+            var j;
+            j = $(this).data("filter");
+            return b[j] = $(this).val()
+        });
+        $("#Filters").on("change", ".FilterSetting input", function () {
+            var j, k;
+            j = $(this).data("filter");
+            k = $(this).val();
+            b[j] = k;
+            $(this).find("~ .FilterValue").html(k);
+            return a()
+        });
+        return $("#PresetFilters").on("click", "a", function () {
+            return h($(this).data("preset"))
+        })
     })
 }).call(this);

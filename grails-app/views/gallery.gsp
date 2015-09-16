@@ -12,6 +12,7 @@
     <asset:javascript src="spin.min.js"/>
 
     <asset:stylesheet src="caman-example.css"/>
+    <asset:javascript src="caman-example.js"/>
     <asset:javascript src="gallery.js"/>
 
     %{--<asset:stylesheet src="editor/bootstrap-image-editor.css"/>--}%
@@ -45,26 +46,27 @@
 </div>
 
 <div id="image-editor-main-section">
-    <div class="modal fade" id="edit-image-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
+<div class="modal fade" id="edit-image-modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
 
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="modal-heading">
-                        <i aria-hidden="true" data-dismiss="modal" class="cancel-icon" type="button"></i>
-
-                        <h3>Edit Image</h3>
-
-                        <div id="render-image-editor"></div>
-
-                    </div>
-
-                    <div class="modal-footer">
-
-                    </div>
-                </div>
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="modal-heading">
+                <i aria-hidden="true" data-dismiss="modal" class="cancel-icon" type="button"></i>
             </div>
+
+            <h3>Edit Image</h3>
+
+            <g:render template="/image/imageEditor"/>
+
+        </div>
+
+        <div class="modal-footer">
+
         </div>
     </div>
+</div>
+</div>
+</div>
 </body>
 </html>

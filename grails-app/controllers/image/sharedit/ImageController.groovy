@@ -107,13 +107,4 @@ class ImageController {
             redirect(action: "show", id: id)
         }
     }
-
-    def renderCanvas (Long id){
-        Map imageDetails = Image.get(id)?.getShowImageUrl(800)
-        URL url = new URL(imageDetails.url);
-        InputStream is = url.openStream()
-        byte[] bytes = is.bytes
-        def imageBytes = "data:image/png;base64,"+Base64.encodeBase64String(bytes)
-        render(template: 'imageEditor', model: [imageDetails :imageDetails, imageBytes : imageBytes])
-    }
 }
