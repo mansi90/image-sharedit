@@ -11,14 +11,9 @@
     <asset:javascript src="jquery.magnific-popup.js"/>
     <asset:javascript src="spin.min.js"/>
 
-    <asset:stylesheet src="caman-example.css"/>
-    <asset:javascript src="caman-example.js"/>
+    <asset:stylesheet src="editor/custom-caman.css"/>
+    <asset:javascript src="editor/custom-caman.js"/>
     <asset:javascript src="gallery.js"/>
-
-    %{--<asset:stylesheet src="editor/bootstrap-image-editor.css"/>--}%
-    %{--<asset:javascript src="editor/jquery-ui.js"/>--}%
-    %{--<asset:javascript src="editor/caman.full.js"/>--}%
-    %{--<asset:javascript src="editor/bootstrap-image-editor.min.js"/>--}%
 </head>
 
 <body>
