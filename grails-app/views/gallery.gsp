@@ -35,7 +35,7 @@
                 </div>
             </div>
 
-            <p class="title-section"><custom:truncatedString property="${imageInstance.name}" max="18"/></p>
+            <p class="title-section"><custom:truncatedString property="${imageInstance.name}" max="15"/></p>
         </div>
     </g:each>
 </div>

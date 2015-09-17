@@ -3741,6 +3741,7 @@
         this.sepia(100);
         this.channels({red: 8, blue: 2, green: 4});
         this.gamma(0.87);
+        updateValuesForFilters({'contrast': 5, 'noise': 3, 'sepia': 100, 'gamma': 0.87});
         if (F) {
             return this.vignette("40%", 30)
         }
@@ -3757,6 +3758,7 @@
         if (F) {
             this.vignette("50%", 60)
         }
+        updateValuesForFilters({'brightness': 5, 'exposure': 15, 'saturation': -20, 'gamma': 1.8});
         return this.brightness(5)
     });
     v.Filter.register("clarity", function (F) {
@@ -3767,10 +3769,13 @@
         this.curves("rgb", [5, 0], [130, 150], [190, 220], [250, 255]);
         this.sharpen(15);
         this.vignette("45%", 20);
+        var object = {'vibrance': 20, 'sharpen': 15};
         if (F) {
             this.greyscale();
-            this.contrast(4)
+            this.contrast(4);
+            object['contrast'] = 4;
         }
+        updateValuesForFilters(object);
         return this
     });
     v.Filter.register("sinCity", function () {
@@ -3779,6 +3784,7 @@
         this.exposure(10);
         this.posterize(80);
         this.clip(30);
+        updateValuesForFilters({'contrast': 100, 'brightness': 15, 'exposure': 10, 'posterize': 80, 'clip': 30});
         return this.greyscale()
     });
     v.Filter.register("sunrise", function () {
@@ -3790,6 +3796,7 @@
         this.channels({red: 8, blue: 8});
         this.contrast(5);
         this.gamma(1.2);
+        updateValuesForFilters({'exposure': 3.5, 'saturation': -5, 'vibrance': 50, 'sepia': 60, 'contrast': 5, 'gamma': 1.2});
         return this.vignette("55%", 25)
     });
     v.Filter.register("crossProcess", function () {
@@ -3800,6 +3807,7 @@
         this.curves("b", [0, 0], [100, 150], [180, 180], [255, 255]);
         this.contrast(15);
         this.vibrance(75);
+        updateValuesForFilters({'exposure': 5, 'sepia': 20, 'contrast': 15, 'vibrance': 75, 'gamma': 1.6});
         return this.gamma(1.6)
     });
     v.Filter.register("orangePeel", function () {
@@ -3808,6 +3816,7 @@
         this.saturation(-30);
         this.colorize("#ff9000", 30);
         this.contrast(-5);
+        updateValuesForFilters({'vibrance': -30, 'saturation': -30, 'contrast': -5, 'gamma': 1.4});
         return this.gamma(1.4)
     });
     v.Filter.register("love", function () {
@@ -3816,6 +3825,7 @@
         this.contrast(4);
         this.colorize("#c42007", 30);
         this.vibrance(50);
+        updateValuesForFilters({'brightness': 5, 'exposure': 8, 'contrast': 4, 'vibrance': 50, 'gamma': 1.3});
         return this.gamma(1.3)
     });
     v.Filter.register("grungy", function () {
@@ -3824,6 +3834,7 @@
         this.saturation(-60);
         this.contrast(5);
         this.noise(5);
+        updateValuesForFilters({'gamma': 1.5, 'clip': 25, 'saturation': -60, 'contrast': 5, 'noise': 5});
         return this.vignette("50%", 30)
     });
     v.Filter.register("jarques", function () {
@@ -3832,6 +3843,7 @@
         this.curves("r", [0, 0], [144, 90], [138, 120], [255, 255]);
         this.curves("g", [10, 0], [115, 105], [148, 100], [255, 248]);
         this.curves("rgb", [0, 0], [120, 100], [128, 140], [255, 255]);
+        updateValuesForFilters({'saturation': -35, 'sharpen': 20});
         return this.sharpen(20)
     });
     v.Filter.register("pinhole", function () {
@@ -3839,6 +3851,7 @@
         this.sepia(10);
         this.exposure(10);
         this.contrast(15);
+        updateValuesForFilters({'sepia': 10, 'exposure': 10, 'contrast': 15});
         return this.vignette("60%", 35)
     });
     v.Filter.register("oldBoot", function () {
@@ -3848,6 +3861,7 @@
         this.sepia(30);
         this.channels({red: -10, blue: 5});
         this.curves("rgb", [0, 0], [80, 50], [128, 230], [255, 255]);
+        updateValuesForFilters({'saturation': -20, 'vibrance': -50, 'gamma': 1.1, 'sepia': 30});
         return this.vignette("60%", 30)
     });
     v.Filter.register("glowingSun", function (F) {
@@ -3855,6 +3869,7 @@
             F = true
         }
         this.brightness(10);
+        updateValuesForFilters({'brightness': 10});
         this.newLayer(function () {
             this.setBlendingMode("multiply");
             this.opacity(80);
@@ -3870,12 +3885,14 @@
         });
         this.exposure(20);
         this.gamma(0.8);
+        updateValuesForFilters({'brightness': 10, 'exposure': 20, 'gamma': 0.8});
         if (F) {
             return this.vignette("45%", 20)
         }
     });
     v.Filter.register("hazyDays", function () {
         this.gamma(1.2);
+        updateValuesForFilters({'gamma': 1.2});
         this.newLayer(function () {
             this.setBlendingMode("overlay");
             this.opacity(60);
@@ -3910,6 +3927,7 @@
         this.brightness(40);
         this.colorize("#ea1c5d", 10);
         this.curves("b", [0, 10], [128, 180], [190, 190], [255, 255]);
+        updateValuesForFilters({'brightness': 40});
         this.newLayer(function () {
             this.setBlendingMode("overlay");
             this.opacity(50);
@@ -3931,6 +3949,7 @@
         });
         this.gamma(1.4);
         this.vibrance(-30);
+        updateValuesForFilters({'brightness': 40, 'gamma': 1.4, 'vibrance': -30});
         this.newLayer(function () {
             this.opacity(10);
             return this.fillColor("#e5f0ff")
@@ -3947,6 +3966,7 @@
         this.gamma(0.8);
         this.contrast(5);
         this.exposure(10);
+        updateValuesForFilters({'saturation': 20, 'sepia': 100, 'gamma': 0.8, 'contrast': 5, 'exposure': 10});
         this.newLayer(function () {
             this.setBlendingMode("overlay");
             this.copyParent();
@@ -3959,6 +3979,7 @@
         this.greyscale();
         this.contrast(10);
         this.gamma(0.9);
+        updateValuesForFilters({'contrast': 10, 'gamma': 0.9});
         this.newLayer(function () {
             this.setBlendingMode("multiply");
             this.opacity(40);
@@ -3970,12 +3991,14 @@
         this.sepia(30);
         this.curves("rgb", [0, 10], [120, 90], [180, 200], [235, 255]);
         this.channels({red: 5, green: -2});
+        updateValuesForFilters({'contrast': 10, 'gamma': 0.9, 'sepia': 30, 'exposure': 15});
         return this.exposure(15)
     });
     v.Filter.register("concentrate", function () {
         this.sharpen(40);
         this.saturation(-50);
         this.channels({red: 3});
+        updateValuesForFilters({'sharpen': 40, 'saturation': -50});
         this.newLayer(function () {
             this.setBlendingMode("multiply");
             this.opacity(80);
@@ -3985,6 +4008,7 @@
             this.filter.exposure(10);
             return this.filter.channels({blue: 5})
         });
+        updateValuesForFilters({'sharpen': 40, 'saturation': -50, 'brightness': 10});
         return this.brightness(10)
     });
     v.Plugin.register("rotate", function (H) {
@@ -4284,3 +4308,10 @@
         })
     })
 }).call(this);
+
+function updateValuesForFilters(object) {
+    $('.FilterSetting input').each(function () {
+        var $input = $(this), value = object[$input.data('filter')];
+        $input.val(value != undefined == -1 ? $input.attr('min') : value);
+    });
+}
