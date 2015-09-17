@@ -11,7 +11,7 @@ class Utils {
         return (tokens.first())
     }
 
-    static List<Map> imageEffects() {
+    static List<Map> imageFilters() {
         return [
                 [name: 'brightness', min: -100, max: 100, value: 0, step: 1],
                 [name: 'contrast', min: -100, max: 100, value: 0, step: 1],
@@ -28,7 +28,7 @@ class Utils {
         ]
     }
 
-    static Map imageFilters() {
+    static Map imageEffects() {
         return [vintage: 'Vintage', lomo: 'Lomo', clarity: 'Clarity', sinCity: 'Sin City', sunrise: 'Sunrise',
                 crossProcess: 'Cross Process', orangePeel: 'Orange Peel', love: 'Love', grungy: 'Grungy',
                 jarques: 'Jarques', pinhole: 'Pinhole', glowingSun: 'Glowing Sun', hazyDays: 'Hazy Days',
