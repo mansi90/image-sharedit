@@ -4210,9 +4210,8 @@
     })
 }).call(this);
 (function () {
-    var f, c, e, b, d, i, a, h, g = {}.hasOwnProperty;
+    var f, c, e, b, d, a, h, g = {}.hasOwnProperty;
     c = null;
-    i = null;
     b = {};
     f = false;
     e = false;
@@ -4255,19 +4254,18 @@
         j = l.html();
         l.addClass("Active").html("Rendering...");
         d = true;
-        i.revert(false);
-        i[k]();
-        return i.render(function () {
+        c.revert(false);
+        c[k]();
+        return c.render(function () {
             l.html(j);
             return d = false
         })
     };
-    $(document).bind('_canvas_ready', function() {
+    $(document).bind('_canvas_ready', function () {
         if (!($("#example").length > 0)) {
             return
         }
         c = Caman("#example");
-        i = Caman("#example");
         $(".FilterSetting input").each(function () {
             var j;
             j = $(this).data("filter");
