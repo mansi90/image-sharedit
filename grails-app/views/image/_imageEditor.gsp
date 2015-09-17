@@ -1,139 +1,20 @@
+<%@ page import="image.sharedit.Utils" %>
 <div id="Filters">
 
-    <div class="Filter">
-        <div class="FilterName">
-            <p>brightness</p>
-        </div>
+    <g:each in="${Utils.imageEffects()}" var="effectDetail">
+        <div class="Filter">
+            <div class="FilterName">
+                <p>${effectDetail.name}</p>
+            </div>
 
-        <div class="FilterSetting">
-            <input type="range" min="-100" max="100" step="1" value="0"
-                   data-filter="brightness">
-            <span class="FilterValue">0</span>
+            <div class="FilterSetting">
+                <input type="range" min="${effectDetail.min}" max="${effectDetail.max}" step="${effectDetail.step}"
+                       value="${effectDetail.value}"
+                       data-filter="${effectDetail.name}">
+                <span class="FilterValue">${effectDetail.value}</span>
+            </div>
         </div>
-    </div>
-
-    <div class="Filter">
-        <div class="FilterName">
-            <p>contrast</p>
-        </div>
-
-        <div class="FilterSetting">
-            <input type="range" min="-100" max="100" step="1" value="0" data-filter="contrast">
-            <span class="FilterValue">0</span>
-        </div>
-    </div>
-
-    <div class="Filter">
-        <div class="FilterName">
-            <p>saturation</p>
-        </div>
-
-        <div class="FilterSetting">
-            <input type="range" min="-100" max="100" step="1" value="0"
-                   data-filter="saturation">
-            <span class="FilterValue">0</span>
-        </div>
-    </div>
-
-    <div class="Filter">
-        <div class="FilterName">
-            <p>vibrance</p>
-        </div>
-
-        <div class="FilterSetting">
-            <input type="range" min="-100" max="100" step="1" value="0" data-filter="vibrance">
-            <span class="FilterValue">0</span>
-        </div>
-    </div>
-
-    <div class="Filter">
-        <div class="FilterName">
-            <p>exposure</p>
-        </div>
-
-        <div class="FilterSetting">
-            <input type="range" min="-100" max="100" step="1" value="0" data-filter="exposure">
-            <span class="FilterValue">0</span>
-        </div>
-    </div>
-
-    <div class="Filter">
-        <div class="FilterName">
-            <p>hue</p>
-        </div>
-
-        <div class="FilterSetting">
-            <input type="range" min="0" max="100" step="1" value="0" data-filter="hue">
-            <span class="FilterValue">0</span>
-        </div>
-    </div>
-
-    <div class="Filter">
-        <div class="FilterName">
-            <p>sepia</p>
-        </div>
-
-        <div class="FilterSetting">
-            <input type="range" min="0" max="100" step="1" value="0" data-filter="sepia">
-            <span class="FilterValue">0</span>
-        </div>
-    </div>
-
-    <div class="Filter">
-        <div class="FilterName">
-            <p>gamma</p>
-        </div>
-
-        <div class="FilterSetting">
-            <input type="range" min="0" max="10" step="0.1" value="0" data-filter="gamma">
-            <span class="FilterValue">0</span>
-        </div>
-    </div>
-
-    <div class="Filter">
-        <div class="FilterName">
-            <p>noise</p>
-        </div>
-
-        <div class="FilterSetting">
-            <input type="range" min="0" max="100" step="1" value="0" data-filter="noise">
-            <span class="FilterValue">0</span>
-        </div>
-    </div>
-
-    <div class="Filter">
-        <div class="FilterName">
-            <p>clip</p>
-        </div>
-
-        <div class="FilterSetting">
-            <input type="range" min="0" max="100" step="1" value="0" data-filter="clip">
-            <span class="FilterValue">0</span>
-        </div>
-    </div>
-
-    <div class="Filter">
-        <div class="FilterName">
-            <p>sharpen</p>
-        </div>
-
-        <div class="FilterSetting">
-            <input type="range" min="0" max="100" step="1" value="0" data-filter="sharpen">
-            <span class="FilterValue">0</span>
-        </div>
-    </div>
-
-    <div class="Filter">
-        <div class="FilterName">
-            <p>stackBlur</p>
-        </div>
-
-        <div class="FilterSetting">
-            <input type="range" min="0" max="20" step="1" value="0" data-filter="stackBlur">
-            <span class="FilterValue">0</span>
-        </div>
-    </div>
-
+    </g:each>
 
     <div class="Clear"></div>
 
@@ -142,41 +23,7 @@
 <div id="editor-window"><canvas id="example"></canvas></div>
 
 <div id="PresetFilters">
-
-    <a data-preset="vintage">Vintage</a>
-
-    <a data-preset="lomo">Lomo</a>
-
-    <a data-preset="clarity">Clarity</a>
-
-    <a data-preset="sinCity">Sin City</a>
-
-    <a data-preset="sunrise">Sunrise</a>
-
-    <a data-preset="crossProcess">Cross Process</a>
-
-    <a data-preset="orangePeel">Orange Peel</a>
-
-    <a data-preset="love">Love</a>
-
-    <a data-preset="grungy">Grungy</a>
-
-    <a data-preset="jarques">Jarques</a>
-
-    <a data-preset="pinhole">Pinhole</a>
-
-    <a data-preset="oldBoot">Old Boot</a>
-
-    <a data-preset="glowingSun">Glowing Sun</a>
-
-    <a data-preset="hazyDays">Hazy Days</a>
-
-    <a data-preset="herMajesty">Her Majesty</a>
-
-    <a data-preset="nostalgia">Nostalgia</a>
-
-    <a data-preset="hemingway">Hemingway</a>
-
-    <a data-preset="concentrate">Concentrate</a>
-
+    <g:each in="${Utils.imageFilters()}">
+        <a data-preset="${it.key}">${it.value}</a>
+    </g:each>
 </div>
