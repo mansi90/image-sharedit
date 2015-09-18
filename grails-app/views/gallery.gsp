@@ -10,7 +10,8 @@
     <asset:javascript src="bootstrap.js"/>
     <asset:javascript src="jquery.magnific-popup.js"/>
     <asset:javascript src="spin.min.js"/>
-
+    <asset:stylesheet src="jquery.simplyscroll.css"/>
+    <asset:javascript src="jquery.simplyscroll.js"/>
     <asset:stylesheet src="editor/custom-caman.css"/>
     <asset:javascript src="editor/custom-caman.js"/>
     <asset:javascript src="gallery.js"/>
