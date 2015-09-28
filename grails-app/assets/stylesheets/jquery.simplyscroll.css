@@ -62,9 +62,9 @@ Note all DIVs are generated and should not be hard-coded
 
 .simply-scroll-btn {
     position: absolute;
-    background-image: url(../images/buttons.png);
-    width: 42px;
-    height: 44px;
+    background-image: url(../images/buttons-105X76.png);
+    width: 21px;
+    height: 22px;
     z-index: 3;
     cursor: pointer;
 }
@@ -72,7 +72,7 @@ Note all DIVs are generated and should not be hard-coded
 .simply-scroll-btn-left {
     left: 6px;
     bottom: 6px;
-    background-position: 0 -44px;
+    background-position: 0 -22px;
 }
 
 .simply-scroll-btn-left.disabled {
@@ -80,67 +80,67 @@ Note all DIVs are generated and should not be hard-coded
 }
 
 .simply-scroll-btn-left:hover, .simply-scroll-btn-left:focus {
-    background-position: 0 -88px;
+    background-position: 0 -44px;
 }
 
 .simply-scroll-btn-right {
     right: 6px;
     bottom: 6px;
-    background-position: -84px -44px;
+    background-position: -42px -22px;
 }
 
 .simply-scroll-btn-right.disabled {
-    background-position: -84px 0 !important;
+    background-position: -42px 0 !important;
 }
 
 .simply-scroll-btn-right:hover, .simply-scroll-btn-right:focus {
-    background-position: -84px -88px;
+    background-position: -42px -44px;
 }
 
 .simply-scroll-btn-up {
     right: 6px;
     top: 6px;
-    background-position: -126px -44px;
+    background-position: -63px -22px;
 }
 
 .simply-scroll-btn-up.disabled {
-    background-position: -126px 0 !important;
+    background-position: -63px 0 !important;
 }
 
 .simply-scroll-btn-up:hover, .simply-scroll-btn-up:focus {
-    background-position: -126px -88px;
+    background-position: -63px -44px;
 }
 
 .simply-scroll-btn-down {
     right: 6px;
     bottom: 6px;
-    background-position: -42px -44px;
+    background-position: -21px -22px;
 }
 
 .simply-scroll-btn-down.disabled {
-    background-position: -42px 0 !important;
+    background-position: -21px 0 !important;
 }
 
 .simply-scroll-btn-down:hover, .simply-scroll-btn-down:focus {
-    background-position: -42px -88px;
+    background-position: -21px -44px;
 }
 
 .simply-scroll-btn-pause {
     right: 6px;
     bottom: 6px;
-    background-position: -168px -44px;
+    background-position: -84px -22px;
 }
 
 .simply-scroll-btn-pause:hover, .simply-scroll-btn-pause:focus {
-    background-position: -168px -88px;
-}
-
-.simply-scroll-btn-pause.active {
     background-position: -84px -44px;
 }
 
+.simply-scroll-btn-pause.active {
+    background-position: -42px -22px;
+}
+
 .simply-scroll-btn-pause.active:hover, .simply-scroll-btn-pause.active:focus {
-    background-position: -84px -88px;
+    background-position: -42px -44px;
 }
 
 /* Custom class modifications - override classees
