@@ -91,11 +91,12 @@
 }
 
 #edit-image-modal .modal-dialog {
-    width: 850px !important;
+    width: 900px !important;
 }
 
 #edit-image-modal .modal-dialog .modal-content {
     border-radius: 6px !important;
+    height: 575px;
 }
 
 #edit-image-modal .modal-dialog .modal-body {
@@ -122,7 +123,24 @@
     opacity: 1;
     float: right;
 }
+
+#edit-image-modal .modal-dialog .modal-body {
+    min-height: 540px;
+}
+
 #edit-image-modal .modal-dialog .modal-body #editor-window {
     text-align: center;
     padding-bottom: 2%;
+    float: left;
+    width: 620px;
+}
+
+#PresetFilters{
+    display: inline-block;
+    float: left;
+    margin-left: 2%;
+}
+
+#PresetFilters .vert.simply-scroll-container{
+    width: 220px !important;
 }

@@ -1,4 +1,17 @@
 <%@ page import="image.sharedit.Utils" %>
+<div id="PresetFilters">
+    <ul id="scroller">
+        <g:each in="${Utils.imageEffects()}">
+            <li>
+                <a data-preset="${it.key}">
+                    <asset:image src="scenery.jpg" width="150" height="94"/><br/>
+                    <p style="text-align: center">${it.value}</p>
+                </a>
+            </li>
+        </g:each>
+    </ul>
+</div>
+
 <div id="Filters" style="display: none;">
     <g:each in="${Utils.imageFilters()}" var="filterDetail">
         <div class="Filter">
@@ -19,9 +32,17 @@
 </div>
 
 <div id="editor-window"><canvas id="example"></canvas></div>
-
-<div id="PresetFilters">
-    <g:each in="${Utils.imageEffects()}">
-        <a data-preset="${it.key}">${it.value}</a>
-    </g:each>
-</div>
+<script type="text/javascript">
+    (function ($) {
+        $(function () { //on DOM ready
+            $("#scroller").simplyScroll({
+                customClass: 'vert',
+                orientation: 'vertical',
+                auto: false,
+                manualMode: 'loop',
+                frameRate: 20,
+                speed: 5
+            });
+        });
+    })(jQuery);
+</script>
