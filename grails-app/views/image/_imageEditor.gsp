@@ -4,7 +4,7 @@
         <g:each in="${Utils.imageEffects()}">
             <li>
                 <a data-preset="${it.key}">
-                    <asset:image src="scenery.jpg" width="150" height="94"/><br/>
+                    <asset:image src="scenery.jpg" width="150" height="94"/>
                     <p style="text-align: center">${it.value}</p>
                 </a>
             </li>

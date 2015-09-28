@@ -144,3 +144,7 @@
 #PresetFilters .vert.simply-scroll-container{
     width: 220px !important;
 }
+
+#PresetFilters .vert .simply-scroll-list li p{
+    font-size: 12px !important;
+}
