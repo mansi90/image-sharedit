@@ -29,9 +29,16 @@ galleryFunctionality = (function () {
                 $(this).val(0);
                 $(this).change();
             });
-            $(editImageModal).find("#PresetFilters").find('a[data-preset]').each(function () {
-                $(this).removeClass("Active")
+            $(editImageModal).find('#PresetFilters .vert .simply-scroll-list li').each(function () {
+                $(this).removeClass("activeLi")
             });
+        });
+
+        $(document).on('click', '#PresetFilters .vert .simply-scroll-list li a', function () {
+            $('#PresetFilters .vert .simply-scroll-list li.activeLi').each(function () {
+                $(this).removeClass('activeLi')
+            });
+            $(this).closest('li').addClass('activeLi')
         });
     });
 

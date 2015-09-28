@@ -91,12 +91,12 @@
 }
 
 #edit-image-modal .modal-dialog {
-    width: 900px !important;
+    width: 765px !important;
 }
 
 #edit-image-modal .modal-dialog .modal-content {
     border-radius: 6px !important;
-    height: 575px;
+    height: 555px;
 }
 
 #edit-image-modal .modal-dialog .modal-body {
@@ -125,14 +125,13 @@
 }
 
 #edit-image-modal .modal-dialog .modal-body {
-    min-height: 540px;
+    min-height: 505px;
 }
 
 #edit-image-modal .modal-dialog .modal-body #editor-window {
     text-align: center;
-    padding-bottom: 2%;
     float: left;
-    width: 620px;
+    width: 510px;
 }
 
 #PresetFilters{
@@ -142,9 +141,17 @@
 }
 
 #PresetFilters .vert.simply-scroll-container{
-    width: 220px !important;
+    width: 200px !important;
 }
 
 #PresetFilters .vert .simply-scroll-list li p{
     font-size: 12px !important;
+}
+
+#PresetFilters .vert .simply-scroll-list li.activeLi{
+    border: 1px solid #008000;
+}
+
+#PresetFilters .vert .simply-scroll-clip {
+    height: 412px !important;
 }

@@ -4273,10 +4273,10 @@
         if (d) {
             return
         }
-        $("#PresetFilters a").removeClass("Active");
+//        $("#PresetFilters a").removeClass("Active");
         l = $("#PresetFilters a[data-preset='" + k + "']");
         j = l.html();
-        l.addClass("Active").html("Rendering...");
+//        l.addClass("Active").html("Rendering...");
         d = true;
         c.revert(false);
         c[k]();
