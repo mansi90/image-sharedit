@@ -159,6 +159,7 @@ galleryFunctionality = (function () {
     }
     return{
         applySimplyScroll: function () {
+            applyEffectsToDemoImages();
             $("#scroller").simplyScroll({
                 customClass: 'vert',
                 orientation: 'vertical',
@@ -167,8 +168,6 @@ galleryFunctionality = (function () {
                 frameRate: 50,
                 speed: 5
             });
-
-            applyEffectsToDemoImages();
         }
     }
 }());
