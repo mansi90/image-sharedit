@@ -71,6 +71,92 @@ galleryFunctionality = (function () {
         $parentDiv.find('div.spinner-overlay').remove();
     }
 
+    function applyEffectsToDemoImages(){
+        Caman('#vintageImage', function () {
+            this.vintage();
+            this.render();
+        });
+
+        Caman('#lomoImage', function () {
+            this.lomo();
+            this.render();
+        });
+
+        Caman('#clarityImage', function () {
+            this.clarity();
+            this.render();
+        });
+
+        Caman('#sinCityImage', function () {
+            this.sinCity();
+            this.render();
+        });
+
+        Caman('#sunriseImage', function () {
+            this.sunrise();
+            this.render();
+        });
+
+        Caman('#crossProcessImage', function () {
+            this.crossProcess();
+            this.render();
+        });
+
+        Caman('#orangePeelImage', function () {
+            this.orangePeel();
+            this.render();
+        });
+
+        Caman('#loveImage', function () {
+            this.love();
+            this.render();
+        });
+
+        Caman('#grungyImage', function () {
+            this.grungy();
+            this.render();
+        });
+
+        Caman('#jarquesImage', function () {
+            this.jarques();
+            this.render();
+        });
+
+        Caman('#pinholeImage', function () {
+            this.pinhole();
+            this.render();
+        });
+
+        Caman('#glowingSunImage', function () {
+            this.glowingSun();
+            this.render();
+        });
+
+        Caman('#hazyDaysImage', function () {
+            this.hazyDays();
+            this.render();
+        });
+
+        Caman('#herMajestyImage', function () {
+            this.herMajesty();
+            this.render();
+        });
+
+        Caman('#nostalgiaImage', function () {
+            this.nostalgia();
+            this.render();
+        });
+
+        Caman('#hemingwayImage', function () {
+            this.hemingway();
+            this.render();
+        });
+
+        Caman('#concentrateImage', function () {
+            this.concentrate();
+            this.render();
+        });
+    }
     return{
         applySimplyScroll: function () {
             $("#scroller").simplyScroll({
@@ -81,6 +167,8 @@ galleryFunctionality = (function () {
                 frameRate: 50,
                 speed: 5
             });
+
+            applyEffectsToDemoImages();
         }
     }
 }());
