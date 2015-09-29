@@ -31,7 +31,7 @@
                 <div class="image-inner-area">
                     <a class="image-popup-vertical-fit" href="${imageInstance.url}"
                        title="${custom.galleryImageTitle(imageInstance: imageInstance)}">
-                        <img src="${imageInstance.getShowImageUrl(140).url}">
+                        <img src="${imageInstance.getShowImageUrl(140, 140).url}">
                     </a>
                 </div>
             </div>
@@ -42,26 +42,26 @@
 </div>
 
 <div id="image-editor-main-section">
-<div class="modal fade" id="edit-image-modal" tabindex="-1" role="dialog" aria-hidden="true">
-<div class="modal-dialog">
+    <div class="modal fade" id="edit-image-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
 
-    <div class="modal-content">
-        <div class="modal-body">
-            <div class="modal-heading">
-                <h3>Edit Image</h3>
-                <i aria-hidden="true" data-dismiss="modal" class="cancel-icon" type="button"></i>
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="modal-heading">
+                        <h3>Edit Image</h3>
+                        <i aria-hidden="true" data-dismiss="modal" class="cancel-icon" type="button"></i>
+                    </div>
+
+                    <g:render template="/image/imageEditor"/>
+
+                </div>
+
+                <div class="modal-footer">
+
+                </div>
             </div>
-
-            <g:render template="/image/imageEditor"/>
-
-        </div>
-
-        <div class="modal-footer">
-
         </div>
     </div>
-</div>
-</div>
 </div>
 </body>
 </html>

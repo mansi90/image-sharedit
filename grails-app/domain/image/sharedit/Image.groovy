@@ -18,14 +18,14 @@ class Image {
         return list
     }
 
-    transient Map getShowImageUrl(int requestedSize) {
+    transient Map getShowImageUrl(int requestWidth, int requestedHeight) {
         Integer customizedWidth = this.width, customizedHeight = this.height
-        if ((this.width > this.height) && (this.width >= requestedSize)) {
-            customizedWidth = requestedSize
-            customizedHeight = (Math.round((requestedSize * this.height) / this.width)).intValue()
-        } else if (!(this.width > this.height) && (this.height >= requestedSize)) {
-            customizedWidth = (Math.round((requestedSize * this.width) / this.height)).intValue()
-            customizedHeight = requestedSize
+        if ((this.width > this.height) && (this.width >= requestWidth)) {
+            customizedWidth = requestWidth
+            customizedHeight = (Math.round((requestWidth * this.height) / this.width)).intValue()
+        } else if (!(this.width > this.height) && (this.height >= requestedHeight)) {
+            customizedWidth = (Math.round((requestedHeight * this.width) / this.height)).intValue()
+            customizedHeight = requestedHeight
         }
         return getUrlForImageFitResize(customizedWidth, customizedHeight)
     }
