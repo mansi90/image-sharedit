@@ -131,24 +131,27 @@
 #edit-image-modal .modal-dialog .modal-body #editor-window {
     text-align: center;
     float: left;
-    width: 510px;
+    width: 530px;
 }
 
-#PresetFilters{
+#PresetFilters {
     display: inline-block;
     float: left;
-    margin-left: 2%;
 }
 
-#PresetFilters .vert.simply-scroll-container{
+#PresetFilters .vert.simply-scroll-container {
     width: 200px !important;
 }
 
-#PresetFilters .vert .simply-scroll-list li p{
+#PresetFilters .vert .simply-scroll-list {
+    margin: 1px !important;
+}
+
+#PresetFilters .vert .simply-scroll-list li p {
     font-size: 12px !important;
 }
 
-#PresetFilters .vert .simply-scroll-list li.activeLi{
+#PresetFilters .vert .simply-scroll-list li.activeLi {
     border: 1px solid #008000;
 }
 
