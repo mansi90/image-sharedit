@@ -35,14 +35,7 @@
 <script type="text/javascript">
     (function ($) {
         $(function () { //on DOM ready
-            $("#scroller").simplyScroll({
-                customClass: 'vert',
-                orientation: 'vertical',
-                auto: false,
-                manualMode: 'loop',
-                frameRate: 20,
-                speed: 5
-            });
+            galleryFunctionality.applySimplyScroll();
         });
     })(jQuery);
 </script>

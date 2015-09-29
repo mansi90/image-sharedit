@@ -72,6 +72,15 @@ galleryFunctionality = (function () {
     }
 
     return{
-
+        applySimplyScroll: function () {
+            $("#scroller").simplyScroll({
+                customClass: 'vert',
+                orientation: 'vertical',
+                auto: false,
+                manualMode: 'loop',
+                frameRate: 50,
+                speed: 5
+            });
+        }
     }
 }());
