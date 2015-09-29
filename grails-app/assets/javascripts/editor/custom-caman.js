@@ -4274,14 +4274,14 @@
             return
         }
 //        $("#PresetFilters a").removeClass("Active");
-        l = $("#PresetFilters a[data-preset='" + k + "']");
-        j = l.html();
+//        l = $("#PresetFilters a[data-preset='" + k + "']");
+//        j = l.html();
 //        l.addClass("Active").html("Rendering...");
         d = true;
         c.revert(false);
         c[k]();
         return c.render(function () {
-            l.html(j);
+//            l.html(j);
             return d = false
         })
     };
