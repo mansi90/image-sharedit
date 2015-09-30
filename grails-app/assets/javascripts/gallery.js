@@ -52,6 +52,7 @@ galleryFunctionality = (function () {
             var ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, width, height);
             $(canvas).attr('data-caman-hidpi', canvas.toDataURL());
+            $('#original-image-data-url').val(canvas.toDataURL());
             removeSpinner($("#editor-window"));
             $(document).trigger('_canvas_ready');
         };

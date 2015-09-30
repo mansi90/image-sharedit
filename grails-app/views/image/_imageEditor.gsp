@@ -32,6 +32,7 @@
 </div>
 
 <div id="editor-window"><canvas id="editImage"></canvas></div>
+<input id="original-image-data-url" type="hidden" value=""/>
 <script type="text/javascript">
     (function ($) {
         $(function () { //on DOM ready
