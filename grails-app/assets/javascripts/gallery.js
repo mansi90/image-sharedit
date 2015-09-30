@@ -24,7 +24,7 @@ galleryFunctionality = (function () {
         });
 
         $(document).on('hidden.bs.modal', editImageModal, function () {
-            $(editImageModal).find("#editor-window").html('<canvas id="example"></canvas>');
+            $(editImageModal).find("#editor-window").html('<canvas id="editImage"></canvas>');
             $(editImageModal).find("#Filters").find('input[type=range]').each(function () {
                 $(this).val(0);
                 $(this).change();
@@ -43,7 +43,7 @@ galleryFunctionality = (function () {
     });
 
     function openImageEditorModal(imageUrl, width, height) {
-        var img = document.createElement('img'), canvas = document.getElementById('example'), dataURL;
+        var img = document.createElement('img'), canvas = document.getElementById('editImage'), dataURL;
         canvas.width = width;
         canvas.height = height;
         $(editImageModal).modal('show');

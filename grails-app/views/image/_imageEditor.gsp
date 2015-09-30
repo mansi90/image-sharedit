@@ -31,7 +31,7 @@
     <div class="Clear"></div>
 </div>
 
-<div id="editor-window"><canvas id="example"></canvas></div>
+<div id="editor-window"><canvas id="editImage"></canvas></div>
 <script type="text/javascript">
     (function ($) {
         $(function () { //on DOM ready

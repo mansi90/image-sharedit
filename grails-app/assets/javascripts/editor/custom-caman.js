@@ -4286,10 +4286,10 @@
         })
     };
     $(document).bind('_canvas_ready', function () {
-        if (!($("#example").length > 0)) {
+        if (!($("#editImage").length > 0)) {
             return
         }
-        c = Caman("#example");
+        c = Caman("#editImage");
         $(".FilterSetting input").each(function () {
             var j;
             j = $(this).data("filter");
