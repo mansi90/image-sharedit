@@ -158,3 +158,8 @@
 #PresetFilters .vert .simply-scroll-clip {
     height: 412px !important;
 }
+
+#PresetFilters .vert .simply-scroll-btn-down {
+    right: 0;
+    top: 390px !important;
+}
