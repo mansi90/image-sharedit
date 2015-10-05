@@ -147,12 +147,25 @@
     margin: 1px !important;
 }
 
+#PresetFilters .vert .simply-scroll-list li {
+    position: relative;
+}
+
+#PresetFilters .vert .simply-scroll-list li a {
+    position: absolute;
+    z-index: 1;
+}
+
 #PresetFilters .vert .simply-scroll-list li p {
     font-size: 12px !important;
 }
 
-#PresetFilters .vert .simply-scroll-list li.activeLi {
-    border: 1px solid #008000;
+#PresetFilters .vert .simply-scroll-list li.activeLi span {
+    background: url("../../images/lime-green-circle-white-tick-24X24.png") no-repeat right;
+    position: absolute;
+    z-index: 2;
+    width: 97%;
+    height: 27%;
 }
 
 #PresetFilters .vert .simply-scroll-clip {
