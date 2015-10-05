@@ -32,7 +32,13 @@
 </div>
 
 <div id="editor-window"><canvas id="editImage"></canvas></div>
-<input id="original-image-data-url" type="hidden" value=""/>
+
+<div class="Clear"></div>
+
+<div id="left-buttons">
+    <a id="resetBtn" href="javascript:void(0)" class="btn btn-primary disabled">Reset</a>
+</div>
+<input id="original-image-url" type="hidden" value=""/>
 <script type="text/javascript">
     (function ($) {
         $(function () { //on DOM ready
