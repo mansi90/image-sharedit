@@ -188,9 +188,8 @@ galleryFunctionality = (function () {
                 customClass: 'vert',
                 orientation: 'vertical',
                 auto: false,
-                manualMode: 'loop',
-                frameRate: 50,
-                speed: 5
+                frameRate: 20,
+                speed: 3
             });
         }
     }
