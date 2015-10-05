@@ -36,9 +36,11 @@
 
 <div class="Clear"></div>
 
-<div id="left-buttons">
-    <a id="resetBtn" href="javascript:void(0)" class="btn btn-primary disabled">Reset</a>
+<div id="buttons">
+    <a id="resetBtn" href="javascript:void(0)" class="btn btn-primary disabled">RESET</a>
+    <a id="saveBtn" href="javascript:void(0)" class="btn btn-primary disabled right">SAVE</a>
 </div>
+
 <input id="original-image-url" type="hidden" value=""/>
 <script type="text/javascript">
     (function ($) {

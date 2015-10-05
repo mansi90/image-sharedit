@@ -2,7 +2,8 @@ var galleryFunctionality;
 galleryFunctionality = (function () {
     var $document = $(document),
         editImageModal = '#image-editor-main-section #edit-image-modal',
-        resetEffectsBtn = '#left-buttons #resetBtn',
+        resetEffectsBtn = '#buttons #resetBtn',
+        saveBtn = '#buttons #saveBtn',
         originalImageUrl = '#original-image-url';
 
     $document.ready(function () {
@@ -40,6 +41,7 @@ galleryFunctionality = (function () {
             removeSelected();
             $(this).closest('li').addClass('activeLi');
             $(resetEffectsBtn).removeClass('disabled');
+            $(saveBtn).removeClass('disabled');
         });
 
         $(document).on('click', resetEffectsBtn, function () {
@@ -47,6 +49,7 @@ galleryFunctionality = (function () {
                 removeSelected();
                 resetCanvas();
                 $(resetEffectsBtn).addClass('disabled');
+                $(saveBtn).addClass('disabled');
             }
         })
     });
