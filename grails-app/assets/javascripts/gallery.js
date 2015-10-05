@@ -35,6 +35,8 @@ galleryFunctionality = (function () {
             $(editImageModal).find('#PresetFilters .vert .simply-scroll-list li').each(function () {
                 $(this).removeClass("activeLi")
             });
+            $(resetEffectsBtn).addClass('disabled');
+            $(saveBtn).addClass('disabled');
         });
 
         $(document).on('click', '#PresetFilters .vert .simply-scroll-list li a', function () {
