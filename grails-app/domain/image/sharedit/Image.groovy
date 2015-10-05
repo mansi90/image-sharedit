@@ -6,10 +6,12 @@ class Image {
     Integer width
     Integer height
     String url
+    Image parent = null
 
     static belongsTo = [owner: User]
 
     static constraints = {
+        parent nullable: true
     }
 
     static List<Image> randomOrderedList() {
