@@ -107,4 +107,9 @@ class ImageController {
             redirect(action: "show", id: id)
         }
     }
+
+    def gallery() {
+        User user = springSecurityService.currentUser as User
+        [galleryItems : Image.fetchImagesForGallery(user)]
+    }
 }

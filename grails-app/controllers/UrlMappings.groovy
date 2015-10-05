@@ -8,7 +8,7 @@ class UrlMappings {
         }
 
         "/"(controller: 'image', action: 'index')
-        "/gallery"(view: '/gallery')
+        "/gallery"(controller: 'image', action: 'gallery')
         "/profile"(controller: 'user', action: 'profile')
         "500"(view: '/error')
         "404"(view: '/notFound')

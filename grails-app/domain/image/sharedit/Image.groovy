@@ -14,8 +14,8 @@ class Image {
         parent nullable: true
     }
 
-    static List<Image> randomOrderedList() {
-        List<Image> list = Image.list()
+    static List<Image> fetchImagesForGallery(User currentUser) {
+        List<Image> list = Image.findAllByParentIsNullAndOwner(currentUser)
         Collections.shuffle(list, new Random())
         return list
     }
