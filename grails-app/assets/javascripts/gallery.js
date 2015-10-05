@@ -1,7 +1,9 @@
 var galleryFunctionality;
 galleryFunctionality = (function () {
     var $document = $(document),
-        editImageModal = '#image-editor-main-section #edit-image-modal';
+        editImageModal = '#image-editor-main-section #edit-image-modal',
+        resetEffectsBtn = '#left-buttons #resetBtn',
+        originalImageUrl = '#original-image-url';
 
     $document.ready(function () {
         $('.image-popup-vertical-fit').magnificPopup({
@@ -35,12 +37,30 @@ galleryFunctionality = (function () {
         });
 
         $(document).on('click', '#PresetFilters .vert .simply-scroll-list li a', function () {
-            $('#PresetFilters .vert .simply-scroll-list li.activeLi').each(function () {
-                $(this).removeClass('activeLi')
-            });
-            $(this).closest('li').addClass('activeLi')
+            removeSelected();
+            $(this).closest('li').addClass('activeLi');
+            $(resetEffectsBtn).removeClass('disabled');
         });
+
+        $(document).on('click', resetEffectsBtn, function () {
+            if (!$(this).hasClass('disabled')) {
+                removeSelected();
+                $(resetEffectsBtn).addClass('disabled');
+            }
+        })
     });
+
+    function removeSelected() {
+        $('#PresetFilters .vert .simply-scroll-list li.activeLi').each(function () {
+            $(this).removeClass('activeLi');
+            resetCanvas();
+        });
+    }
+
+    function resetCanvas() {
+        var imageUrl = $(originalImageUrl).val(), width = $(originalImageUrl).data('width'), height = $(originalImageUrl).data('height');
+        openImageEditorModal(imageUrl, width, height)
+    }
 
     function openImageEditorModal(imageUrl, width, height) {
         var img = document.createElement('img'), canvas = document.getElementById('editImage'), dataURL;
@@ -52,7 +72,9 @@ galleryFunctionality = (function () {
             var ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, width, height);
             $(canvas).attr('data-caman-hidpi', canvas.toDataURL());
-            $('#original-image-data-url').val(canvas.toDataURL());
+            $(originalImageUrl).val(imageUrl);
+            $(originalImageUrl).data('width', width);
+            $(originalImageUrl).data('height', height);
             removeSpinner($("#editor-window"));
             $(document).trigger('_canvas_ready');
         };
@@ -72,7 +94,7 @@ galleryFunctionality = (function () {
         $parentDiv.find('div.spinner-overlay').remove();
     }
 
-    function applyEffectsToDemoImages(){
+    function applyEffectsToDemoImages() {
         Caman('#vintageImage', function () {
             this.vintage();
             this.render();
@@ -158,6 +180,7 @@ galleryFunctionality = (function () {
             this.render();
         });
     }
+
     return{
         applySimplyScroll: function () {
             applyEffectsToDemoImages();
