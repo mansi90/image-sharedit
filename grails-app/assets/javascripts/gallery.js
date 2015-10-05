@@ -45,6 +45,7 @@ galleryFunctionality = (function () {
         $(document).on('click', resetEffectsBtn, function () {
             if (!$(this).hasClass('disabled')) {
                 removeSelected();
+                resetCanvas();
                 $(resetEffectsBtn).addClass('disabled');
             }
         })
@@ -53,7 +54,6 @@ galleryFunctionality = (function () {
     function removeSelected() {
         $('#PresetFilters .vert .simply-scroll-list li.activeLi').each(function () {
             $(this).removeClass('activeLi');
-            resetCanvas();
         });
     }
 
