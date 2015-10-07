@@ -55,6 +55,12 @@ galleryFunctionality = (function () {
                 $(resetEffectsBtn).addClass('disabled');
                 $(saveBtn).addClass('disabled');
             }
+        });
+
+        $(document).on('click', saveBtn, function () {
+            if (!$(this).hasClass('disabled')) {
+                saveImage();
+            }
         })
     });
 
@@ -67,6 +73,20 @@ galleryFunctionality = (function () {
     function resetCanvas() {
         var imageUrl = $(originalImageUrl).val(), width = $(originalImageUrl).data('width'), height = $(originalImageUrl).data('height');
         openImageEditorModal(imageUrl, width, height)
+    }
+
+    function saveImage() {
+        var dataUrl = document.getElementById('editImage').toDataURL();
+        var url = $(originalImageUrl).data('ajaxurl'), data = {parentId: $('#editImage').data('imageid'), imageDataUrl: dataUrl},
+            callbacks = {};
+        showSpinner($(editImageModal));
+        callbacks.success = function (data) {
+            window.location.reload();
+        };
+        callbacks.error = function (data) {
+            removeSpinner($(editImageModal));
+        };
+        makeAjax(url, 'post', data, callbacks);
     }
 
     function openImageEditorModal(imageUrl, width, height) {

@@ -41,7 +41,8 @@
     <a id="saveBtn" href="javascript:void(0)" class="btn btn-primary disabled right">SAVE</a>
 </div>
 
-<input id="original-image-url" type="hidden" value=""/>
+<input id="original-image-url" type="hidden"
+       data-ajaxurl="${createLink(controller: 'image', action: 'saveEditedImage')}"/>
 <script type="text/javascript">
     (function ($) {
         $(function () { //on DOM ready
