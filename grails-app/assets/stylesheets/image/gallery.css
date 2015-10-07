@@ -176,3 +176,14 @@
     right: 0;
     top: 390px !important;
 }
+
+.spinner-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: white;
+    opacity: 0.5;
+}

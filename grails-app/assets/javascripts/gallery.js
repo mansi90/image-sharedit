@@ -2,6 +2,7 @@ var galleryFunctionality;
 galleryFunctionality = (function () {
     var $document = $(document),
         editImageModal = '#image-editor-main-section #edit-image-modal',
+        editImageModalBody = editImageModal +' .modal-body',
         resetEffectsBtn = '#buttons #resetBtn',
         saveBtn = '#buttons #saveBtn',
         editorDetails;
@@ -144,6 +145,7 @@ galleryFunctionality = (function () {
     }
 
     function applyEffects(effectName, canvasId) {
+        showSpinner($(editImageModalBody));
         Caman(canvasId, function () {
             this.reset();
             switch (effectName) {
@@ -199,7 +201,9 @@ galleryFunctionality = (function () {
                     this.concentrate();
                     break;
             }
-            this.render();
+            this.render(function(){
+                removeSpinner($(editImageModalBody));
+            });
         });
     }
 
