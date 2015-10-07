@@ -61,8 +61,20 @@ galleryFunctionality = (function () {
             if (!$(this).hasClass('disabled')) {
                 saveImage();
             }
-        })
+        });
+
+        $(document).on('click', '#PresetFilters a[data-preset]', function () {
+            var effectName = $(this).data('preset'), canvas1 = '#editImage', canvas2 = '#editOriginalImage';
+            applyEffects(effectName, canvas1);
+            applyEffects(effectName, canvas2);
+        });
     });
+
+    function applyEffectsToDemoImages(){
+        $('#PresetFilters  a[data-preset] img.demoEffectImg').each(function(){
+            applyEffects($(this).closest('a').data('preset'), '#'+$(this).attr('id'));
+        });
+    }
 
     function removeSelected() {
         $('#PresetFilters .vert .simply-scroll-list li.activeLi').each(function () {
@@ -131,89 +143,62 @@ galleryFunctionality = (function () {
         });
     }
 
-    function applyEffectsToDemoImages() {
-        Caman('#vintageImage', function () {
-            this.vintage();
-            this.render();
-        });
-
-        Caman('#lomoImage', function () {
-            this.lomo();
-            this.render();
-        });
-
-        Caman('#clarityImage', function () {
-            this.clarity();
-            this.render();
-        });
-
-        Caman('#sinCityImage', function () {
-            this.sinCity();
-            this.render();
-        });
-
-        Caman('#sunriseImage', function () {
-            this.sunrise();
-            this.render();
-        });
-
-        Caman('#crossProcessImage', function () {
-            this.crossProcess();
-            this.render();
-        });
-
-        Caman('#orangePeelImage', function () {
-            this.orangePeel();
-            this.render();
-        });
-
-        Caman('#loveImage', function () {
-            this.love();
-            this.render();
-        });
-
-        Caman('#grungyImage', function () {
-            this.grungy();
-            this.render();
-        });
-
-        Caman('#jarquesImage', function () {
-            this.jarques();
-            this.render();
-        });
-
-        Caman('#pinholeImage', function () {
-            this.pinhole();
-            this.render();
-        });
-
-        Caman('#glowingSunImage', function () {
-            this.glowingSun();
-            this.render();
-        });
-
-        Caman('#hazyDaysImage', function () {
-            this.hazyDays();
-            this.render();
-        });
-
-        Caman('#herMajestyImage', function () {
-            this.herMajesty();
-            this.render();
-        });
-
-        Caman('#nostalgiaImage', function () {
-            this.nostalgia();
-            this.render();
-        });
-
-        Caman('#hemingwayImage', function () {
-            this.hemingway();
-            this.render();
-        });
-
-        Caman('#concentrateImage', function () {
-            this.concentrate();
+    function applyEffects(effectName, canvasId) {
+        Caman(canvasId, function () {
+            this.reset();
+            switch (effectName) {
+                case 'vintage' :
+                    this.vintage();
+                    break;
+                case 'lomo' :
+                    this.lomo();
+                    break;
+                case 'clarity' :
+                    this.clarity();
+                    break;
+                case 'sinCity' :
+                    this.sinCity();
+                    break;
+                case 'sunrise' :
+                    this.sunrise();
+                    break;
+                case 'crossProcess' :
+                    this.crossProcess();
+                    break;
+                case 'orangePeel' :
+                    this.orangePeel();
+                    break;
+                case 'love' :
+                    this.love();
+                    break;
+                case 'grungy' :
+                    this.grungy();
+                    break;
+                case 'jarques' :
+                    this.jarques();
+                    break;
+                case 'pinhole' :
+                    this.pinhole();
+                    break;
+                case 'glowingSun' :
+                    this.glowingSun();
+                    break;
+                case 'hazyDays' :
+                    this.hazyDays();
+                    break;
+                case 'herMajesty' :
+                    this.herMajesty();
+                    break;
+                case 'nostalgia' :
+                    this.nostalgia();
+                    break;
+                case 'hemingway' :
+                    this.hemingway();
+                    break;
+                case 'concentrate' :
+                    this.concentrate();
+                    break;
+            }
             this.render();
         });
     }
