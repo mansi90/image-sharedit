@@ -32,19 +32,18 @@
     <div class="Clear"></div>
 </div>
 
-<div id="original-size" class="hide"><canvas id="editOriginalImage"></canvas></div>
+<div id="original-size" class=""><canvas id="editOriginalImage" class="editorCanvas"></canvas></div>
 
-<div id="editor-window"><canvas id="editImage"></canvas></div>
+<div id="editor-window"><canvas id="editImage" class="editorCanvas"></canvas></div>
 
 <div class="Clear"></div>
 
 <div id="buttons">
     <a id="resetBtn" href="javascript:void(0)" class="btn btn-primary disabled">RESET</a>
-    <a id="saveBtn" href="javascript:void(0)" class="btn btn-primary disabled right">SAVE</a>
+    <a id="saveBtn" href="javascript:void(0)" class="btn btn-primary disabled right"
+    data-ajaxurl="${createLink(controller: 'image', action: 'saveEditedImage')}">SAVE</a>
 </div>
 
-<input id="original-image-url" type="hidden"
-       data-ajaxurl="${createLink(controller: 'image', action: 'saveEditedImage')}"/>
 <script type="text/javascript">
     (function ($) {
         $(function () { //on DOM ready

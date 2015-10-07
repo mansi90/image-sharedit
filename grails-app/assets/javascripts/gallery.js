@@ -4,7 +4,7 @@ galleryFunctionality = (function () {
         editImageModal = '#image-editor-main-section #edit-image-modal',
         resetEffectsBtn = '#buttons #resetBtn',
         saveBtn = '#buttons #saveBtn',
-        originalImageUrl = '#original-image-url';
+        editorDetails;
 
     $document.ready(function () {
         $('.image-popup-vertical-fit').magnificPopup({
@@ -20,16 +20,16 @@ galleryFunctionality = (function () {
             callbacks: {
                 open: function () {
                     $('.editImageLink').click(function () {
-                        var $link = $(this);
-                        $('#editImage').data('imageid', $link.data('imageid'));
-                        openImageEditorModal($link.data('imageurl'), $link.data('width'), $link.data('height'));
+                        editorDetails = $(this).data();
+                        openImageEditorModal();
                     });
                 }
             }
         });
 
         $(document).on('hidden.bs.modal', editImageModal, function () {
-            $(editImageModal).find("#editor-window").html('<canvas id="editImage"></canvas>');
+            $(editImageModal).find("#editor-window").html('<canvas id="editImage" class="editorCanvas"></canvas>');
+            $(editImageModal).find("#original-size").html('<canvas id="editOriginalImage" class="editorCanvas"></canvas>');
             $(editImageModal).find("#Filters").find('input[type=range]').each(function () {
                 $(this).val(0);
                 $(this).change();
@@ -51,7 +51,7 @@ galleryFunctionality = (function () {
         $(document).on('click', resetEffectsBtn, function () {
             if (!$(this).hasClass('disabled')) {
                 removeSelected();
-                resetCanvas();
+                openImageEditorModal();
                 $(resetEffectsBtn).addClass('disabled');
                 $(saveBtn).addClass('disabled');
             }
@@ -70,14 +70,9 @@ galleryFunctionality = (function () {
         });
     }
 
-    function resetCanvas() {
-        var imageUrl = $(originalImageUrl).val(), width = $(originalImageUrl).data('width'), height = $(originalImageUrl).data('height');
-        openImageEditorModal(imageUrl, width, height)
-    }
-
     function saveImage() {
         var dataUrl = document.getElementById('editImage').toDataURL();
-        var url = $(originalImageUrl).data('ajaxurl'), data = {parentId: $('#editImage').data('imageid'), imageDataUrl: dataUrl},
+        var url = $(saveBtn).data('ajaxurl'), data = {parentId: editorDetails.imageid, imageDataUrl: dataUrl},
             callbacks = {};
         showSpinner($(editImageModal));
         callbacks.success = function (data) {
@@ -89,26 +84,30 @@ galleryFunctionality = (function () {
         makeAjax(url, 'post', data, callbacks);
     }
 
-    function openImageEditorModal(imageUrl, width, height) {
-        var img = document.createElement('img'), canvas = document.getElementById('editImage'), dataURL;
-        canvas.width = width;
-        canvas.height = height;
+    function openImageEditorModal() {
         $(editImageModal).modal('show');
         showSpinner($("#editor-window"));
+        generateCanvas(editorDetails.resizedimageurl, 'editImage', editorDetails.resizedwidth, editorDetails.resizedheight);
+    }
+
+    function generateCanvas(url, canvasId, w, h) {
+        var img = document.createElement('img'), canvas = document.getElementById(canvasId);
+        canvas.width = w;
+        canvas.height = h;
         img.onload = function (e) {
             var ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, width, height);
+            ctx.drawImage(img, 0, 0, w, h);
             $(canvas).attr('data-caman-hidpi', canvas.toDataURL());
-            $(originalImageUrl).val(imageUrl);
-            $(originalImageUrl).data('width', width);
-            $(originalImageUrl).data('height', height);
-            removeSpinner($("#editor-window"));
-            $(document).trigger('_canvas_ready');
+            if ((canvasId == 'editImage')) {
+                generateCanvas(editorDetails.imageurl, 'editOriginalImage', editorDetails.width, editorDetails.height);
+                removeSpinner($("#editor-window"));
+                $(document).trigger('_canvas_ready');
+            }
         };
         img.crossOrigin = ''; // no credentials flag. Same as img.crossOrigin='anonymous'
-        img.width = width;
-        img.height = height;
-        img.src = imageUrl;
+        img.width = w;
+        img.height = h;
+        img.src = url;
     }
 
     function showSpinner($parentDiv) {
