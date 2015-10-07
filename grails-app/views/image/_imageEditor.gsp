@@ -32,6 +32,8 @@
     <div class="Clear"></div>
 </div>
 
+<div id="original-size" class="hide"><canvas id="editOriginalImage"></canvas></div>
+
 <div id="editor-window"><canvas id="editImage"></canvas></div>
 
 <div class="Clear"></div>
