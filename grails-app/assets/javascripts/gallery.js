@@ -20,7 +20,9 @@ galleryFunctionality = (function () {
             callbacks: {
                 open: function () {
                     $('.editImageLink').click(function () {
-                        openImageEditorModal($(this).data('imageurl'), $(this).data('width'), $(this).data('height'));
+                        var $link = $(this);
+                        $('#editImage').data('imageid', $link.data('imageid'));
+                        openImageEditorModal($link.data('imageurl'), $link.data('width'), $link.data('height'));
                     });
                 }
             }
@@ -97,6 +99,17 @@ galleryFunctionality = (function () {
     function removeSpinner($parentDiv) {
         $parentDiv.find('div.spinner').remove();
         $parentDiv.find('div.spinner-overlay').remove();
+    }
+
+    function makeAjax(url, type, data, callbacks) {
+        $.ajax({
+            type: type,
+            url: url,
+            cache: false,
+            data: data,
+            success: callbacks.success,
+            error: callbacks.error
+        });
     }
 
     function applyEffectsToDemoImages() {
