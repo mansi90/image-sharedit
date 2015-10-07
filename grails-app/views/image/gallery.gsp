@@ -13,7 +13,7 @@
     <asset:stylesheet src="jquery.simplyscroll.css"/>
     <asset:javascript src="jquery.simplyscroll.js"/>
     <asset:stylesheet src="editor/custom-caman.css"/>
-    <asset:javascript src="editor/custom-caman.js"/>
+    <asset:javascript src="editor/caman.full.js"/>
     <asset:javascript src="gallery.js"/>
 </head>
 
