@@ -32,7 +32,7 @@
     <div class="Clear"></div>
 </div>
 
-<div id="original-size" class=""><canvas id="editOriginalImage" class="editorCanvas"></canvas></div>
+<div id="original-size" class="hide"><canvas id="editOriginalImage" class="editorCanvas"></canvas></div>
 
 <div id="editor-window"><canvas id="editImage" class="editorCanvas"></canvas></div>
 
