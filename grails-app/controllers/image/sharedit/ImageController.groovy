@@ -1,5 +1,6 @@
 package image.sharedit
 
+import grails.converters.JSON
 import org.apache.commons.codec.binary.Base64
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -110,6 +111,10 @@ class ImageController {
 
     def gallery() {
         User user = springSecurityService.currentUser as User
-        [galleryItems : Image.fetchImagesForGallery(user)]
+        [galleryItems: Image.fetchImagesForGallery(user)]
+    }
+
+    def saveEditedImage(Long parentId) {
+        render ([] as JSON)
     }
 }
