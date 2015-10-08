@@ -115,6 +115,13 @@ class ImageController {
     }
 
     def saveEditedImage(Long parentId) {
-        render ([] as JSON)
+        Image parent = Image.get(parentId), image = new Image(name: parent.name, description: parent.description, parent: parent)
+        image.owner = springSecurityService.currentUser as User
+        image = imageService.uploadImageToCloudinary(image, params.file)
+
+        if (!(image.validate() && image.save(flush: true)))
+            response.status = 401
+
+        render([] as JSON)
     }
 }
