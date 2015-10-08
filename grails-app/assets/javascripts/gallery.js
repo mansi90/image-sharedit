@@ -2,7 +2,7 @@ var galleryFunctionality;
 galleryFunctionality = (function () {
     var $document = $(document),
         editImageModal = '#image-editor-main-section #edit-image-modal',
-        editImageModalBody = editImageModal +' .modal-body',
+        editImageModalBody = editImageModal + ' .modal-body',
         resetEffectsBtn = '#buttons #resetBtn',
         saveBtn = '#buttons #saveBtn',
         editorDetails;
@@ -71,9 +71,9 @@ galleryFunctionality = (function () {
         });
     });
 
-    function applyEffectsToDemoImages(){
-        $('#PresetFilters  a[data-preset] img.demoEffectImg').each(function(){
-            applyEffects($(this).closest('a').data('preset'), '#'+$(this).attr('id'));
+    function applyEffectsToDemoImages() {
+        $('#PresetFilters  a[data-preset] img.demoEffectImg').each(function () {
+            applyEffects($(this).closest('a').data('preset'), '#' + $(this).attr('id'));
         });
     }
 
@@ -83,18 +83,32 @@ galleryFunctionality = (function () {
         });
     }
 
+    function generateBlobFromCanvas(canvasId) {
+        var dataUrl = document.getElementById(canvasId).toDataURL(), blobBin = atob(dataUrl.split(',')[1]);
+        var array = [];
+        for (var i = 0; i < blobBin.length; i++)
+            array.push(blobBin.charCodeAt(i));
+        return (new Blob([new Uint8Array(array)], {type: 'image/png'}));
+    }
+
     function saveImage() {
-        var dataUrl = document.getElementById('editImage').toDataURL();
-        var url = $(saveBtn).data('ajaxurl'), data = {parentId: editorDetails.imageid, imageDataUrl: dataUrl},
-            callbacks = {};
+        var url = $(saveBtn).data('ajaxurl'), file = generateBlobFromCanvas('editOriginalImage'), formData = new FormData();
+        formData.append("file", file);
+        formData.append("parentId", editorDetails.imageid);
         showSpinner($(editImageModal));
-        callbacks.success = function (data) {
-            window.location.reload();
-        };
-        callbacks.error = function (data) {
-            removeSpinner($(editImageModal));
-        };
-        makeAjax(url, 'post', data, callbacks);
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                window.location.reload();
+            },
+            error: function (data) {
+                removeSpinner($(editImageModal));
+            }
+        });
     }
 
     function openImageEditorModal() {
@@ -201,7 +215,7 @@ galleryFunctionality = (function () {
                     this.concentrate();
                     break;
             }
-            this.render(function(){
+            this.render(function () {
                 removeSpinner($(editImageModalBody));
             });
         });
