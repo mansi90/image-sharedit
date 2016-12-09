@@ -53,6 +53,11 @@ dependencies {
     testCompile "org.grails.plugins:geb"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+
+    compile 'com.cloudinary:cloudinary:1.0.14'
+    compile 'org.grails.plugins:spring-security-core:3.0.0.M1'
+    runtime 'mysql:mysql-connector-java:5.1.22'
+    compile 'org.grails.plugins:mail:2.0.0.RC6'
 }
 
 bootRun {
