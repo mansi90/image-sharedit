@@ -1,51 +1,80 @@
 <!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
 <html lang="en" class="no-js">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>
-        <g:layoutTitle default="Grails"/>
-    </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><g:layoutTitle default="Grails"/></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
     <asset:stylesheet src="application.css"/>
-
+    <asset:javascript src="application.js"/>
+    <style type="text/css">
+    body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+    </style>
     <g:layoutHead/>
 </head>
-<body>
 
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/#">
-                    <i class="fa grails-icon">
-                        <asset:image src="grails-cupsonly-logo-white.svg"/>
-                    </i> Grails
-                </a>
-            </div>
-            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
-                <ul class="nav navbar-nav navbar-right">
-                    <g:pageProperty name="page.nav" />
+<body>
+<div id="top-navigation" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="brand" href="${createLink(uri: '/')}">Image SharEdit</a>
+
+            <div class="navigation-details">
+                <ul>
+                    <sec:ifLoggedIn>
+                        <sec:ifAnyGranted roles="ROLE_ADMIN">
+                            <li class="controller"><g:link controller="user">Users</g:link></li>
+                            <li class="controller"><g:link controller="role">Roles</g:link></li>
+                            <li class="controller"><g:link controller="club">Clubs</g:link></li>
+                        </sec:ifAnyGranted>
+
+                        <li class="controller"><g:link controller="album">Albums</g:link></li>
+                        <li class="controller"><g:link controller="image">Images</g:link></li>
+                        <li class="controller pull-right logout-link">
+                            <g:link controller="logout"><i class="halflings-icon off"></i> Logout</g:link>
+                        </li>
+                        <li class="controller pull-right gallery-link"><a
+                                href="${createLink(uri: '/gallery')}">Gallery</a></li>
+                        <li class="controller pull-right profile-link"><a
+                                href="${createLink(uri: '/profile')}">Profile</a></li>
+                    </sec:ifLoggedIn>
                 </ul>
             </div>
         </div>
     </div>
+</div>
 
-    <g:layoutBody/>
-
-    <div class="footer" role="contentinfo"></div>
-
-    <div id="spinner" class="spinner" style="display:none;">
-        <g:message code="spinner.alt" default="Loading&hellip;"/>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <g:if test="${flash.message}">
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    ${flash.message}
+                </div>
+            </g:if>
+            <g:layoutBody/>
+        </div>
     </div>
+    <footer>
+        <div class="navbar navbar-fixed-bottom navbar-static">
+            %{--<p>&copy;&nbsp;<a href="http://www.someurl.com/">Company Name</a></p>--}%
+        </div>
+    </footer>
+</div>
 
-    <asset:javascript src="application.js"/>
-
+<div id="spinner" class="spinner" style="display:none;">
+    <img id="img-spinner" src="${resource(dir: 'images', file: 'spinner.gif')}" alt="Loading"/>
+</div>
+<r:layoutResources/>
 </body>
 </html>
