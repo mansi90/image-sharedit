@@ -7,17 +7,20 @@ cloudinary {
     apiBaseUrl = 'https://api.cloudinary.com/v1_1/image-sharedit'
 }
 
+// Spring Security Configuration
+grails.plugin.springsecurity.rejectPublicInvocations = false
+grails.plugin.springsecurity.successHandler.alwaysUseDefault = false
+
 grails.plugin.springsecurity.password.algorithm = 'bcrypt'
 grails.plugin.springsecurity.logout.postOnly = false
 
-// Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'image.sharedit.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'image.sharedit.UserRole'
 grails.plugin.springsecurity.authority.className = 'image.sharedit.Role'
 grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/image/list'
 
-grails.plugin.springsecurity.apf.storeLastUsername = true
-grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
+//grails.plugin.springsecurity.apf.storeLastUsername = true
+//grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
 grails.plugin.springsecurity.interceptUrlMap = [
         [pattern: '/', access: ['permitAll']],
         [pattern: '/error', access: ['permitAll']],
