@@ -19,8 +19,8 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'image.sharedit
 grails.plugin.springsecurity.authority.className = 'image.sharedit.Role'
 grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/image/list'
 
-//grails.plugin.springsecurity.apf.storeLastUsername = true
-//grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
+grails.plugin.springsecurity.apf.storeLastUsername = true
+grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
 grails.plugin.springsecurity.interceptUrlMap = [
         [pattern: '/', access: ['permitAll']],
         [pattern: '/error', access: ['permitAll']],
@@ -32,6 +32,7 @@ grails.plugin.springsecurity.interceptUrlMap = [
         [pattern: '/**/css/**', access: ['permitAll']],
         [pattern: '/**/images/**', access: ['permitAll']],
         [pattern: '/**/favicon.ico', access: ['permitAll']],
+        [pattern: '/login/**', access: ['permitAll']],
         [pattern: '/user/**', access: ['ROLE_ADMIN']],
         [pattern: '/userRole/**', access: ['ROLE_ADMIN']],
         [pattern: '/role/**', access: ['ROLE_ADMIN']],
