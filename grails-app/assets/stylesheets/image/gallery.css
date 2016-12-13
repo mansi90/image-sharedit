@@ -1,0 +1,207 @@
+#gallery-main-section {
+    width: 85%;
+    margin: auto;
+    margin-top: 50px;
+    position: relative;
+}
+
+.image-tile {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6) !important;
+    background: #F4F4F4 !important;
+    border: 1px solid #86888B;
+    border-radius: 4px;
+    width: 160px;
+    height: 190px;
+    float: left;
+    margin: 10px;
+    padding: 10px;
+}
+
+.image-section {
+    width: 140px;
+    height: 140px;
+}
+
+.image-section .image-inner-area {
+    display: table-cell !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+    width: 140px !important;
+    height: 140px !important;
+}
+
+.title-section {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.mfp-no-margins img.mfp-img {
+    padding: 0 !important;
+}
+
+/* position of shadow behind the image */
+.mfp-no-margins .mfp-figure:after {
+    top: 0 !important;
+    bottom: 0 !important;
+}
+
+/* padding for main container */
+.mfp-no-margins .mfp-container {
+    padding: 0 !important;
+}
+
+.mfp-content {
+    min-width: 300px;
+    vertical-align: middle;
+}
+
+.mfp-figure:after {
+    box-shadow: 0 0 0 #ccc !important;
+    background: none !important;
+}
+
+.mfp-title {
+    text-align: center !important;
+    padding-right: 0 !important;
+    padding-left: 45px !important;
+}
+
+.editImageLink.editBtn {
+    cursor: pointer;
+    float: right;
+    width: 90px;
+    height: 25px;
+    line-height: 25px;
+    color: white;
+    text-decoration: none;
+    font-family: 'oxygenregular';
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    -webkit-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 1px;
+    background: rgb(22, 140, 182);
+    border: 1px solid rgb(6, 115, 155);
+}
+
+#edit-image-modal .modal-dialog {
+    width: 765px !important;
+}
+
+#edit-image-modal .modal-dialog .modal-content {
+    border-radius: 6px !important;
+    height: 555px;
+}
+
+#edit-image-modal .modal-dialog .modal-body {
+    min-height: 200px;
+}
+
+#edit-image-modal .modal-dialog .modal-heading {
+    padding-bottom: 5%;
+}
+
+#edit-image-modal .modal-dialog .modal-heading h3 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: bold;
+    float: left;
+    color: #3275aa;
+}
+
+#edit-image-modal .modal-dialog .modal-heading i.cancel-icon {
+    display: inline;
+    background: url('../../images/icons/black-cross-14X14.png') no-repeat !important;
+    padding-right: 15px;
+    height: 20px;
+    opacity: 1;
+    float: right;
+}
+
+#edit-image-modal .modal-dialog .modal-body {
+    min-height: 505px;
+}
+
+#edit-image-modal .modal-dialog .modal-body #editor-window {
+    text-align: center;
+    float: left;
+    width: 530px;
+    height: 445px;
+}
+
+#PresetFilters {
+    display: inline-block;
+    float: left;
+}
+
+#PresetFilters .vert.simply-scroll-container {
+    width: 200px !important;
+}
+
+#PresetFilters .vert .simply-scroll-list {
+    margin: 1px !important;
+}
+
+#PresetFilters .vert .simply-scroll-list li {
+    position: relative;
+}
+
+#PresetFilters .vert .simply-scroll-list li a {
+    position: absolute;
+    z-index: 1;
+}
+
+#PresetFilters .vert .simply-scroll-list li p {
+    font-size: 12px !important;
+}
+
+#PresetFilters .vert .simply-scroll-list li.activeLi span {
+    background: url("../../images/lime-green-circle-white-tick-24X24.png") no-repeat right;
+    position: absolute;
+    z-index: 2;
+    width: 97%;
+    height: 27%;
+}
+
+#PresetFilters .vert .simply-scroll-clip {
+    height: 412px !important;
+}
+
+#PresetFilters .vert .simply-scroll-btn-down {
+    right: 0;
+    top: 390px !important;
+}
+
+.spinner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: white;
+    opacity: 0.5;
+}
+
+.alert {
+    padding: 5px 10px !important;
+}
+
+.margin-t20 {
+    margin-top: 20px;
+}
+
+.modal-footer:before {
+    border-top: none !important;
+}
+
+.modal-footer {
+    border-top: 0 solid transparent !important;
+    padding: 0 2% 3%;
+}

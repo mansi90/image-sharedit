@@ -1,0 +1,23 @@
+#profileForm {
+    width: 415px !important;
+    padding: 15px !important;
+}
+
+#profileForm h1 {
+    margin-bottom: 25px !important;
+}
+
+#profileForm input{
+    padding: 10px !important;
+    margin-top: 8px !important;
+}
+
+#profileForm label.error{
+    display: block;
+    color: red;
+    margin: 5px 0 12px 0;
+}
+
+#profileForm p{
+    margin-bottom: 5px;
+}

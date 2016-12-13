@@ -1,0 +1,23 @@
+#registrationForm {
+    width: 450px !important;
+    padding: 15px !important;
+}
+
+#registrationForm h1 {
+    margin-bottom: 25px !important;
+}
+
+#registrationForm input{
+    padding: 10px !important;
+    margin-top: 8px !important;
+}
+
+#registrationForm label.error{
+    display: block;
+    color: red;
+    margin: 5px 0 12px 0;
+}
+
+#registrationForm p{
+    margin-bottom: 5px;
+}

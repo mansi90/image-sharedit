@@ -1,0 +1,57 @@
+#album-container {
+    margin: 2%;
+}
+
+#album-container p#main-title {
+    width: 86%;
+    margin: auto;
+}
+
+#album-container p#main-title span {
+    color: #000000 !important;
+    font-size: 1.7em;
+    line-height: 130%;
+    font-family: 'Lato', Helvetica, Arial, Sans-Serif;
+}
+
+#album-main-section {
+    width: 85%;
+    margin: auto;
+    margin-top: 25px;
+    position: relative;
+}
+
+.album-tile {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6) !important;
+    background: #F4F4F4 !important;
+    border: 1px solid #86888B;
+    border-radius: 4px;
+    width: 160px;
+    height: 190px;
+    float: left;
+    margin: 10px;
+    padding: 10px;
+}
+
+.album-section {
+    width: 140px;
+    height: 140px;
+}
+
+.album-section .album-inner-area {
+    display: table-cell !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+    width: 140px !important;
+    height: 140px !important;
+}
+
+.title-section {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+#add-album-icon{
+    position:fixed; bottom:2%; right:2%;
+}

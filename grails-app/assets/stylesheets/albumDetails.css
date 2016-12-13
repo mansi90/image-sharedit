@@ -1,0 +1,32 @@
+#album-container {
+    margin: 2%;
+}
+
+#album-container p#main-title {
+    width: 86%;
+    margin: auto;
+}
+
+#album-container p#main-title span {
+    color: #000000 !important;
+    font-size: 1.7em;
+    line-height: 130%;
+    font-family: 'Lato', Helvetica, Arial, Sans-Serif;
+}
+
+#album-main-section {
+    width: 85%;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.jgallery[data-jgallery-id="1"] {
+    /*background: #ffffff !important;*/
+    /*opacity: 0.9 !important;*/
+}
+
+.jgallery[data-jgallery-id="1"] .jgallery-thumbnails, .jgallery[data-jgallery-id="1"] .zoom-container:not([data-size="fill"]) .jgallery-container {
+    /*background: #ffffff !important;*/
+}
