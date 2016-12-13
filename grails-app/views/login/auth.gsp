@@ -53,18 +53,17 @@
 
             <p>
                 <label for="username">Username</label>
-                <g:textField name="j_username" id="username" placeholder="Username" required=""/>
+                <g:textField name="username" id="username" placeholder="Username" required=""/>
             </p>
 
             <p>
                 <label for="password">Password</label>
-                <g:passwordField name="j_password" id="password" placeholder="Password" required=""/>
+                <g:passwordField name="password" id="password" placeholder="Password" required=""/>
             </p>
 
             <p style="display: none">
                 <label class="remember" for="remember">
-                    <input type='checkbox' name='${rememberMeParameter}' id='remember'
-                           <g:if test='${hasCookie}'>checked='checked'</g:if>/>Remember me</label>
+                    <input type='checkbox' name='${rememberMeParameter}' id='remember' ${hasCookie ?"checked='checked'" :""}/>Remember me</label>
             </p>
 
             <p>
