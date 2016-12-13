@@ -55,7 +55,7 @@ dependencies {
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 
     compile 'com.cloudinary:cloudinary:1.0.14'
-    compile 'org.grails.plugins:spring-security-core:3.0.0.M1'
+    compile 'org.grails.plugins:spring-security-core:3.1.1'
     runtime 'mysql:mysql-connector-java:5.1.22'
     compile 'org.grails.plugins:mail:2.0.0.RC6'
 }
