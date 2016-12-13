@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse
 
 class LoginController {
     UserService userService
-    EmailService emailService
 
     /**
      * Dependency injection for the authenticationTrustResolver.
@@ -136,10 +135,11 @@ class LoginController {
             return
         }
 
-        userService.saveUserAndItsRole(userInstance, 'ROLE_USER')
-        emailService.sendConfirmUserLink(userInstance)
-
-        flash.message = 'Your account has been successfully created. A confirmation link has been sent to your email.'
+        if(userService.saveUserAndItsRole(userInstance, 'ROLE_USER')){
+            flash.message = 'Your account has been successfully created. A confirmation link has been sent to your email.'
+        }else{
+            flash.error = 'There was an error while creating your account. Please try again after sometime.'
+        }
         redirect action: 'auth'
     }
 
@@ -150,7 +150,7 @@ class LoginController {
             userService.verifyUser(userInstance, authenticateUser)
             flash.message = "Dear ${userInstance?.firstName}, your account has been verified"
         } else
-            flash.error = message(code: 'default.link.expired', default: 'This link is expired.')
+            flash.error = message(code: 'default.link.expired', default: 'This link is expired.').toString()
 
         redirect(controller: 'login', action: 'auth')
     }

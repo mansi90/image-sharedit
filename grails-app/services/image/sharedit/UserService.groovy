@@ -6,8 +6,9 @@ import org.springframework.dao.DataIntegrityViolationException
 @Transactional
 class UserService {
     def messageSource
+    EmailService emailService
 
-    void saveUserAndItsRole(User userInstance, def roles) {
+    User saveUserAndItsRole(User userInstance, def roles) {
         try {
             userInstance.save(flush: true)
             Set<Role> oldRoles = userInstance?.authorities
@@ -23,6 +24,8 @@ class UserService {
                     addRoles(userInstance, newRoles)
                 }
             }
+            emailService.sendConfirmUserLink(userInstance)
+            return userInstance
         } catch (e) {
             e.printStackTrace(System.out)
         }
