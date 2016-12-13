@@ -12,6 +12,7 @@
 /eclipse
 /.idea
 /*.iml
+/*.ipr
 
 # default HSQL database files for production mode
 /prodDb.*
