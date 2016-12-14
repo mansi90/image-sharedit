@@ -6,6 +6,7 @@ import org.springframework.dao.DataIntegrityViolationException
 class ImageController {
     ImageService imageService
     def springSecurityService
+    AlbumService albumService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -117,6 +118,7 @@ class ImageController {
         Image parent = Image.get(parentId), image = new Image(name: parent.name, description: parent.description, parent: parent)
         image.owner = springSecurityService.currentUser as User
         image = imageService.uploadImageToCloudinary(image, params.file)
+        image.album = albumService.getEditedImagesAlbumForLoggedInUser()
 
         if (!(image.validate() && image.save(flush: true)))
             response.status = 401
